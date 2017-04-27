@@ -1,4 +1,4 @@
-﻿namespace ST2PRJ2_F17
+﻿namespace Præsentationslag
 {
    partial class preview
    {
@@ -28,9 +28,9 @@
       /// </summary>
       private void InitializeComponent()
       {
-         System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-         System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-         System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+         System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+         System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+         System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
          this.genKnap = new System.Windows.Forms.Button();
          this.kasserKnap = new System.Windows.Forms.Button();
          this.previewData = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -51,6 +51,7 @@
          this.genKnap.TabIndex = 0;
          this.genKnap.Text = "Gem";
          this.genKnap.UseVisualStyleBackColor = true;
+         this.genKnap.Click += new System.EventHandler(this.genKnap_Click);
          // 
          // kasserKnap
          // 
@@ -60,19 +61,20 @@
          this.kasserKnap.TabIndex = 1;
          this.kasserKnap.Text = "Kassér";
          this.kasserKnap.UseVisualStyleBackColor = true;
+         this.kasserKnap.Click += new System.EventHandler(this.kasserKnap_Click);
          // 
          // previewData
          // 
-         chartArea1.Name = "ChartArea1";
-         this.previewData.ChartAreas.Add(chartArea1);
-         legend1.Name = "Legend1";
-         this.previewData.Legends.Add(legend1);
+         chartArea5.Name = "ChartArea1";
+         this.previewData.ChartAreas.Add(chartArea5);
+         legend5.Name = "Legend1";
+         this.previewData.Legends.Add(legend5);
          this.previewData.Location = new System.Drawing.Point(125, 24);
          this.previewData.Name = "previewData";
-         series1.ChartArea = "ChartArea1";
-         series1.Legend = "Legend1";
-         series1.Name = "Series1";
-         this.previewData.Series.Add(series1);
+         series5.ChartArea = "ChartArea1";
+         series5.Legend = "Legend1";
+         series5.Name = "Series1";
+         this.previewData.Series.Add(series5);
          this.previewData.Size = new System.Drawing.Size(432, 241);
          this.previewData.TabIndex = 2;
          this.previewData.Text = "previewData";
@@ -85,6 +87,7 @@
          this.tiSekTilbageKnap.TabIndex = 3;
          this.tiSekTilbageKnap.Text = "<";
          this.tiSekTilbageKnap.UseVisualStyleBackColor = true;
+         this.tiSekTilbageKnap.Click += new System.EventHandler(this.tiSekTilbageKnap_Click);
          // 
          // tiSekFremKnap
          // 
@@ -94,6 +97,7 @@
          this.tiSekFremKnap.TabIndex = 4;
          this.tiSekFremKnap.Text = ">";
          this.tiSekFremKnap.UseVisualStyleBackColor = true;
+         this.tiSekFremKnap.Click += new System.EventHandler(this.tiSekFremKnap_Click);
          // 
          // fremogtilbage
          // 
@@ -129,6 +133,7 @@
          this.gemKommentar.TabIndex = 8;
          this.gemKommentar.Text = "Gem kommentar";
          this.gemKommentar.UseVisualStyleBackColor = true;
+         this.gemKommentar.Click += new System.EventHandler(this.gemKommentar_Click);
          // 
          // preview
          // 

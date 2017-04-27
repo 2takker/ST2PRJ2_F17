@@ -1,4 +1,4 @@
-﻿namespace ST2PRJ2_F17
+﻿namespace Præsentationslag
 {
    partial class gennemse_data
    {
@@ -106,6 +106,7 @@
          this.indlæsCPRKnap.TabIndex = 7;
          this.indlæsCPRKnap.Text = "Indlæs";
          this.indlæsCPRKnap.UseVisualStyleBackColor = true;
+         this.indlæsCPRKnap.Click += new System.EventHandler(this.indlæsCPRKnap_Click);
          // 
          // analyserDataKnap
          // 
@@ -116,6 +117,7 @@
          this.analyserDataKnap.TabIndex = 8;
          this.analyserDataKnap.Text = "Analyser data";
          this.analyserDataKnap.UseVisualStyleBackColor = true;
+         this.analyserDataKnap.Click += new System.EventHandler(this.analyserDataKnap_Click);
          // 
          // visMålingKnap
          // 
@@ -126,6 +128,7 @@
          this.visMålingKnap.TabIndex = 9;
          this.visMålingKnap.Text = "Vis måling";
          this.visMålingKnap.UseVisualStyleBackColor = true;
+         this.visMålingKnap.Click += new System.EventHandler(this.visMålingKnap_Click);
          // 
          // gennemse_data
          // 

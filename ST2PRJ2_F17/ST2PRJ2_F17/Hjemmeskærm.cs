@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ST2PRJ2_F17
+namespace Præsentationslag
 {
     public partial class Hjemmeskærm : Form
     {
@@ -16,5 +16,35 @@ namespace ST2PRJ2_F17
         {
             InitializeComponent();
         }
-    }
+
+      private void opretNyPatientKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void previewKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void GennemseDataKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void UploadKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void downloadKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void LogUdKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+   }
 }

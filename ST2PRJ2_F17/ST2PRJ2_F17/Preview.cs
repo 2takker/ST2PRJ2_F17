@@ -8,13 +8,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ST2PRJ2_F17
+namespace Præsentationslag
 {
    public partial class preview : Form
    {
       public preview()
       {
          InitializeComponent();
+      }
+
+      private void genKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void kasserKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void tiSekTilbageKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void tiSekFremKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void gemKommentar_Click(object sender, EventArgs e)
+      {
+
       }
    }
 }

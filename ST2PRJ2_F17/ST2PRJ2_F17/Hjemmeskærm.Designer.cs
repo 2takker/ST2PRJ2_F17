@@ -1,33 +1,33 @@
-﻿namespace ST2PRJ2_F17
+﻿namespace Præsentationslag
 {
-    partial class Hjemmeskærm
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+   partial class Hjemmeskærm
+   {
+      /// <summary>
+      /// Required designer variable.
+      /// </summary>
+      private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+      /// <summary>
+      /// Clean up any resources being used.
+      /// </summary>
+      /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+      protected override void Dispose(bool disposing)
+      {
+         if (disposing && (components != null))
+         {
+            components.Dispose();
+         }
+         base.Dispose(disposing);
+      }
 
-        #region Windows Form Designer generated code
+      #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+      /// <summary>
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// </summary>
+      private void InitializeComponent()
+      {
          this.previewKnap = new System.Windows.Forms.Button();
          this.opretNyPatientKnap = new System.Windows.Forms.Button();
          this.GennemseDataKnap = new System.Windows.Forms.Button();
@@ -46,6 +46,7 @@
          this.previewKnap.TabIndex = 0;
          this.previewKnap.Text = "Preview";
          this.previewKnap.UseVisualStyleBackColor = true;
+         this.previewKnap.Click += new System.EventHandler(this.previewKnap_Click);
          // 
          // opretNyPatientKnap
          // 
@@ -55,6 +56,7 @@
          this.opretNyPatientKnap.TabIndex = 1;
          this.opretNyPatientKnap.Text = "Opret ny patient";
          this.opretNyPatientKnap.UseVisualStyleBackColor = true;
+         this.opretNyPatientKnap.Click += new System.EventHandler(this.opretNyPatientKnap_Click);
          // 
          // GennemseDataKnap
          // 
@@ -64,6 +66,7 @@
          this.GennemseDataKnap.TabIndex = 2;
          this.GennemseDataKnap.Text = "Gennemse data";
          this.GennemseDataKnap.UseVisualStyleBackColor = true;
+         this.GennemseDataKnap.Click += new System.EventHandler(this.GennemseDataKnap_Click);
          // 
          // downloadKnap
          // 
@@ -73,6 +76,7 @@
          this.downloadKnap.TabIndex = 3;
          this.downloadKnap.Text = "Download";
          this.downloadKnap.UseVisualStyleBackColor = true;
+         this.downloadKnap.Click += new System.EventHandler(this.downloadKnap_Click);
          // 
          // UploadKnap
          // 
@@ -82,6 +86,7 @@
          this.UploadKnap.TabIndex = 4;
          this.UploadKnap.Text = "Upload";
          this.UploadKnap.UseVisualStyleBackColor = true;
+         this.UploadKnap.Click += new System.EventHandler(this.UploadKnap_Click);
          // 
          // LogUdKnap
          // 
@@ -91,6 +96,7 @@
          this.LogUdKnap.TabIndex = 5;
          this.LogUdKnap.Text = "Log ud";
          this.LogUdKnap.UseVisualStyleBackColor = true;
+         this.LogUdKnap.Click += new System.EventHandler(this.LogUdKnap_Click);
          // 
          // label1
          // 
@@ -128,7 +134,7 @@
          this.ResumeLayout(false);
          this.PerformLayout();
 
-        }
+      }
 
       #endregion
 

@@ -8,13 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ST2PRJ2_F17
+namespace Præsentationslag
 {
    public partial class upload_til_offentlig_database : Form
    {
       public upload_til_offentlig_database()
       {
          InitializeComponent();
+      }
+
+      private void IndlæsCPRKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void uploadKnap_Click(object sender, EventArgs e)
+      {
+
       }
    }
 }

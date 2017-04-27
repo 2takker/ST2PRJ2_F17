@@ -1,4 +1,4 @@
-﻿namespace ST2PRJ2_F17
+﻿namespace Præsentationslag
 {
    partial class log_ind
    {
@@ -76,6 +76,7 @@
          this.LogIndKnap.TabIndex = 4;
          this.LogIndKnap.Text = "Log ind";
          this.LogIndKnap.UseVisualStyleBackColor = true;
+         this.LogIndKnap.Click += new System.EventHandler(this.LogIndKnap_Click);
          // 
          // log_ind
          // 
@@ -89,6 +90,7 @@
          this.Controls.Add(this.brugernavn);
          this.Controls.Add(this.AdgangskodeTextBox);
          this.Controls.Add(this.brugernavnTextBox);
+         this.DoubleBuffered = true;
          this.Name = "log_ind";
          this.Text = "Log ind";
          this.ResumeLayout(false);

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ST2PRJ2_F17
+namespace Præsentationslag
 {
    public partial class log_ind : Form
    {
@@ -17,6 +17,9 @@ namespace ST2PRJ2_F17
          InitializeComponent();
       }
 
-      
+      private void LogIndKnap_Click(object sender, EventArgs e)
+      {
+
+      }
    }
 }

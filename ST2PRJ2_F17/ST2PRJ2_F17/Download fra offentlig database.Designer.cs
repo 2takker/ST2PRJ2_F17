@@ -1,4 +1,4 @@
-﻿namespace ST2PRJ2_F17
+﻿namespace Præsentationslag
 {
    partial class Download_fra_offentlig_database
    {
@@ -59,6 +59,7 @@
          this.søgKnap.TabIndex = 2;
          this.søgKnap.Text = "Søg";
          this.søgKnap.UseVisualStyleBackColor = true;
+         this.søgKnap.Click += new System.EventHandler(this.søgKnap_Click);
          // 
          // SøgeresultaterListBox
          // 
@@ -76,6 +77,7 @@
          this.downloadKnap.TabIndex = 4;
          this.downloadKnap.Text = "Download";
          this.downloadKnap.UseVisualStyleBackColor = true;
+         this.downloadKnap.Click += new System.EventHandler(this.downloadKnap_Click);
          // 
          // Download_fra_offentlig_database
          // 

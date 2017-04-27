@@ -8,13 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ST2PRJ2_F17
+namespace Præsentationslag
 {
    public partial class gennemse_data : Form
    {
       public gennemse_data()
       {
          InitializeComponent();
+      }
+
+      private void indlæsCPRKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void analyserDataKnap_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void visMålingKnap_Click(object sender, EventArgs e)
+      {
+
       }
    }
 }

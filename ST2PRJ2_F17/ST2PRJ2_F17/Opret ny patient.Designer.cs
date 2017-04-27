@@ -1,4 +1,4 @@
-﻿namespace ST2PRJ2_F17
+﻿namespace Præsentationslag
 {
    partial class opret_ny_patient
    {
@@ -94,6 +94,7 @@
          this.gemKnap.TabIndex = 6;
          this.gemKnap.Text = "Gem";
          this.gemKnap.UseVisualStyleBackColor = true;
+         this.gemKnap.Click += new System.EventHandler(this.gemKnap_Click);
          // 
          // fortrydKnap
          // 
@@ -103,6 +104,7 @@
          this.fortrydKnap.TabIndex = 7;
          this.fortrydKnap.Text = "Fortryd";
          this.fortrydKnap.UseVisualStyleBackColor = true;
+         this.fortrydKnap.Click += new System.EventHandler(this.fortrydKnap_Click);
          // 
          // opret_ny_patient
          // 

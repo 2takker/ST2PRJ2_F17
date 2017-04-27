@@ -1,4 +1,4 @@
-﻿namespace ST2PRJ2_F17
+﻿namespace Præsentationslag
 {
    partial class upload_til_offentlig_database
    {
@@ -44,6 +44,7 @@
          this.IndlæsCPRKnap.TabIndex = 5;
          this.IndlæsCPRKnap.Text = "Indlæs CPR";
          this.IndlæsCPRKnap.UseVisualStyleBackColor = true;
+         this.IndlæsCPRKnap.Click += new System.EventHandler(this.IndlæsCPRKnap_Click);
          // 
          // CPRnummer
          // 
@@ -77,6 +78,7 @@
          this.uploadKnap.TabIndex = 7;
          this.uploadKnap.Text = "Upload";
          this.uploadKnap.UseVisualStyleBackColor = true;
+         this.uploadKnap.Click += new System.EventHandler(this.uploadKnap_Click);
          // 
          // UdenPatientDataCheckBox
          // 
