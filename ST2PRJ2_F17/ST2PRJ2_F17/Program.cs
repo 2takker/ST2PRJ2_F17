@@ -16,7 +16,7 @@ namespace ST2PRJ2_F17
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Hjemmeskærm());
         }
     }
 }

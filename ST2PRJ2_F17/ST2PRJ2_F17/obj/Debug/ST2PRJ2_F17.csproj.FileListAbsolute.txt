@@ -1,0 +1,17 @@
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.exe.config
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.exe
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.pdb
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.csprojResolveAssemblyReference.cache
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.CPR_nummer.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.Download_fra_offentlig_database.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.gennemse_data.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.Hjemmeskærm.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.log_ind.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.opret_ny_patient.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.preview.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.Properties.Resources.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.upload_til_offentlig_database.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.vis_måling.resources
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.csproj.GenerateResource.Cache
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.exe
+C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.pdb
