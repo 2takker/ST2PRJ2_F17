@@ -4,54 +4,96 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DB;
+using Præsentationslag;
+using DTO;
 
 namespace Logik
 {
     class Logiklag
     {
-        private lokalDB lokDB;
+        private lokalDB lokalDB_;
+        private Hjemmeskærm hjemmeskærm_;
 
-        public void login(DTO_Sundhedspersonale sundhedspersonale)
+        public Logik()
         {
-            data.validerLogin(sundhedspersonale);
+            lokalDB_ = new lokalDB();
+            hjemmeskærm_ = new Hjemmeskærm();
         }
 
-        public void importerDatafil()
+
+
+        //Use case 1
+        public string login(DTO_Sundhedspersonale sp)
         {
+            DTO_Sundhedspersonale sp1 = lokalDB_.validerLogin(sp);
 
-        }
-
-        public void gemDatasæt()
-        {
-
-        }
-
-        public string indlæsCPR(string cpr)
-        {            
-            if (validerCPR(cpr) == true)
-                return cpr;
-            else return null;
-        }
-
-        private bool validerCPR(string cpr)
-        {
-            int[] talvægt = { 4, 3, 2, 7, 6, 5, 4, 3, 2, 1 };
-
-            int sum = 0;
-            if (cpr.Length == 10)
+            if (sp1.BrugerID_ != null)
             {
-                for (int i = 0; i < cpr.Length; i++)
-                {
-                    char[] chars = cpr.ToCharArray();
-                    sum += (chars[i] - 0x30) * talvægt[i];
-                }
-                int res = sum % 11;
-                if (res == 0)
-                    return true;
+                hjemmeskærm_.låsHjemmeskærm(false);
+                return sp1.BrugerID_;
             }
-            return false;
+            else
+            {
+                return null;
+            }
+
+
         }
 
 
+
+
+
+
+
+
+        //Use case 2
+        //public void importerDatafil()
+        //{
+
+        //}
+
+        //public void gemDatasæt()
+        //{
+        //    cpr_nummer_.åbenCPRVindue();
+        //}
+
+
+
+        //public string indlæsCPR(string cpr)
+        //{
+        //    if (validerCPR(cpr) == true)
+        //        return cpr;
+        //    else return null;
+        //}
+
+        //private bool validerCPR(string cpr)
+        //{
+        //    int[] talvægt = { 4, 3, 2, 7, 6, 5, 4, 3, 2, 1 };
+
+        //    int sum = 0;
+        //    if (cpr.Length == 10)
+        //    {
+        //        for (int i = 0; i < cpr.Length; i++)
+        //        {
+        //            char[] chars = cpr.ToCharArray();
+        //            sum += (chars[i] - 0x30) * talvægt[i];
+        //        }
+        //        int res = sum % 11;
+        //        if (res == 0)
+        //            return true;
+        //    }
+        //    return false;
+        //}
+
+        //public Datasæt 10sekFrem()
+        //{
+
+        //}
+
+        //public Datasæt 10sekTilbage()
+        //{
+
+        //}
     }
 }
