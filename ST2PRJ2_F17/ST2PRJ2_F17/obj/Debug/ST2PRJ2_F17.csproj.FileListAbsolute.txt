@@ -1,3 +1,4 @@
+
 C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.exe.config
 C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.exe
 C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.pdb
@@ -15,3 +16,5 @@ C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Deb
 C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\Præsentationslag.preview.resources
 C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\Præsentationslag.upload_til_offentlig_database.resources
 C:\Users\Christiane\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\Præsentationslag.vis_måling.resources
+C:\Users\danie\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.exe.config
+
