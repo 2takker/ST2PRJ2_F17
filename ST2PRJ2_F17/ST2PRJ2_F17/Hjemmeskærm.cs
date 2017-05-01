@@ -10,12 +10,21 @@ using System.Windows.Forms;
 
 namespace Præsentationslag
 {
-    public partial class Hjemmeskærm : Form
-    {
-        public Hjemmeskærm()
-        {
-            InitializeComponent();
-        }
+   public partial class Hjemmeskærm : Form
+   {
+      log_ind logInd;
+
+      public Hjemmeskærm()
+      {
+         InitializeComponent();
+         Enabled = false;
+
+         logInd = new log_ind();
+         logInd.åbenLoginVindue(logInd);
+
+      }
+
+      
 
       private void opretNyPatientKnap_Click(object sender, EventArgs e)
       {
@@ -44,7 +53,7 @@ namespace Præsentationslag
 
       private void LogUdKnap_Click(object sender, EventArgs e)
       {
-
+         
       }
    }
 }

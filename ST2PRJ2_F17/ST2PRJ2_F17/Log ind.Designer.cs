@@ -30,7 +30,7 @@
       {
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(log_ind));
          this.brugernavnTextBox = new System.Windows.Forms.TextBox();
-         this.AdgangskodeTextBox = new System.Windows.Forms.TextBox();
+         this.adgangskodeTextBox = new System.Windows.Forms.TextBox();
          this.brugernavn = new System.Windows.Forms.Label();
          this.adgangskode = new System.Windows.Forms.Label();
          this.LogIndKnap = new System.Windows.Forms.Button();
@@ -43,12 +43,12 @@
          this.brugernavnTextBox.Size = new System.Drawing.Size(100, 20);
          this.brugernavnTextBox.TabIndex = 0;
          // 
-         // AdgangskodeTextBox
+         // adgangskodeTextBox
          // 
-         this.AdgangskodeTextBox.Location = new System.Drawing.Point(87, 97);
-         this.AdgangskodeTextBox.Name = "AdgangskodeTextBox";
-         this.AdgangskodeTextBox.Size = new System.Drawing.Size(100, 20);
-         this.AdgangskodeTextBox.TabIndex = 1;
+         this.adgangskodeTextBox.Location = new System.Drawing.Point(87, 97);
+         this.adgangskodeTextBox.Name = "adgangskodeTextBox";
+         this.adgangskodeTextBox.Size = new System.Drawing.Size(100, 20);
+         this.adgangskodeTextBox.TabIndex = 1;
          // 
          // brugernavn
          // 
@@ -88,7 +88,7 @@
          this.Controls.Add(this.LogIndKnap);
          this.Controls.Add(this.adgangskode);
          this.Controls.Add(this.brugernavn);
-         this.Controls.Add(this.AdgangskodeTextBox);
+         this.Controls.Add(this.adgangskodeTextBox);
          this.Controls.Add(this.brugernavnTextBox);
          this.DoubleBuffered = true;
          this.Name = "log_ind";
@@ -101,7 +101,7 @@
       #endregion
 
       private System.Windows.Forms.TextBox brugernavnTextBox;
-      private System.Windows.Forms.TextBox AdgangskodeTextBox;
+      private System.Windows.Forms.TextBox adgangskodeTextBox;
       private System.Windows.Forms.Label brugernavn;
       private System.Windows.Forms.Label adgangskode;
       private System.Windows.Forms.Button LogIndKnap;
