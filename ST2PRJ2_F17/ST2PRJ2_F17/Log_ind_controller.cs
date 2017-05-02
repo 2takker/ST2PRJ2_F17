@@ -15,11 +15,11 @@ namespace Logik
         private Hjemmeskærm hjemmeskærm_;
         private log_ind loginskærm_;
 
-        public Logik()
+        public Log_ind_controller()
         {
             lokalDB_ = new lokalDB();
-            hjemmeskærm_ = new Hjemmeskærm();
-            loginskærm_ = new log_ind();
+            //hjemmeskærm_ = new Hjemmeskærm();
+            //loginskærm_ = new log_ind();
         }
 
 

@@ -14,18 +14,18 @@ namespace Præsentationslag
 {
    public partial class log_ind : Form
    {
-      private Logik loginController;
+      private Log_ind_controller loginController;
 
       public log_ind()
       {
          InitializeComponent();
 
-         loginController = new Logik();
+         loginController = new Log_ind_controller();
       }
 
       private void LogIndKnap_Click(object sender, EventArgs e)
       {
-         DTO_sundhedsPersonale sp1 = new DTO_sundhedsPersonale(brugernavnTextBox.Text, adgangskodeTextBox.Text);
+         DTO_Sundhedspersonale sp1 = new DTO_Sundhedspersonale(brugernavnTextBox.Text, adgangskodeTextBox.Text);
 
          loginController.login(sp1);
 
@@ -42,7 +42,7 @@ namespace Præsentationslag
          login.Close();
       }
 
-      public void ugyldigLogin()
+      public void ugyldigtLogin()
       {
          MessageBox.Show("Ugyldigt brugernavn eller adgangskode");
       }

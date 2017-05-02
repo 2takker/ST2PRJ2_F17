@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using DTO;
 
 
 namespace DB
@@ -14,7 +15,7 @@ namespace DB
         private SqlDataReader rdr;
         private SqlCommand cmd;
         private const string db = "F17ST2ITS2201500391";
-        private DTO_Sundhesdpersonale sp_;
+        private DTO_Sundhedspersonale sp_;
 
 
         public lokalDB()
@@ -32,13 +33,13 @@ namespace DB
 
             rdr = cmd.ExecuteReader();
 
-            sp_ = new DTO_Sundhesdpersonale(null, null);
+            sp_ = new DTO_Sundhedspersonale(null, null);
 
             while(rdr.Read())
             {
                 if (Convert.ToString(rdr["kodeord"]) == sp.Kodeord_ && Convert.ToString(rdr["bruger_id"]) == sp.BrugerID_) 
                 {
-                    sp_ = new DTO_Sundhesdpersonale(Convert.ToString(rdr["bruger_id"]), Convert.ToString(rdr["kodeord"]));
+                    sp_ = new DTO_Sundhedspersonale(Convert.ToString(rdr["bruger_id"]), Convert.ToString(rdr["kodeord"]));
                 }                
             }
 

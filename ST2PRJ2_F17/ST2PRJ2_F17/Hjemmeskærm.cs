@@ -10,50 +10,55 @@ using System.Windows.Forms;
 
 namespace Præsentationslag
 {
-   public partial class Hjemmeskærm : Form
-   {
-      log_ind logInd;
+    public partial class Hjemmeskærm : Form
+    {
+        log_ind logInd;
 
-      public Hjemmeskærm()
-      {
-         InitializeComponent();
-         Enabled = false;
+        public Hjemmeskærm()
+        {
+            InitializeComponent();
+            låsHjemmeskærm(false);
 
-         logInd = new log_ind();
-         logInd.åbenLoginVindue(logInd);
+            logInd = new log_ind();
+            logInd.åbenLoginVindue(logInd);
 
-      }
+        }
 
-      
+        public void låsHjemmeskærm(bool lås)
+        {
+            Enabled = lås;
+        }
 
-      private void opretNyPatientKnap_Click(object sender, EventArgs e)
-      {
 
-      }
 
-      private void previewKnap_Click(object sender, EventArgs e)
-      {
+        private void opretNyPatientKnap_Click(object sender, EventArgs e)
+        {
 
-      }
+        }
 
-      private void GennemseDataKnap_Click(object sender, EventArgs e)
-      {
+        private void previewKnap_Click(object sender, EventArgs e)
+        {
 
-      }
+        }
 
-      private void UploadKnap_Click(object sender, EventArgs e)
-      {
+        private void GennemseDataKnap_Click(object sender, EventArgs e)
+        {
 
-      }
+        }
 
-      private void downloadKnap_Click(object sender, EventArgs e)
-      {
+        private void UploadKnap_Click(object sender, EventArgs e)
+        {
 
-      }
+        }
 
-      private void LogUdKnap_Click(object sender, EventArgs e)
-      {
-         
-      }
-   }
+        private void downloadKnap_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LogUdKnap_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
