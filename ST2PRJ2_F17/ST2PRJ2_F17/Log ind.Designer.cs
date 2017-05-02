@@ -39,6 +39,7 @@
          // brugernavnTextBox
          // 
          this.brugernavnTextBox.Location = new System.Drawing.Point(87, 42);
+         this.brugernavnTextBox.MaxLength = 3456;
          this.brugernavnTextBox.Name = "brugernavnTextBox";
          this.brugernavnTextBox.Size = new System.Drawing.Size(100, 20);
          this.brugernavnTextBox.TabIndex = 0;

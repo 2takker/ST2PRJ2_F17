@@ -12,7 +12,6 @@ namespace Præsentationslag
 {
     public partial class Hjemmeskærm : Form
     {
-        
 
         public Hjemmeskærm(bool ini)
         {
@@ -33,7 +32,8 @@ namespace Præsentationslag
 
         private void opretNyPatientKnap_Click(object sender, EventArgs e)
         {
-
+         opret_ny_patient opretnypatient = new opret_ny_patient(true);
+         opretnypatient.Show();
         }
 
         private void previewKnap_Click(object sender, EventArgs e)
