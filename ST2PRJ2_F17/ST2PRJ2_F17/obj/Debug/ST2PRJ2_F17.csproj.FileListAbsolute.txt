@@ -33,3 +33,5 @@ C:\Users\2takk\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST
 C:\Users\2takk\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.exe.config
 C:\Users\2takk\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.exe
 C:\Users\2takk\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.pdb
+C:\Users\danie\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.exe
+C:\Users\danie\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.pdb
