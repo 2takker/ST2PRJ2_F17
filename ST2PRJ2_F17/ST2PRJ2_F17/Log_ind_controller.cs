@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DB;
 using Præsentationslag;
 using DTO;
+using System.Windows.Forms;
 
 namespace Logik
 {
@@ -15,11 +16,23 @@ namespace Logik
         private Hjemmeskærm hjemmeskærm_;
         private log_ind loginskærm_;
 
-        public Log_ind_controller()
+        public Log_ind_controller(bool ini)
         {
             lokalDB_ = new lokalDB();
-            //hjemmeskærm_ = new Hjemmeskærm();
-            //loginskærm_ = new log_ind();
+            if (ini)
+            {                
+                hjemmeskærm_ = new Hjemmeskærm(true);
+
+                loginskærm_ = new log_ind(true);
+                loginskærm_.åbenLoginVindue(loginskærm_);
+
+                Application.Run(hjemmeskærm_);                
+            }
+            else
+            {
+                hjemmeskærm_ = new Hjemmeskærm(false);
+                loginskærm_ = new log_ind(false);
+            }
         }
 
 

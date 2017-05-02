@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Præsentationslag;
+using Logik;
 
 namespace ST2PRJ2_F17
 {
@@ -17,7 +18,9 @@ namespace ST2PRJ2_F17
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Hjemmeskærm());
+
+            Log_ind_controller login = new Log_ind_controller(true);
+
         }
     }
 }

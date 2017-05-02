@@ -12,39 +12,42 @@ using DTO;
 
 namespace Præsentationslag
 {
-   public partial class log_ind : Form
-   {
-      private Log_ind_controller loginController;
+    public partial class log_ind : Form
+    {
+        private Log_ind_controller loginController;
 
-      public log_ind()
-      {
-         InitializeComponent();
+        public log_ind(bool ini)
+        {
+            if (ini)
+            {
+                InitializeComponent();
 
-         loginController = new Log_ind_controller();
-      }
+                loginController = new Log_ind_controller(false);
+            }
+        }
 
-      private void LogIndKnap_Click(object sender, EventArgs e)
-      {
-         DTO_Sundhedspersonale sp1 = new DTO_Sundhedspersonale(brugernavnTextBox.Text, adgangskodeTextBox.Text);
+        private void LogIndKnap_Click(object sender, EventArgs e)
+        {
+            DTO_Sundhedspersonale sp1 = new DTO_Sundhedspersonale(brugernavnTextBox.Text, adgangskodeTextBox.Text);
 
-         loginController.login(sp1);
+            loginController.login(sp1);
 
-      }
+        }
 
-      public void åbenLoginVindue(log_ind login)
-      {
-         login.Show();
-         login.BringToFront();
-      }
+        public void åbenLoginVindue(log_ind login)
+        {
+            login.Show();
+            login.BringToFront();
+        }
 
-      public void lukLoginVindue(log_ind login)
-      {
-         login.Close();
-      }
+        public void lukLoginVindue(log_ind login)
+        {
+            login.Close();
+        }
 
-      public void ugyldigtLogin()
-      {
-         MessageBox.Show("Ugyldigt brugernavn eller adgangskode");
-      }
-   }
+        public void ugyldigtLogin()
+        {
+            MessageBox.Show("Ugyldigt brugernavn eller adgangskode");
+        }
+    }
 }

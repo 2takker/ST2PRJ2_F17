@@ -12,21 +12,21 @@ namespace Præsentationslag
 {
     public partial class Hjemmeskærm : Form
     {
-        log_ind logInd;
+        
 
-        public Hjemmeskærm()
+        public Hjemmeskærm(bool ini)
         {
-            InitializeComponent();
-            låsHjemmeskærm(false);
-
-            logInd = new log_ind();
-            logInd.åbenLoginVindue(logInd);
+            if (ini)
+            {
+                InitializeComponent();
+                låsHjemmeskærm(true);
+            }
 
         }
 
         public void låsHjemmeskærm(bool lås)
         {
-            Enabled = lås;
+            Enabled = !lås;
         }
 
 
