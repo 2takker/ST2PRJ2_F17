@@ -17,7 +17,7 @@ namespace Logik
             lokalDB_ = new lokalDB();
         }
 
-        private bool validerCPR(string cpr)
+        public bool validerCPR(string cpr)
         {
             int[] talVægt = { 4, 3, 2, 7, 6, 5, 4, 3, 2, 1 };
 

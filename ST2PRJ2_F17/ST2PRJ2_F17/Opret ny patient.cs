@@ -15,28 +15,25 @@ namespace Præsentationslag
    public partial class opret_ny_patient : Form
    {
       private Opret_ny_patient_controller OpretPatientController;
-      public opret_ny_patient(bool ini)
-      {
-         if (ini)
-         {
+      public opret_ny_patient()
+      {         
             InitializeComponent();
 
-            OpretPatientController = new Opret_ny_patient_controller(false);
-         }
+            OpretPatientController = new Opret_ny_patient_controller();         
       }
 
       private void gemKnap_Click(object sender, EventArgs e)
       {
-         DT0_PatientData pd = new DT0_PatientData(CPRTextBox.Text, fornavnTextBox.Text, efternavnTextBox.Text);
+         DTO_PatientData pd = new DTO_PatientData(CPRTextBox.Text, fornavnTextBox.Text, efternavnTextBox.Text);
 
-         if (OpretPatientController.validerPatientData(pd.CPRnummer_)==false)
+         if (OpretPatientController.validerCPR(pd.CPRNummer_)==false)
          {
             MessageBox.Show("CPR-nummeret er ugyldigt");
             CPRTextBox.Clear();
          }
          else
          {
-            if (OpretPatientController.gemPatientData() == true)
+            if (OpretPatientController.gemPatientData(pd) == true)
             {
                
                MessageBox.Show("Patient findes allerede");

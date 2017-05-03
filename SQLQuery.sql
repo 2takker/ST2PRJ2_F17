@@ -21,3 +21,5 @@
 --INSERT INTO PatientData(CPR, Fornavn, Efternavn) VALUES('1212901414', 'Svend Henning', 'Svendsen')
 
 --SELECT * FROM PatientData
+
+

@@ -38,4 +38,3 @@ C:\Users\danie\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST
 C:\Users\cilla\OneDrive\Documentos\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\bin\Debug\ST2PRJ2_F17.exe.config
 C:\Users\cilla\OneDrive\Documentos\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.exe
 C:\Users\cilla\OneDrive\Documentos\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.pdb
-

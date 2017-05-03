@@ -16,7 +16,6 @@ namespace DB
         private SqlCommand cmd;
         private const string db = "F17ST2ITS2201500391";
         private DTO_Sundhedspersonale sp_;
-        private DTO_PatientData pd_;
 
         public lokalDB()
         {
@@ -50,7 +49,7 @@ namespace DB
 
         public bool findPatient(DTO_PatientData pd)
         {
-            cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + pd.CPR + "'", conn);
+            cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + pd.CPRNummer_ + "'", conn);
 
             conn.Open();
 
@@ -58,7 +57,7 @@ namespace DB
 
             while (rdr.Read())
             {
-                if (pd.CPR == Convert.ToString(rdr["CPR"]))
+                if (pd.CPRNummer_ == Convert.ToString(rdr["CPR"]))
                 {
                     conn.Close();
                     return true;
@@ -69,14 +68,16 @@ namespace DB
                     return false;
                 }
             }
+            conn.Close();
             return false;
+
 
         }
 
         public void tilføjPatient(DTO_PatientData pd)
         {
-            cmd = new SqlCommand("INSERT INTO PatientData(CPR, Fornavn, Efternavn) VALUES('" + pd.CPR + "', " +
-                "'" + pd.Fornavn + "', '" + pd.Efternavn + "')",conn);
+            cmd = new SqlCommand("INSERT INTO PatientData(CPR, Fornavn, Efternavn) VALUES('" + pd.CPRNummer_ + "', " +
+                "'" + pd.Fornavn_ + "', '" + pd.Efternavn_ + "')",conn);
 
             conn.Open();
 

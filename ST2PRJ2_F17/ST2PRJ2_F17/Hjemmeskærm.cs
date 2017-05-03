@@ -33,7 +33,7 @@ namespace Præsentationslag
 
         private void opretNyPatientKnap_Click(object sender, EventArgs e)
         {
-         opret_ny_patient opretnypatient = new opret_ny_patient(true);
+         opret_ny_patient opretnypatient = new opret_ny_patient();
          opretnypatient.Show();
         }
 
