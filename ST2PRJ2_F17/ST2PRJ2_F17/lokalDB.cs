@@ -16,12 +16,12 @@ namespace DB
         private SqlCommand cmd;
         private const string db = "F17ST2ITS2201500391";
         private DTO_Sundhedspersonale sp_;
-
+        private DTO_PatientData pd_;
 
         public lokalDB()
         {
             conn = new SqlConnection("Data Source =i4dab.ase.au.dk; Initial Catalog=" + db +
-                ";Persist Security Info = True; User ID=" + db + ";Password=" + db + "");            
+                ";Persist Security Info = True; User ID=" + db + ";Password=" + db + "");
         }
 
 
@@ -35,18 +35,54 @@ namespace DB
 
             sp_ = new DTO_Sundhedspersonale(null, null);
 
-            while(rdr.Read())
+            while (rdr.Read())
             {
-                if (Convert.ToString(rdr["kodeord"]) == sp.Kodeord_ && Convert.ToString(rdr["bruger_id"]) == sp.BrugerID_) 
+                if (Convert.ToString(rdr["kodeord"]) == sp.Kodeord_ && Convert.ToString(rdr["bruger_id"]) == sp.BrugerID_)
                 {
                     sp_ = new DTO_Sundhedspersonale(Convert.ToString(rdr["bruger_id"]), Convert.ToString(rdr["kodeord"]));
-                }                
+                }
             }
 
             conn.Close();
-            
 
             return sp_;
+        }
+
+        public bool findPatient(DTO_PatientData pd)
+        {
+            cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + pd.CPR + "'", conn);
+
+            conn.Open();
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                if (pd.CPR == Convert.ToString(rdr["CPR"]))
+                {
+                    conn.Close();
+                    return true;
+                }
+                else
+                {
+                    conn.Close();
+                    return false;
+                }
+            }
+            return false;
+
+        }
+
+        public void tilføjPatient(DTO_PatientData pd)
+        {
+            cmd = new SqlCommand("INSERT INTO PatientData(CPR, Fornavn, Efternavn) VALUES('" + pd.CPR + "', " +
+                "'" + pd.Fornavn + "', '" + pd.Efternavn + "')",conn);
+
+            conn.Open();
+
+            cmd.ExecuteScalar();
+
+            conn.Close();
         }
 
     }
