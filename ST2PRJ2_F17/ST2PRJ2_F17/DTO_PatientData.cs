@@ -17,7 +17,12 @@ namespace DTO
             CPRNummer_ = cprNummer;
             Fornavn_ = fornavn;
             Efternavn_ = efternavn;
-        }               
+        }
+
+        public DTO_PatientData(string cprNummer)
+        {
+            CPRNummer_ = cprNummer;           
+        }
 
     }
 }

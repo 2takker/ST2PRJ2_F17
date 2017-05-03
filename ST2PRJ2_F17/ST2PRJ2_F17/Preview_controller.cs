@@ -8,14 +8,26 @@ using DTO;
 
 namespace Logik
 {
-    class Opret_ny_patient_controller
+    class Preview_controller
     {
         private lokalDB lokalDB_;
 
-        public Opret_ny_patient_controller()
+        public Preview_controller()
         {
-            lokalDB_ = new lokalDB();
+            lokalDB = new lokalDB();
         }
+
+        public void importerDatafil()
+        {
+
+        }
+
+        public void gemDatasæt()
+        {
+
+        }
+
+        
 
         public bool validerCPR(string cpr)
         {
@@ -26,7 +38,7 @@ namespace Logik
             {
                 for (int i = 0; i < cpr.Length; i++)
                 {
-                    char[] chars = cpr.ToCharArray(); 
+                    char[] chars = cpr.ToCharArray();
                     sum += (chars[i] - 0x30) * talVægt[i];
                 }
                 int res = sum % 11;
@@ -36,21 +48,26 @@ namespace Logik
             return false;
         }
 
-        public bool gemPatientData(DTO_PatientData patientData)
+        public bool indlæsCPR(string cpr)
         {
-            if (lokalDB_.findPatient(patientData) == true)
+            if (lokalDB_.findCPR(cpr) == true)
             {
+                lokalDB_.gemDatasæt(Datasæt datasæt);
                 return true;
-            } 
-            else
-            {
-                lokalDB_.tilføjPatient(patientData);
-                return false;
             }
-            
 
-                           
+            else return false;                                            
+
         }
-        
+
+        public Datasæt 10sekFrem()
+        {
+
+        }
+
+        public Datasæt 10sekTilbage()
+        {
+
+        }
     }
 }
