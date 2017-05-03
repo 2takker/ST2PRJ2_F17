@@ -58,5 +58,10 @@ namespace Præsentationslag
       {
          this.Close();
       }
+
+      public void åbenOpretNyPatientVindue()
+      {
+         this.Show();
+      }
    }
 }
