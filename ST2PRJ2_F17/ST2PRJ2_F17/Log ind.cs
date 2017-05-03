@@ -52,7 +52,9 @@ namespace Præsentationslag
 
         private void ugyldigtLogin()
         {
+            adgangskodeTextBox.Clear();
             MessageBox.Show("Ugyldigt brugernavn eller adgangskode");
+            adgangskodeTextBox.Focus();
         }
 
         private void log_ind_FormClosing(object sender, FormClosingEventArgs e)
