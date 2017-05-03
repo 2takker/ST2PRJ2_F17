@@ -36,8 +36,17 @@ namespace Præsentationslag
          }
          else
          {
-            OpretPatientController.gemPatientData();
-            MessageBox.Show("Data er gemt");
+            if (OpretPatientController.gemPatientData() == true)
+            {
+               
+               MessageBox.Show("Patient findes allerede");
+               lukOpretNyPatientVindue();
+            }
+            else
+            {
+               MessageBox.Show("Data er gemt");
+               lukOpretNyPatientVindue();
+            }
             
          }
          
