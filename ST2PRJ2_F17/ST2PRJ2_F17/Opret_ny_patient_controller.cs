@@ -38,20 +38,18 @@ namespace Logik
 
         public bool gemPatientData(DTO_PatientData patientData)
         {
-            if (validerCPR(patientData.CPRNummer_) == false)
+            if (lokalDB_.findPatient(patientData) == true)
             {
-                return false;
-            }
-
+                return true;
+            } 
             else
             {
-                
-                if (lokalDB_.findPatient(patientData) == false)
-                {
+                lokalDB_.tilføjPatient(patientData);
+                return false;
+            }
+            
 
-                }
-
-            }                
+                           
         }
         
     }
