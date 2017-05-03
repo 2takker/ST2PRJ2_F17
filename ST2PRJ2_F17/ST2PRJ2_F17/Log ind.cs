@@ -15,39 +15,56 @@ namespace Præsentationslag
     public partial class log_ind : Form
     {
         private Log_ind_controller loginController;
+        private bool loggedIn_;
 
-        public log_ind(bool ini)
+        public log_ind()
         {
-            if (ini)
-            {
-                InitializeComponent();
+            InitializeComponent();
 
-                loginController = new Log_ind_controller(false);
-            }
+            loginController = new Log_ind_controller();
         }
 
         private void LogIndKnap_Click(object sender, EventArgs e)
         {
             DTO_Sundhedspersonale sp1 = new DTO_Sundhedspersonale(brugernavnTextBox.Text, adgangskodeTextBox.Text);
+            string brugerID = loginController.login(sp1);
 
-            loginController.login(sp1);
-
+            if (brugerID != null)
+            {
+                loggedIn_ = true;
+                lukLoginVindue();
+            }
+            else
+            {
+                ugyldigtLogin();
+            }
         }
 
-        public void åbenLoginVindue(log_ind login)
+        public void åbenLoginVindue()
         {
-            login.Show();
-            login.BringToFront();
+            Application.Run(new log_ind());
         }
 
-        public void lukLoginVindue(log_ind login)
+        private void lukLoginVindue()
         {
-            login.Close();
+            Close();
         }
 
-        public void ugyldigtLogin()
+        private void ugyldigtLogin()
         {
             MessageBox.Show("Ugyldigt brugernavn eller adgangskode");
+        }
+
+        private void log_ind_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (loggedIn_)
+            {
+
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }
