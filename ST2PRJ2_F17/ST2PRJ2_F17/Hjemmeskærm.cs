@@ -12,16 +12,16 @@ namespace Præsentationslag
 {
     public partial class Hjemmeskærm : Form
     {
-        
+        log_ind loginvindue_;
 
-        public Hjemmeskærm(bool ini)
+        public Hjemmeskærm()
         {
-            if (ini)
-            {
-                InitializeComponent();
-                låsHjemmeskærm(true);
-            }
+            InitializeComponent();
+            låsHjemmeskærm(true);
 
+            loginvindue_ = new log_ind();
+            loginvindue_.åbenLoginVindue();
+            låsHjemmeskærm(false);
         }
 
         public void låsHjemmeskærm(bool lås)
@@ -33,7 +33,8 @@ namespace Præsentationslag
 
         private void opretNyPatientKnap_Click(object sender, EventArgs e)
         {
-
+         opret_ny_patient opretnypatient = new opret_ny_patient(true);
+         opretnypatient.Show();
         }
 
         private void previewKnap_Click(object sender, EventArgs e)

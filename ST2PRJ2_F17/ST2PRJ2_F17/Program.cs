@@ -18,8 +18,7 @@ namespace ST2PRJ2_F17
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            Log_ind_controller login = new Log_ind_controller(true);
+            Application.Run(new Hjemmeskærm());
 
         }
     }
