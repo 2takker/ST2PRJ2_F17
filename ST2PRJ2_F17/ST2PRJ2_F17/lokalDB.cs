@@ -24,6 +24,10 @@ namespace DB
         }
 
 
+        //
+        //Use-case 1
+        //
+
         public DTO_Sundhedspersonale validerLogin(DTO_Sundhedspersonale sp)
         {
             cmd = new SqlCommand("SELECT * FROM Sundhedspersonale WHERE bruger_id ='" + sp.BrugerID_ + "'", conn);
@@ -46,18 +50,23 @@ namespace DB
 
             return sp_;
         }
+        
 
-        public bool findPatient(DTO_PatientData pd)
+        //
+        //Use-case 2
+        //
+
+        public bool findCPR(string cpr)
         {
-            cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + pd.CPRNummer_ + "'", conn);
+            cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + cpr + "'", conn);
 
             conn.Open();
 
             rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
+            while(rdr.Read())
             {
-                if (pd.CPRNummer_ == Convert.ToString(rdr["CPR"]))
+                if(cpr == Convert.ToString(rdr["CPR"]))
                 {
                     conn.Close();
                     return true;
@@ -70,10 +79,49 @@ namespace DB
             }
             conn.Close();
             return false;
-
-
         }
 
+        public void gemDatasæt(DTO_Datasæt ds)
+        {
+            cmd = new SqlCommand("INSERT INTO ")
+        }
+
+        //
+        //Use-case 3
+        //
+
+        //finder patient i lokaldatabase
+        public bool findPatient(DTO_PatientData pd)
+        {
+            return findCPR(pd.CPRNummer_);
+
+            //
+            //Obsolete
+            //
+            //cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + pd.CPRNummer_ + "'", conn);
+
+            //conn.Open();
+
+            //rdr = cmd.ExecuteReader();
+
+            //while (rdr.Read())
+            //{
+            //    if (pd.CPRNummer_ == Convert.ToString(rdr["CPR"]))
+            //    {
+            //        conn.Close();
+            //        return true;
+            //    }
+            //    else
+            //    {
+            //        conn.Close();
+            //        return false;
+            //    }
+            //}
+            //conn.Close();
+            //return false;
+        }
+
+        //Tilføjer patient til lokaldatabase
         public void tilføjPatient(DTO_PatientData pd)
         {
             cmd = new SqlCommand("INSERT INTO PatientData(CPR, Fornavn, Efternavn) VALUES('" + pd.CPRNummer_ + "', " +
