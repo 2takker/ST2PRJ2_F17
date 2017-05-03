@@ -73,5 +73,17 @@ namespace DB
 
         }
 
+        public void tilføjPatient(DTO_PatientData pd)
+        {
+            cmd = new SqlCommand("INSERT INTO PatientData(CPR, Fornavn, Efternavn) VALUES('" + pd.CPR + "', " +
+                "'" + pd.Fornavn + "', '" + pd.Efternavn + "')",conn);
+
+            conn.Open();
+
+            cmd.ExecuteScalar();
+
+            conn.Close();
+        }
+
     }
 }
