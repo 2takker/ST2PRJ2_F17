@@ -49,6 +49,7 @@
     <Compile Include="CPR nummer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DTO_Datasæt.cs" />
     <Compile Include="DTO_PatientData.cs" />
     <Compile Include="DTO_Sundhedspersonale.cs" />
     <Compile Include="CPR nummer.Designer.cs">
