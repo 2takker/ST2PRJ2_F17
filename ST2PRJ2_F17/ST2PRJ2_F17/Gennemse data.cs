@@ -29,7 +29,18 @@ namespace Præsentationslag
 
       private void visMålingKnap_Click(object sender, EventArgs e)
       {
+         vis_måling visMåling = new vis_måling();
+         visMåling.åbenVisMålingVindue();
+      }
 
+      public void åbenGennemseDataVindue()
+      {
+         Show();
+      }
+
+      public void lukGennemseDataVindue()
+      {
+         Close();
       }
    }
 }

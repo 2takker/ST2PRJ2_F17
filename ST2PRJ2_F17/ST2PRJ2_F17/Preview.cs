@@ -28,13 +28,11 @@ namespace Præsentationslag
       {
          cprvindue = new CPR_nummer();
          cprvindue.åbenCPRVindue();
-
       }
 
       private void kasserKnap_Click(object sender, EventArgs e)
       {
-         kasserData();
-               
+         kasserData(); 
       }
 
       private void kasserData()
@@ -64,12 +62,7 @@ namespace Præsentationslag
 
       private void gemKommentar_Click(object sender, EventArgs e)
       {
-         PreviewController.gemKommentar();
-      }
-
-      public void åbenPreviewVindue(datafil df)
-      {
-         PreviewController.importerDatafil();
+         
       }
 
       public void lukPreviewVindue()
@@ -77,5 +70,15 @@ namespace Præsentationslag
          Close();
       }
 
+      private void importerFilKnap_Click(object sender, EventArgs e)
+      {
+         PreviewController.importerDatafil();
+      }
+
+      public void åbenPreviewVindue()
+      {
+         Show();
+      }
+      
    }
 }

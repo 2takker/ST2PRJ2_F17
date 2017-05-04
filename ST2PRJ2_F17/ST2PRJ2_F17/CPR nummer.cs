@@ -19,7 +19,7 @@ namespace Præsentationslag
       public CPR_nummer()
       {
          InitializeComponent();
-         PreviewController = new Preview_controller();
+         //PreviewController = new Preview_controller();
          
       }
 
@@ -51,7 +51,7 @@ namespace Præsentationslag
 
       private void fortrydKnap_Click(object sender, EventArgs e)
       {
-
+         lukCPRVindue();
       }
 
       public void åbenCPRVindue()

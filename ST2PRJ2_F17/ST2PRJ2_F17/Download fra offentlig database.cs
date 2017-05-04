@@ -26,5 +26,14 @@ namespace Præsentationslag
       {
 
       }
+
+      public void åbenDownloadVindue()
+      {
+         Show();
+      }
+      public void lukDownloadVindue()
+      {
+         Close();
+      }
    }
 }

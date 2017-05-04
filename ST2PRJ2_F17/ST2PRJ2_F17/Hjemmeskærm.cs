@@ -29,37 +29,40 @@ namespace Præsentationslag
             Enabled = !lås;
         }
 
-
-
         private void opretNyPatientKnap_Click(object sender, EventArgs e)
         {
          opret_ny_patient opretnypatient = new opret_ny_patient();
-         opretnypatient.Show();
+         opretnypatient.åbenOpretNyPatientVindue();
         }
 
         private void previewKnap_Click(object sender, EventArgs e)
         {
-
+         preview previewVindue = new preview();
+         previewVindue.åbenPreviewVindue();
         }
 
         private void GennemseDataKnap_Click(object sender, EventArgs e)
         {
-
+         gennemse_data gennemseData = new gennemse_data();
+         gennemseData.åbenGennemseDataVindue();
         }
 
         private void UploadKnap_Click(object sender, EventArgs e)
         {
-
+         upload_til_offentlig_database upload = new upload_til_offentlig_database();
+         upload.åbenUploadVindue();
         }
 
         private void downloadKnap_Click(object sender, EventArgs e)
         {
-
+         Download_fra_offentlig_database download = new Download_fra_offentlig_database();
+         download.åbenDownloadVindue();
         }
 
         private void LogUdKnap_Click(object sender, EventArgs e)
         {
-
+         this.Close();
+         loginvindue_.åbenLoginVindue();
         }
     }
 }
