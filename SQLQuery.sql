@@ -55,3 +55,16 @@
 --)
 
 --SELECT * FROM EKGDATA
+
+--INSERT INTO PatientData(CPR, Fornavn, Efternavn) VALUES('1305931493', 'Bjarke Lundgaard', 'Hansen')
+
+--INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr) 
+--OUTPUT INSERTED.ekgmaaleid
+--VALUES(CONVERT(DATETIME, '2017-05-04 10:57:30'), 1, 'BH', 'Dette er en test', 'BH', 'Gruppe 6', '1305931493')
+
+
+--INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr) 
+--OUTPUT INSERTED.ekgmaaleid
+--VALUES(CONVERT(DATETIME, '2017-05-04 11:57:30'), 1, 'CM', 'Dette er en test 2', 'CM', 'Gruppe 6', '0603970578')
+
+--SELECT * FROM db_owner.EKGMAALING

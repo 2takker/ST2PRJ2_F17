@@ -17,6 +17,7 @@ namespace DB
         private const string db = "F17ST2ITS2201500391";
         private DTO_Sundhedspersonale sp_;
 
+
         public lokalDB()
         {
             conn = new SqlConnection("Data Source =i4dab.ase.au.dk; Initial Catalog=" + db +
@@ -50,7 +51,7 @@ namespace DB
 
             return sp_;
         }
-        
+
 
         //
         //Use-case 2
@@ -64,9 +65,9 @@ namespace DB
 
             rdr = cmd.ExecuteReader();
 
-            while(rdr.Read())
+            while (rdr.Read())
             {
-                if(cpr == Convert.ToString(rdr["CPR"]))
+                if (cpr == Convert.ToString(rdr["CPR"]))
                 {
                     conn.Close();
                     return true;
@@ -82,8 +83,33 @@ namespace DB
         }
 
         public void gemDatasæt(DTO_Datasæt ds)
-        {
-            cmd = new SqlCommand("INSERT INTO ")
+        {            
+            cmd = new SqlCommand("INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
+                    "sfp_mt_kommentar,sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)" 
+                    + "OUTPUT INSERTED.ekgmaaleid" 
+                    + "VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "'," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','" 
+                        + ds.MåltagerKommentar_ + "','" + ds.AnsvarstagerBrugerId_ + "','" + ds.AnsvarstagerOrg_ + "','" 
+                        + ds.Pd_.CPRNummer_ + "'", conn);
+
+            conn.Open();
+
+            int ekgMåleId = (int)cmd.ExecuteScalar();
+
+            conn.Close();
+
+            cmd = new SqlCommand("INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
+                "bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid)"
+                +"VALUES(@data, " + ds.SampleRateHz_ +"," +ds.IntervalSek_+",'" + ds.DataFormat_ + "','" 
+                    + ds.BinEllerTxt_ +"','" + ds.MåleformatType_ +"', CONVERT(DATETIME,'" +ds.StartTid_+"'),'" 
+                    +ekgMåleId+")", conn);
+
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@data", ds.Data_.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray());
+
+            cmd.ExecuteScalar();
+
+            conn.Close();
         }
 
         //
@@ -125,7 +151,7 @@ namespace DB
         public void tilføjPatient(DTO_PatientData pd)
         {
             cmd = new SqlCommand("INSERT INTO PatientData(CPR, Fornavn, Efternavn) VALUES('" + pd.CPRNummer_ + "', " +
-                "'" + pd.Fornavn_ + "', '" + pd.Efternavn_ + "')",conn);
+                "'" + pd.Fornavn_ + "', '" + pd.Efternavn_ + "')", conn);
 
             conn.Open();
 
