@@ -83,13 +83,13 @@ namespace DB
         }
 
         public void gemDatasæt(DTO_Datasæt ds)
-        {            
+        {
             cmd = new SqlCommand("INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
-                    "sfp_mt_kommentar,sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)" 
-                    + "OUTPUT INSERTED.ekgmaaleid" 
-                    + "VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "'," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','" 
-                        + ds.MåltagerKommentar_ + "','" + ds.AnsvarstagerBrugerId_ + "','" + ds.AnsvarstagerOrg_ + "','" 
-                        + ds.Pd_.CPRNummer_ + "'", conn);
+                    "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
+                    + "OUTPUT INSERTED.ekgmaaleid"
+                    + "VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
+                        + ds.printMåltagerKommentarer() + "','" + ds.AnsvarstagerBrugerId_ + "','"
+                        + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')", conn);
 
             conn.Open();
 
@@ -99,9 +99,9 @@ namespace DB
 
             cmd = new SqlCommand("INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
                 "bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid)"
-                +"VALUES(@data, " + ds.SampleRateHz_ +"," +ds.IntervalSek_+",'" + ds.DataFormat_ + "','" 
-                    + ds.BinEllerTxt_ +"','" + ds.MåleformatType_ +"', CONVERT(DATETIME,'" +ds.StartTid_+"'),'" 
-                    +ekgMåleId+")", conn);
+                + "VALUES(@data, " + ds.SampleRateHz_ + "," + ds.IntervalSek_ + ",'" + ds.DataFormat_ + "','"
+                    + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_ + "'),'"
+                    + ekgMåleId + ")", conn);
 
             conn.Open();
 

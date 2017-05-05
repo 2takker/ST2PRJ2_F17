@@ -1,4 +1,4 @@
-﻿--CREATE TABLE Sundhedspersonale (
+﻿x--CREATE TABLE Sundhedspersonale (
 --bruger_id NVARCHAR(50) NOT NULL,
 --kodeord NVARCHAR(MAX) NOT NULL,
 --CONSTRAINT pk_Sundhedspersonale PRIMARY KEY CLUSTERED(bruger_id))	

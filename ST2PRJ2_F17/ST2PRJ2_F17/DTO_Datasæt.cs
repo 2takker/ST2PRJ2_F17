@@ -42,11 +42,14 @@ namespace DTO
         public DateTime StartTid_ { get; set; }
 
 
-        public DTO_Datasæt(DTO_PatientData pd, List<double> data)
+        public DTO_Datasæt()
         {
-            Pd_ = pd;
-            Data_ = data;
+            Ip_ = new List<string>();
+            MåltagerKommentar_ = new List<string>();
+            AnsvarstagerKommentar_ = new List<string>();
+            Data_ = new List<double>();
 
+            //Standard værdier
             Dato_ = DateTime.Now;
             StartTid_ = new DateTime(2017, 05, 03, 14, 40, 12);
             BinEllerTxt_ = 'B';
@@ -57,6 +60,19 @@ namespace DTO
             MåleformatType_ = "Double";
             AntalMålinger_ = 1;
             AnsvarstagerBrugerId_ = "NN";            
+        }
+
+
+        public string printMåltagerKommentarer()
+        {
+            string output = "Kommentarer: \n";
+
+            foreach(string e in MåltagerKommentar_)
+            {
+                output += "" + e + "\n";
+            }
+
+            return output;
         }
     }
 }

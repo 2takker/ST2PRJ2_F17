@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DB;
 using DTO;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Logik
 {
@@ -13,38 +14,32 @@ namespace Logik
     {
         private lokalDB lokalDB_;
         private DTO_Datasæt dtoDatasæt_;
-        
+        private List<double> dataListe_;
 
         public Preview_controller()
         {
             lokalDB_ = new lokalDB();
-            dtoDatasæt_ = new DTO_Datasæt;
+            dataListe_ = new List<double>();
+            dtoDatasæt_ = new DTO_Datasæt();
         }
 
-        public List<string> importerDatafil(Stream st)
+        public List<double> importerDatafil(Stream st)
         {
             using (var fs = st)
             using (var reader = new StreamReader(fs))
             {
-                List<string> listA = new List<string>();
-                List<string> listB = new List<string>();
-                while (!reader.EndOfStream)
+              while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    var values = line.Split(',','\"');
-                    
-                    listB.Add(values[2]);
+                    var values = line.Split(',', '\"');
+
+                    dataListe_.Add(Convert.ToDouble(values[1]));
                 }
-                return listB;
+                
+                return dataListe_;
             }
         }
 
-        public void gemDatasæt()
-        {
-
-        }
-
-        
 
         public bool validerCPR(string cpr)
         {
@@ -69,18 +64,26 @@ namespace Logik
         {
             if (lokalDB_.findCPR(cpr) == true)
             {
-                lokalDB_.gemDatasæt(Datasæt datasæt);
+                dtoDatasæt_.Pd_ = new DTO_PatientData(cpr);
+                lokalDB_.gemDatasæt(dtoDatasæt_);
                 return true;
             }
 
-            else return false;                                            
+            else return false;
 
         }
-        
+
         public bool gemKommentar(string kommentar)
         {
-            dtoDatasæt_.MåltagerKommentar_.Add(kommentar);
-            return true; 
-        }       
+            try
+            {
+                dtoDatasæt_.MåltagerKommentar_.Add(kommentar);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

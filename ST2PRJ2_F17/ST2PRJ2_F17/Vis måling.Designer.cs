@@ -189,7 +189,7 @@
          this.gemKommentarKnap.TabIndex = 22;
          this.gemKommentarKnap.Text = "Gem kommentar";
          this.gemKommentarKnap.UseVisualStyleBackColor = true;
-         this.gemKommentarKnap.Click += new System.EventHandler(this.gemKommentarKnap_Click);
+         //this.gemKommentarKnap.Click += new System.EventHandler(this.gemKommentarKnap_Click);
          // 
          // vis_måling
          // 

@@ -12,11 +12,11 @@ namespace Præsentationslag
 {
    public partial class vis_måling : Form
    {
-      private gennemse_data_controller gennemseDataController;
+      //private gennemse_data_controller gennemseDataController;
       public vis_måling()
       {
          InitializeComponent();
-         gennemseDataController = new gennemse_data_controller();
+         //gennemseDataController = new gennemse_data_controller();
       }
 
       private void tiSekTilbageKnap_Click(object sender, EventArgs e)
@@ -39,13 +39,13 @@ namespace Præsentationslag
 
       }
 
-      private void gemKommentarKnap_Click(object sender, EventArgs e)
-      {
-         if (gennemseDataController.gemKommentar(kommentarTextBox.Text) == true)
-         {
-            MessageBox.Show("Kommentar gemt");
-         }
-      }
+      //private void gemKommentarKnap_Click(object sender, EventArgs e)
+      //{
+      //   if (gennemseDataController.gemKommentar(kommentarTextBox.Text) == true)
+      //   {
+      //      MessageBox.Show("Kommentar gemt");
+      //   }
+      //}
 
       public void åbenVisMålingVindue()
       {
