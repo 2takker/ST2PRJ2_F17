@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Log_ind_controller.cs" />
     <Compile Include="lokalDB.cs" />
+    <Compile Include="Preview_controller.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Upload til offentlig database.cs">

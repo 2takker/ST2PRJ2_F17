@@ -26,7 +26,7 @@ namespace Logik
             {
                 for (int i = 0; i < cpr.Length; i++)
                 {
-                    char[] chars = cpr.ToCharArray();
+                    char[] chars = cpr.ToCharArray(); 
                     sum += (chars[i] - 0x30) * talVægt[i];
                 }
                 int res = sum % 11;
