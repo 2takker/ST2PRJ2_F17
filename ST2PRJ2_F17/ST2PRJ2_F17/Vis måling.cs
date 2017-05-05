@@ -41,7 +41,7 @@ namespace Præsentationslag
 
       private void gemKommentarKnap_Click(object sender, EventArgs e)
       {
-         if (gennemseDataController.gemKommentar() == true)
+         if (gennemseDataController.gemKommentar(kommentarTextBox.Text) == true)
          {
             MessageBox.Show("Kommentar gemt");
          }

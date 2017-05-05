@@ -28,9 +28,9 @@
       /// </summary>
       private void InitializeComponent()
       {
-         System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-         System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-         System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+         System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+         System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+         System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
          this.efternavnTextBox = new System.Windows.Forms.TextBox();
          this.fornavnTextBox = new System.Windows.Forms.TextBox();
          this.CPRTextBox = new System.Windows.Forms.TextBox();
@@ -44,7 +44,7 @@
          this.springMellemIP = new System.Windows.Forms.Label();
          this.ipFremKnap = new System.Windows.Forms.Button();
          this.ipTilbageKnap = new System.Windows.Forms.Button();
-         this.textBox1 = new System.Windows.Forms.TextBox();
+         this.kommentarTextBox = new System.Windows.Forms.TextBox();
          this.gemKommentarKnap = new System.Windows.Forms.Button();
          ((System.ComponentModel.ISupportInitialize)(this.analyseretData)).BeginInit();
          this.SuspendLayout();
@@ -101,16 +101,16 @@
          // 
          // analyseretData
          // 
-         chartArea5.Name = "ChartArea1";
-         this.analyseretData.ChartAreas.Add(chartArea5);
-         legend5.Name = "Legend1";
-         this.analyseretData.Legends.Add(legend5);
+         chartArea1.Name = "ChartArea1";
+         this.analyseretData.ChartAreas.Add(chartArea1);
+         legend1.Name = "Legend1";
+         this.analyseretData.Legends.Add(legend1);
          this.analyseretData.Location = new System.Drawing.Point(15, 71);
          this.analyseretData.Name = "analyseretData";
-         series5.ChartArea = "ChartArea1";
-         series5.Legend = "Legend1";
-         series5.Name = "Series1";
-         this.analyseretData.Series.Add(series5);
+         series1.ChartArea = "ChartArea1";
+         series1.Legend = "Legend1";
+         series1.Name = "Series1";
+         this.analyseretData.Series.Add(series1);
          this.analyseretData.Size = new System.Drawing.Size(649, 300);
          this.analyseretData.TabIndex = 14;
          this.analyseretData.Text = "analyseretData";
@@ -173,13 +173,13 @@
          this.ipTilbageKnap.UseVisualStyleBackColor = true;
          this.ipTilbageKnap.Click += new System.EventHandler(this.ipTilbageKnap_Click);
          // 
-         // textBox1
+         // kommentarTextBox
          // 
-         this.textBox1.Location = new System.Drawing.Point(15, 454);
-         this.textBox1.Multiline = true;
-         this.textBox1.Name = "textBox1";
-         this.textBox1.Size = new System.Drawing.Size(343, 86);
-         this.textBox1.TabIndex = 21;
+         this.kommentarTextBox.Location = new System.Drawing.Point(15, 454);
+         this.kommentarTextBox.Multiline = true;
+         this.kommentarTextBox.Name = "kommentarTextBox";
+         this.kommentarTextBox.Size = new System.Drawing.Size(343, 86);
+         this.kommentarTextBox.TabIndex = 21;
          // 
          // gemKommentarKnap
          // 
@@ -197,7 +197,7 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(695, 552);
          this.Controls.Add(this.gemKommentarKnap);
-         this.Controls.Add(this.textBox1);
+         this.Controls.Add(this.kommentarTextBox);
          this.Controls.Add(this.springMellemIP);
          this.Controls.Add(this.ipFremKnap);
          this.Controls.Add(this.ipTilbageKnap);
@@ -234,7 +234,7 @@
       private System.Windows.Forms.Label springMellemIP;
       private System.Windows.Forms.Button ipFremKnap;
       private System.Windows.Forms.Button ipTilbageKnap;
-      private System.Windows.Forms.TextBox textBox1;
+      private System.Windows.Forms.TextBox kommentarTextBox;
       private System.Windows.Forms.Button gemKommentarKnap;
    }
 }

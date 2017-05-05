@@ -14,12 +14,12 @@ namespace Præsentationslag
 {
    public partial class CPR_nummer : Form
    {
-      private Preview_controller PreviewController;
-      private opret_ny_patient OpretPatientVindue;
+      //private Preview_controller PreviewController;
+      //private opret_ny_patient OpretPatientVindue;
       public CPR_nummer()
       {
          InitializeComponent();
-         //PreviewController = new Preview_controller();
+         PreviewController = new Preview_controller();
          
       }
 

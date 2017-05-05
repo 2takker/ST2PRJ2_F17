@@ -88,7 +88,7 @@
          this.tiSekTilbageKnap.TabIndex = 3;
          this.tiSekTilbageKnap.Text = "<";
          this.tiSekTilbageKnap.UseVisualStyleBackColor = true;
-         this.tiSekTilbageKnap.Click += new System.EventHandler(this.tiSekTilbageKnap_Click);
+         //this.tiSekTilbageKnap.Click += new System.EventHandler(this.tiSekTilbageKnap_Click);
          // 
          // tiSekFremKnap
          // 
@@ -98,7 +98,7 @@
          this.tiSekFremKnap.TabIndex = 4;
          this.tiSekFremKnap.Text = ">";
          this.tiSekFremKnap.UseVisualStyleBackColor = true;
-         this.tiSekFremKnap.Click += new System.EventHandler(this.tiSekFremKnap_Click);
+         //this.tiSekFremKnap.Click += new System.EventHandler(this.tiSekFremKnap_Click);
          // 
          // fremogtilbage
          // 
@@ -144,7 +144,7 @@
          this.importerFilKnap.TabIndex = 9;
          this.importerFilKnap.Text = "Importer fil";
          this.importerFilKnap.UseVisualStyleBackColor = true;
-         this.importerFilKnap.Click += new System.EventHandler(this.importerFilKnap_Click);
+         //this.importerFilKnap.Click += new System.EventHandler(this.importerFilKnap_Click);
          // 
          // preview
          // 
