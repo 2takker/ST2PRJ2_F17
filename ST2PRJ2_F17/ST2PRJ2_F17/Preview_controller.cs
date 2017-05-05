@@ -5,21 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using DB;
 using DTO;
+using System.IO;
 
 namespace Logik
 {
     class Preview_controller
     {
         private lokalDB lokalDB_;
+        private DTO_Datasæt dtoDatasæt_;
+        
 
         public Preview_controller()
         {
-            lokalDB = new lokalDB();
+            lokalDB_ = new lokalDB();
+            dtoDatasæt_ = new DTO_Datasæt;
         }
 
-        public void importerDatafil()
+        public List<string> importerDatafil(Stream st)
         {
-
+            using (var fs = st)
+            using (var reader = new StreamReader(fs))
+            {
+                List<string> listA = new List<string>();
+                List<string> listB = new List<string>();
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',','\"');
+                    
+                    listB.Add(values[2]);
+                }
+                return listB;
+            }
         }
 
         public void gemDatasæt()
@@ -59,15 +76,11 @@ namespace Logik
             else return false;                                            
 
         }
-
-        public Datasæt 10sekFrem()
+        
+        public bool gemKommentar(string kommentar)
         {
-
-        }
-
-        public Datasæt 10sekTilbage()
-        {
-
-        }
+            dtoDatasæt_.MåltagerKommentar_.Add(kommentar);
+            return true; 
+        }       
     }
 }
