@@ -34,13 +34,11 @@
          this.downloadKnap = new System.Windows.Forms.Button();
          this.UploadKnap = new System.Windows.Forms.Button();
          this.LogUdKnap = new System.Windows.Forms.Button();
-         this.label1 = new System.Windows.Forms.Label();
-         this.SundhedspersonaleTextBox = new System.Windows.Forms.TextBox();
          this.SuspendLayout();
          // 
          // previewKnap
          // 
-         this.previewKnap.Location = new System.Drawing.Point(172, 118);
+         this.previewKnap.Location = new System.Drawing.Point(187, 93);
          this.previewKnap.Name = "previewKnap";
          this.previewKnap.Size = new System.Drawing.Size(122, 35);
          this.previewKnap.TabIndex = 0;
@@ -50,7 +48,8 @@
          // 
          // opretNyPatientKnap
          // 
-         this.opretNyPatientKnap.Location = new System.Drawing.Point(27, 118);
+         this.opretNyPatientKnap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.opretNyPatientKnap.Location = new System.Drawing.Point(44, 93);
          this.opretNyPatientKnap.Name = "opretNyPatientKnap";
          this.opretNyPatientKnap.Size = new System.Drawing.Size(122, 35);
          this.opretNyPatientKnap.TabIndex = 1;
@@ -60,7 +59,7 @@
          // 
          // GennemseDataKnap
          // 
-         this.GennemseDataKnap.Location = new System.Drawing.Point(315, 118);
+         this.GennemseDataKnap.Location = new System.Drawing.Point(333, 93);
          this.GennemseDataKnap.Name = "GennemseDataKnap";
          this.GennemseDataKnap.Size = new System.Drawing.Size(122, 35);
          this.GennemseDataKnap.TabIndex = 2;
@@ -80,7 +79,7 @@
          // 
          // UploadKnap
          // 
-         this.UploadKnap.Location = new System.Drawing.Point(101, 186);
+         this.UploadKnap.Location = new System.Drawing.Point(100, 186);
          this.UploadKnap.Name = "UploadKnap";
          this.UploadKnap.Size = new System.Drawing.Size(122, 35);
          this.UploadKnap.TabIndex = 4;
@@ -90,7 +89,7 @@
          // 
          // LogUdKnap
          // 
-         this.LogUdKnap.Location = new System.Drawing.Point(387, 54);
+         this.LogUdKnap.Location = new System.Drawing.Point(393, 12);
          this.LogUdKnap.Name = "LogUdKnap";
          this.LogUdKnap.Size = new System.Drawing.Size(100, 23);
          this.LogUdKnap.TabIndex = 5;
@@ -98,30 +97,11 @@
          this.LogUdKnap.UseVisualStyleBackColor = true;
          this.LogUdKnap.Click += new System.EventHandler(this.LogUdKnap_Click);
          // 
-         // label1
-         // 
-         this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(384, 12);
-         this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(79, 13);
-         this.label1.TabIndex = 6;
-         this.label1.Text = "Logget ind som";
-         // 
-         // SundhedspersonaleTextBox
-         // 
-         this.SundhedspersonaleTextBox.Enabled = false;
-         this.SundhedspersonaleTextBox.Location = new System.Drawing.Point(387, 28);
-         this.SundhedspersonaleTextBox.Name = "SundhedspersonaleTextBox";
-         this.SundhedspersonaleTextBox.Size = new System.Drawing.Size(100, 20);
-         this.SundhedspersonaleTextBox.TabIndex = 7;
-         // 
          // Hjemmeskærm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(505, 335);
-         this.Controls.Add(this.SundhedspersonaleTextBox);
-         this.Controls.Add(this.label1);
+         this.ClientSize = new System.Drawing.Size(505, 278);
          this.Controls.Add(this.LogUdKnap);
          this.Controls.Add(this.UploadKnap);
          this.Controls.Add(this.downloadKnap);
@@ -132,7 +112,6 @@
          this.Name = "Hjemmeskærm";
          this.Text = "Hjemmeskærm";
          this.ResumeLayout(false);
-         this.PerformLayout();
 
       }
 
@@ -144,8 +123,6 @@
       private System.Windows.Forms.Button downloadKnap;
       private System.Windows.Forms.Button UploadKnap;
       private System.Windows.Forms.Button LogUdKnap;
-      private System.Windows.Forms.Label label1;
-      private System.Windows.Forms.TextBox SundhedspersonaleTextBox;
    }
 }
 

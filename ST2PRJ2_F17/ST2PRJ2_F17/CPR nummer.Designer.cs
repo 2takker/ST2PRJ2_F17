@@ -62,7 +62,7 @@
          // 
          // fortrydKnap
          // 
-         this.fortrydKnap.Location = new System.Drawing.Point(136, 96);
+         this.fortrydKnap.Location = new System.Drawing.Point(136, 97);
          this.fortrydKnap.Name = "fortrydKnap";
          this.fortrydKnap.Size = new System.Drawing.Size(75, 23);
          this.fortrydKnap.TabIndex = 4;
