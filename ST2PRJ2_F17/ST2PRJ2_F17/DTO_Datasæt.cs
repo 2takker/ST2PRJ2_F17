@@ -53,8 +53,7 @@ namespace DTO
 
             //Standard værdier
             Dato_ = DateTime.Now;
-            StartTid_ = DateTime.Now;
-            StartTid_.Subtract(TimeSpan.FromHours(24)); 
+            StartTid_ = DateTime.Now.AddDays(-1);
             BinEllerTxt_ = 'B';
             SampleRateHz_ = 500;
             AnsvarstagerOrg_ = "Gruppe 6";
