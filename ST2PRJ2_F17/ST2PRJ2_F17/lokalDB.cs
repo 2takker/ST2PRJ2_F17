@@ -82,33 +82,30 @@ namespace DB
             return false;
         }
 
-        public int skrivTilEKGMåling(DTO_Datasæt ds)
+        public void gemDatasæt(DTO_Datasæt ds)
         {
-            cmd = new SqlCommand("INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, sfp_mt_kommentar, " +
-                "sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr) " +
-                "OUTPUT INSERTED.ekgmaaleid " +
-                "VALUES(CONVERT(DATETIME, '" + ds.Dato_ + "')" +
-                "," + ds.AntalMålinger_ + " ,'" + ds.MåltagerBrugerId_ + "', '" + ds.printMåltagerKommentarer() +
-                "', '" + ds.AnsvarstagerBrugerId_ + "', '" + ds.AnsvarstagerOrg_ + "', '" + ds.Pd_.CPRNummer_ + "')", conn);
+         string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
+                    "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
+                    + " OUTPUT INSERTED.ekgmaaleid"
+                    + " VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
+                        + ds.printMåltagerKommentarer() + "','" + ds.AnsvarstagerBrugerId_ + "','"
+                        + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')";
+            
+            cmd = new SqlCommand(sql, conn);
 
             conn.Open();
 
-            int output = Convert.ToInt32(cmd.ExecuteScalar());
+            long ekgMåleId = (long)cmd.ExecuteScalar();
 
             conn.Close();
 
-            return output;
-
-
-        }
-
-        public void skrivTilEKGData(DTO_Datasæt ds, int id)
-        {
-            cmd = new SqlCommand("INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
+         sql = "INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
                 "bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid)"
-                + "VALUES(@data, " + ds.SampleRateHz_ + "," + ds.IntervalSek_ + ",'" + ds.DataFormat_ + "','"
-                    + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_ + "'),'"
-                    + id + "')", conn);
+                + " VALUES(@data, " + ds.SampleRateHz_ + "," + ds.IntervalSek_ + ",'" + ds.DataFormat_ + "','"
+                    + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_ + "'),"
+                    + ekgMåleId + ")";
+
+            cmd = new SqlCommand(sql, conn);
 
             conn.Open();
 
@@ -117,13 +114,6 @@ namespace DB
             cmd.ExecuteScalar();
 
             conn.Close();
-        }
-
-        public void gemDatasæt(DTO_Datasæt ds)
-        {
-            int ekgMåleId = skrivTilEKGMåling(ds);
-
-            skrivTilEKGData(ds, ekgMåleId);
         }
 
         //

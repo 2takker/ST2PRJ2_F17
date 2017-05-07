@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Logik
 {
-    class Preview_controller
+    public class Preview_controller
     {
         private lokalDB lokalDB_;
         private DTO_Datasæt dtoDatasæt_;
@@ -33,7 +33,7 @@ namespace Logik
                     var line = reader.ReadLine();
                     var values = line.Split(',', '\"');
 
-                    dataListe_.Add(Convert.ToDouble(values[1]));
+                    dataListe_.Add(Convert.ToDouble(values[2]));
                 }
                 
                 return dataListe_;

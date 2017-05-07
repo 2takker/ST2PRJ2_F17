@@ -33,7 +33,7 @@ namespace Præsentationslag
 
         private void genKnap_Click(object sender, EventArgs e)
         {
-            cprvindue = new CPR_nummer();
+            cprvindue = new CPR_nummer(this, PreviewController);
             cprvindue.åbenCPRVindue();
         }
 
