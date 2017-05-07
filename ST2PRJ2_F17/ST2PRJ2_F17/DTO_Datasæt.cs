@@ -48,10 +48,13 @@ namespace DTO
             MåltagerKommentar_ = new List<string>();
             AnsvarstagerKommentar_ = new List<string>();
             Data_ = new List<double>();
+            Pd_ = new DTO_PatientData();
+            Dato_ = new DateTime();
 
             //Standard værdier
             Dato_ = DateTime.Now;
-            StartTid_ = new DateTime(2017, 05, 03, 14, 40, 12);
+            StartTid_ = DateTime.Now;
+            StartTid_.Subtract(TimeSpan.FromHours(24)); 
             BinEllerTxt_ = 'B';
             SampleRateHz_ = 500;
             AnsvarstagerOrg_ = "Gruppe 6";
@@ -59,13 +62,15 @@ namespace DTO
             DataFormat_ = "andet";
             MåleformatType_ = "Double";
             AntalMålinger_ = 1;
-            AnsvarstagerBrugerId_ = "NN";            
+            AnsvarstagerBrugerId_ = "NN";
+            MåltagerBrugerId_ = "NN";
+            
         }
 
 
         public string printMåltagerKommentarer()
         {
-            string output = "Kommentarer: \n";
+            string output = "";
 
             foreach(string e in MåltagerKommentar_)
             {
@@ -74,5 +79,12 @@ namespace DTO
 
             return output;
         }
+
+        public string printDato()
+        {
+            return Dato_.Year + "-" + Dato_.Month + "-" + Dato_.Day + " " + Dato_.Hour
+                + ":" + Dato_.Minute + ":" + Dato_.Second;
+        }
+
     }
 }

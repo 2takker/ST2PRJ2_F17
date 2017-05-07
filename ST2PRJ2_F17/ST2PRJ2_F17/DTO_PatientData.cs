@@ -24,5 +24,10 @@ namespace DTO
             CPRNummer_ = cprNummer;           
         }
 
+        public DTO_PatientData()
+        {
+
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿x--CREATE TABLE Sundhedspersonale (
+﻿--CREATE TABLE Sundhedspersonale (
 --bruger_id NVARCHAR(50) NOT NULL,
 --kodeord NVARCHAR(MAX) NOT NULL,
 --CONSTRAINT pk_Sundhedspersonale PRIMARY KEY CLUSTERED(bruger_id))	
@@ -68,3 +68,12 @@
 --VALUES(CONVERT(DATETIME, '2017-05-04 11:57:30'), 1, 'CM', 'Dette er en test 2', 'CM', 'Gruppe 6', '0603970578')
 
 --SELECT * FROM db_owner.EKGMAALING
+
+--INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr) 
+--OUTPUT INSERTED.ekgmaaleid 
+--VALUES(CONVERT(DATETIME,'2017-05-04 11:57:30'),1 ,'NN', 'Dette er en C-skarp test', 'NN', 'Gruppe 6', '1112962146')
+
+
+SELECT * FROM db_owner.EKGMAALING
+
+--SELECT * FROM db_owner.EKGDATA

@@ -22,8 +22,6 @@ namespace Præsentationslag
             InitializeComponent();
             PreviewController = new Preview_controller();
             OpretPatientController = new Opret_ny_patient_controller();
-
-
         }
 
         private void gemKnap_Click(object sender, EventArgs e)

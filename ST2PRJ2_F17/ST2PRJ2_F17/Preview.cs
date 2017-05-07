@@ -26,6 +26,9 @@ namespace Præsentationslag
             PreviewController = new Preview_controller();
             dataListe_ = new List<double>();
             x = 0;
+
+            tiSekFremKnap.Enabled = false;
+            tiSekTilbageKnap.Enabled = false;
         }
 
         private void genKnap_Click(object sender, EventArgs e)
@@ -60,27 +63,29 @@ namespace Præsentationslag
             {
                 x = x - 20;
                 skrivTilGraf(x);
-                if (x < 10)
+                if (x <= 10)
                 {
                     tiSekTilbageKnap.Enabled = false;
                 }
+                tiSekFremKnap.Enabled = true;
             }
         }
 
         private void tiSekFremKnap_Click(object sender, EventArgs e)
         {
-            skrivTilGraf(x);
-            tiSekFremKnap.Enabled = true;
+            skrivTilGraf(x);            
             if (x >= (dataListe_.Count / 500))
             {
                 tiSekFremKnap.Enabled = false;
             }
+            tiSekTilbageKnap.Enabled = true;
         }
 
         private void gemKommentar_Click(object sender, EventArgs e)
         {
             if (PreviewController.gemKommentar(kommentarTextBox.Text) == true)
             {
+                kommentarTextBox.Clear();
                 MessageBox.Show("Kommentar gemt");
             }
             else
@@ -96,8 +101,8 @@ namespace Præsentationslag
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "txt files (*.csv)|*.csv|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -109,6 +114,8 @@ namespace Præsentationslag
                         using (myStream)
                         {
                             dataListe_ = PreviewController.importerDatafil(myStream);
+                            skrivTilGraf(0);
+                            tiSekFremKnap.Enabled = true;
                         }
                     }
                 }
@@ -117,7 +124,7 @@ namespace Præsentationslag
                     MessageBox.Show("Kunne ikke læse filen fra disken: " + ex.Message);
                 }
             }
-            skrivTilGraf(0);
+            
         }
 
         private void skrivTilGraf(double start)
