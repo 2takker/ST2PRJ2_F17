@@ -27,8 +27,12 @@ namespace Præsentationslag
 
         public void låsHjemmeskærm(bool lås)
         {
-            Enabled = !lås;            
-        }
+            Enabled = !lås;
+         if (!lås)
+         {
+            LoggetIndSomtextBox.Text = brugerID_;
+         }
+      }
 
         private void opretNyPatientKnap_Click(object sender, EventArgs e)
         {
@@ -63,7 +67,7 @@ namespace Præsentationslag
         private void LogUdKnap_Click(object sender, EventArgs e)
         {
             låsHjemmeskærm(true);
-
+            LoggetIndSomtextBox.Clear();
             loginvindue_.åbenLoginVindue();
         }
     }
