@@ -33,9 +33,12 @@ namespace Logik
                     var line = reader.ReadLine();
                     var values = line.Split(',', '\"');
 
-                    dataListe_.Add(Convert.ToDouble(values[2]));
+                    //dataListe_.Add(Convert.ToDouble(values[2])); //Christiane                    
+
+                    dataListe_.Add(double.Parse((values[1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke
                 }
-                
+                dtoDatasæt_.Data_ = dataListe_;  
+
                 return dataListe_;
             }
         }
@@ -84,6 +87,11 @@ namespace Logik
             {
                 return false;
             }
+        }
+
+        public void indlæsBrugerId(string brugerID)
+        {
+            dtoDatasæt_.MåltagerBrugerId_ = brugerID;
         }
     }
 }

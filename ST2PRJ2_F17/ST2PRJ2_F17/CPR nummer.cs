@@ -17,14 +17,15 @@ namespace Præsentationslag
         private Preview_controller PreviewController;
         private opret_ny_patient OpretPatientVindue;
         private Opret_ny_patient_controller OpretPatientController;
-      private preview frm;
+        private preview frm;
+
         public CPR_nummer(preview frm, Preview_controller PreviewController)
         {
             InitializeComponent();
             //PreviewController = new Preview_controller();
             OpretPatientController = new Opret_ny_patient_controller();
-         this.frm = frm;
-         this.PreviewController = PreviewController;
+            this.frm = frm;
+            this.PreviewController = PreviewController;
         }
 
         private void gemKnap_Click(object sender, EventArgs e)
@@ -43,8 +44,8 @@ namespace Præsentationslag
 
                     MessageBox.Show("Datasæt gemt");
                     lukCPRVindue();
-               frm.lukPreviewVindue();
-            }
+                    frm.lukPreviewVindue();
+                }
                 else
                 {
                     OpretPatientVindue = new opret_ny_patient();

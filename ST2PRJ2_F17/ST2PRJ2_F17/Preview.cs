@@ -17,15 +17,18 @@ namespace Præsentationslag
     {
         private Preview_controller PreviewController;
         private CPR_nummer cprvindue;
-        double x;
+        private double x;
         List<double> dataListe_;
 
-        public preview()
+
+        public preview(string brugerID)
         {
             InitializeComponent();
             PreviewController = new Preview_controller();
             dataListe_ = new List<double>();
             x = 0;
+
+            PreviewController.indlæsBrugerId(brugerID);
 
             tiSekFremKnap.Enabled = false;
             tiSekTilbageKnap.Enabled = false;
@@ -116,6 +119,7 @@ namespace Præsentationslag
                             dataListe_ = PreviewController.importerDatafil(myStream);
                             skrivTilGraf(0);
                             tiSekFremKnap.Enabled = true;
+                            importerFilKnap.Enabled = false;
                         }
                     }
                 }

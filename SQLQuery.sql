@@ -74,6 +74,9 @@
 --VALUES(CONVERT(DATETIME,'2017-05-04 11:57:30'),1 ,'NN', 'Dette er en C-skarp test', 'NN', 'Gruppe 6', '1112962146')
 
 
-SELECT * FROM db_owner.EKGMAALING
+--SELECT * FROM db_owner.EKGMAALING
 
 --SELECT * FROM db_owner.EKGDATA
+
+--ALTER TABLE db_owner.EKGDATA
+--ALTER COLUMN raa_data VARBINARY(MAX)

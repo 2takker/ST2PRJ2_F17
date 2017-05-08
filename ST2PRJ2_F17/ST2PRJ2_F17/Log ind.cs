@@ -16,38 +16,32 @@ namespace Præsentationslag
     {
         private Log_ind_controller loginController;
         private bool loggedIn_;
+        private Hjemmeskærm frm;
 
-        public log_ind()
+        public log_ind(Hjemmeskærm frm)
         {
             InitializeComponent();
+
+            this.frm = frm;
 
             loginController = new Log_ind_controller();
         }
 
         private void LogIndKnap_Click(object sender, EventArgs e)
         {
-            DTO_Sundhedspersonale sp1 = new DTO_Sundhedspersonale(brugernavnTextBox.Text, adgangskodeTextBox.Text);
-            string brugerID = loginController.login(sp1);
-
-            if (brugerID != null)
-            {
-                loggedIn_ = true;
-                lukLoginVindue();
-            }
-            else
-            {
-                ugyldigtLogin();
-            }
+            logInd();
         }
 
         public void åbenLoginVindue()
         {
-            Application.Run(new log_ind());
+            Show();
         }
 
         private void lukLoginVindue()
         {
-            Close();
+            brugernavnTextBox.Clear();
+            adgangskodeTextBox.Clear();
+            Hide();
         }
 
         private void ugyldigtLogin()
@@ -66,6 +60,37 @@ namespace Præsentationslag
             else
             {
                 Application.Exit();
+            }
+        }
+
+        private void adgangskodeTextBox_Enter(object sender, EventArgs e)
+        {
+            logInd();
+        }
+
+       private void logInd()
+        {
+            DTO_Sundhedspersonale sp1 = new DTO_Sundhedspersonale(brugernavnTextBox.Text, adgangskodeTextBox.Text);
+            string brugerID = loginController.login(sp1);
+
+            if (brugerID != null)
+            {
+                loggedIn_ = true;
+                frm.brugerID_ = brugerID;
+                frm.låsHjemmeskærm(false);
+                lukLoginVindue();
+            }
+            else
+            {
+                ugyldigtLogin();
+            }
+        }
+
+        private void adgangskodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar.Equals(Keys.Enter))
+            {
+                logInd();
             }
         }
     }

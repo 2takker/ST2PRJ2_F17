@@ -14,55 +14,57 @@ namespace Præsentationslag
     {
         log_ind loginvindue_;
 
+        public string brugerID_ { get; set; }
+
         public Hjemmeskærm()
         {
             InitializeComponent();
-            låsHjemmeskærm(true);
+            låsHjemmeskærm(true);  
 
-            loginvindue_ = new log_ind();
+            loginvindue_ = new log_ind(this);
             loginvindue_.åbenLoginVindue();
-            låsHjemmeskærm(false);
         }
 
         public void låsHjemmeskærm(bool lås)
         {
-            Enabled = !lås;
+            Enabled = !lås;            
         }
 
         private void opretNyPatientKnap_Click(object sender, EventArgs e)
         {
-         opret_ny_patient opretnypatient = new opret_ny_patient();
-         opretnypatient.åbenOpretNyPatientVindue();
+            opret_ny_patient opretnypatient = new opret_ny_patient();
+            opretnypatient.åbenOpretNyPatientVindue();
         }
 
         private void previewKnap_Click(object sender, EventArgs e)
         {
-         preview previewVindue = new preview();
-         previewVindue.åbenPreviewVindue();
+            preview previewVindue = new preview(brugerID_);
+            previewVindue.åbenPreviewVindue();
         }
 
         private void GennemseDataKnap_Click(object sender, EventArgs e)
         {
-         gennemse_data gennemseData = new gennemse_data();
-         gennemseData.åbenGennemseDataVindue();
+            gennemse_data gennemseData = new gennemse_data();
+            gennemseData.åbenGennemseDataVindue();
         }
 
         private void UploadKnap_Click(object sender, EventArgs e)
         {
-         upload_til_offentlig_database upload = new upload_til_offentlig_database();
-         upload.åbenUploadVindue();
+            upload_til_offentlig_database upload = new upload_til_offentlig_database();
+            upload.åbenUploadVindue();
         }
 
         private void downloadKnap_Click(object sender, EventArgs e)
         {
-         Download_fra_offentlig_database download = new Download_fra_offentlig_database();
-         download.åbenDownloadVindue();
+            Download_fra_offentlig_database download = new Download_fra_offentlig_database();
+            download.åbenDownloadVindue();
         }
 
         private void LogUdKnap_Click(object sender, EventArgs e)
         {
-         this.Close();
-         loginvindue_.åbenLoginVindue();
+            låsHjemmeskærm(true);
+
+            loginvindue_.åbenLoginVindue();
         }
     }
 }

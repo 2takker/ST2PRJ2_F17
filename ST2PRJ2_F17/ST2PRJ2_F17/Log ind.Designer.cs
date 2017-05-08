@@ -38,7 +38,7 @@
             // brugernavnTextBox
             // 
             this.brugernavnTextBox.Location = new System.Drawing.Point(174, 81);
-            this.brugernavnTextBox.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.brugernavnTextBox.Margin = new System.Windows.Forms.Padding(12);
             this.brugernavnTextBox.MaxLength = 3456;
             this.brugernavnTextBox.Name = "brugernavnTextBox";
             this.brugernavnTextBox.Size = new System.Drawing.Size(196, 31);
@@ -47,11 +47,12 @@
             // adgangskodeTextBox
             // 
             this.adgangskodeTextBox.Location = new System.Drawing.Point(174, 187);
-            this.adgangskodeTextBox.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.adgangskodeTextBox.Margin = new System.Windows.Forms.Padding(12);
             this.adgangskodeTextBox.Name = "adgangskodeTextBox";
             this.adgangskodeTextBox.PasswordChar = '*';
             this.adgangskodeTextBox.Size = new System.Drawing.Size(196, 31);
             this.adgangskodeTextBox.TabIndex = 1;
+            this.adgangskodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.adgangskodeTextBox_KeyPress);
             // 
             // brugernavn
             // 
@@ -76,7 +77,7 @@
             // LogIndKnap
             // 
             this.LogIndKnap.Location = new System.Drawing.Point(174, 319);
-            this.LogIndKnap.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.LogIndKnap.Margin = new System.Windows.Forms.Padding(12);
             this.LogIndKnap.Name = "LogIndKnap";
             this.LogIndKnap.Size = new System.Drawing.Size(200, 44);
             this.LogIndKnap.TabIndex = 4;
@@ -95,7 +96,7 @@
             this.Controls.Add(this.adgangskodeTextBox);
             this.Controls.Add(this.brugernavnTextBox);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.Margin = new System.Windows.Forms.Padding(12);
             this.Name = "log_ind";
             this.Text = "Log ind";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.log_ind_FormClosing);
