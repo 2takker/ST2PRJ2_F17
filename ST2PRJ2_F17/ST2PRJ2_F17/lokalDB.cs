@@ -209,13 +209,13 @@ namespace DB
             }
             conn.Close();
 
-            cmd = new SqlCommand("SELECT * FROM EKGDATA WHERE ekgdataid = '" + id + "'", conn);
+            //cmd = new SqlCommand("SELECT * FROM EKGDATA WHERE ekgdataid = '" + id + "'", conn);
 
             //while (rdr.Read())
             //{
-            // if(Convert.ToInt64(rdr["ekgdataid"]) == id)
+            //    if (Convert.ToInt64(rdr["ekgdataid"]) == id)
             //    {
-            //        foreach(char e in "raa_data")
+            //        foreach (var e in rdr["raa_data"]))
             //        {
             //            ToString().SelectMany(e => BitConverter.GetBytes(true));
             //        }
@@ -245,6 +245,7 @@ namespace DB
                 if (id == Convert.ToInt64("ekgmaaleid"))
                 {
                     conn.Close();
+                    //returnere datasættet, interessepunkterne og kommentarerne med op
                     return true;
                 }
                 else
