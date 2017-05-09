@@ -84,13 +84,13 @@ namespace DB
 
         public void gemDatasæt(DTO_Datasæt ds)
         {
-         string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
-                    "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
-                    + " OUTPUT INSERTED.ekgmaaleid"
-                    + " VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
-                        + ds.printMåltagerKommentarer() + "','" + ds.AnsvarstagerBrugerId_ + "','"
-                        + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')";
-            
+            string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
+                       "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
+                       + " OUTPUT INSERTED.ekgmaaleid"
+                       + " VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
+                           + ds.printMåltagerKommentarer() + "','" + ds.AnsvarstagerBrugerId_ + "','"
+                           + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')";
+
             cmd = new SqlCommand(sql, conn);
 
             conn.Open();
@@ -99,11 +99,11 @@ namespace DB
 
             conn.Close();
 
-         sql = "INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
-                "bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid)"
-                + " VALUES(@data, " + ds.SampleRateHz_ + "," + ds.IntervalSek_ + ",'" + ds.DataFormat_ + "','"
-                    + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_ + "'),"
-                    + ekgMåleId + ")";
+            sql = "INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
+                   "bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid)"
+                   + " VALUES(@data, " + ds.SampleRateHz_ + "," + ds.IntervalSek_ + ",'" + ds.DataFormat_ + "','"
+                       + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_ + "'),"
+                       + ekgMåleId + ")";
 
             cmd = new SqlCommand(sql, conn);
 
@@ -164,5 +164,105 @@ namespace DB
             conn.Close();
         }
 
+        //Use case 4
+        public List<DTO_Datasæt> hentCPRData(string cpr)
+        {
+            //ekgmaaleid skal også sendes retur, da det er den vi skal bruge i findDatasæt til at finde ud af om den er analyseret eller ej. 
+
+            DTO_Datasæt ds = new DTO_Datasæt();
+            List<DTO_Datasæt> dsliste = new List<DTO_Datasæt>();
+
+
+            cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + cpr + "'", conn);
+
+            conn.Open();
+
+            rdr = cmd.ExecuteReader();
+
+
+            while (rdr.Read())
+            {
+                if (Convert.ToString(rdr["CPR"]) == cpr)
+                {
+                    ds.Pd_ = new DTO_PatientData(Convert.ToString(rdr["CPR"]), Convert.ToString(rdr["Fornavn"]), Convert.ToString(rdr["Efternavn"]));
+                }
+            }
+
+
+
+            conn.Close();
+
+
+            cmd = new SqlCommand("SELECT * FROM EKGMAALING WHERE borger_cprnr ='" + cpr + "'", conn);
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+            long id = 0;
+
+
+            while (rdr.Read())
+            {
+                if (Convert.ToString(rdr["borger_cprnr"]) == cpr)
+                {
+                    id = (Convert.ToInt64(rdr["ekgmaaleid"]));
+                    ds.Dato_ = (Convert.ToDateTime(rdr["dato"]));
+                }
+            }
+            conn.Close();
+
+            cmd = new SqlCommand("SELECT * FROM EKGDATA WHERE ekgdataid = '" + id + "'", conn);
+
+            //while (rdr.Read())
+            //{
+            // if(Convert.ToInt64(rdr["ekgdataid"]) == id)
+            //    {
+            //        foreach(char e in "raa_data")
+            //        {
+            //            ToString().SelectMany(e => BitConverter.GetBytes(true));
+            //        }
+
+            //        ds.Data_ = ;
+            //    }
+            //}
+
+
+
+
+            return dsliste;
+
+
+
+        }
+
+        public bool findDatasæt(long id)
+        {
+            cmd = new SqlCommand("SELECT * FROM EKGMAALING WHERE ekgmaaleid = '" + id + "'", conn);
+            conn.Open();
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                if (id == Convert.ToInt64("ekgmaaleid"))
+                {
+                    conn.Close();
+                    return true;
+                }
+                else
+                {
+                    conn.Close();
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+        public void gemKommentar(string kommentar, long id)
+        {
+            cmd = new SqlCommand("INSERT INTO EKGMAALING(sfp_anskommentar) WHERE ekgmaaleid = '" + id + "' VALUES('" + kommentar + "')", conn);
+            conn.Open();
+            cmd.ExecuteScalar();
+            conn.Close();
+        }
     }
 }
