@@ -88,7 +88,7 @@ namespace DB
                        "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
                        + " OUTPUT INSERTED.ekgmaaleid"
                        + " VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
-                           + ds.printMåltagerKommentarer() + "','" + ds.AnsvarstagerBrugerId_ + "','"
+                           + ds.printMåltagerKommentar() + "','" + ds.AnsvarstagerBrugerId_ + "','"
                            + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')";
 
             cmd = new SqlCommand(sql, conn);
@@ -124,31 +124,6 @@ namespace DB
         public bool findPatient(DTO_PatientData pd)
         {
             return findCPR(pd.CPRNummer_);
-
-            //
-            //Obsolete
-            //
-            //cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + pd.CPRNummer_ + "'", conn);
-
-            //conn.Open();
-
-            //rdr = cmd.ExecuteReader();
-
-            //while (rdr.Read())
-            //{
-            //    if (pd.CPRNummer_ == Convert.ToString(rdr["CPR"]))
-            //    {
-            //        conn.Close();
-            //        return true;
-            //    }
-            //    else
-            //    {
-            //        conn.Close();
-            //        return false;
-            //    }
-            //}
-            //conn.Close();
-            //return false;
         }
 
         //Tilføjer patient til lokaldatabase
@@ -164,106 +139,105 @@ namespace DB
             conn.Close();
         }
 
+        //
         //Use case 4
+        //
+
+        //Henter relevant data til visning, ud fra det søgte cpr
         public List<DTO_Datasæt> hentCPRData(string cpr)
         {
             //ekgmaaleid skal også sendes retur, da det er den vi skal bruge i findDatasæt til at finde ud af om den er analyseret eller ej. 
-
             DTO_Datasæt ds = new DTO_Datasæt();
-            List<DTO_Datasæt> dsliste = new List<DTO_Datasæt>();
+            List<DTO_Datasæt> dsListe = new List<DTO_Datasæt>();
 
 
-            cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + cpr + "'", conn);
-
-            conn.Open();
-
-            rdr = cmd.ExecuteReader();
-
-
-            while (rdr.Read())
-            {
-                if (Convert.ToString(rdr["CPR"]) == cpr)
-                {
-                    ds.Pd_ = new DTO_PatientData(Convert.ToString(rdr["CPR"]), Convert.ToString(rdr["Fornavn"]), Convert.ToString(rdr["Efternavn"]));
-                }
-            }
-
-
-
-            conn.Close();
-
-
+            //Finder CPR, dato og ID for de tilgængelige datasæt, tilknyttet det søgte CPR
             cmd = new SqlCommand("SELECT * FROM EKGMAALING WHERE borger_cprnr ='" + cpr + "'", conn);
             conn.Open();
             rdr = cmd.ExecuteReader();
-            long id = 0;
-
 
             while (rdr.Read())
             {
                 if (Convert.ToString(rdr["borger_cprnr"]) == cpr)
                 {
-                    id = (Convert.ToInt64(rdr["ekgmaaleid"]));
+                    ds.EkgId_ = (Convert.ToInt64(rdr["ekgmaaleid"]));
                     ds.Dato_ = (Convert.ToDateTime(rdr["dato"]));
+                    ds.Pd_.CPRNummer_ = Convert.ToString(rdr["borger_cprnr"]);
+                    dsListe.Add(ds);
                 }
             }
+
             conn.Close();
 
-            //cmd = new SqlCommand("SELECT * FROM EKGDATA WHERE ekgdataid = '" + id + "'", conn);
 
-            //while (rdr.Read())
-            //{
-            //    if (Convert.ToInt64(rdr["ekgdataid"]) == id)
-            //    {
-            //        foreach (var e in rdr["raa_data"]))
-            //        {
-            //            ToString().SelectMany(e => BitConverter.GetBytes(true));
-            //        }
-
-            //        ds.Data_ = ;
-            //    }
-            //}
-
-
-
-
-            return dsliste;
-
-
-
-        }
-
-        public bool findDatasæt(long id)
-        {
-            cmd = new SqlCommand("SELECT * FROM EKGMAALING WHERE ekgmaaleid = '" + id + "'", conn);
+            //Tilføjer fornavn og efternavn til de fundne datasæt
+            cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + cpr + "'", conn);
             conn.Open();
-
             rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
+            if(rdr.Read())
             {
-                if (id == Convert.ToInt64("ekgmaaleid"))
+                if (Convert.ToString(rdr["CPR"]) == ds.Pd_.CPRNummer_)
                 {
-                    conn.Close();
-                    //returnere datasættet, interessepunkterne og kommentarerne med op
-                    return true;
-                }
-                else
-                {
-                    conn.Close();
-                    return false;
+                    ds.Pd_.Fornavn_ = Convert.ToString(rdr["Fornavn"]);
+                    ds.Pd_.Efternavn_ = Convert.ToString(rdr["Efternavn"]);
+                    
+                    foreach(DTO_Datasæt e in dsListe)
+                    {
+                        e.Pd_.Fornavn_ = ds.Pd_.Fornavn_;
+                        e.Pd_.Efternavn_ = ds.Pd_.Efternavn_;
+                    }
                 }
             }
 
-            return false;
+            conn.Close();
+
+            return dsListe;
         }
 
-        public void gemKommentar(string kommentar, long id)
+        //Henter de valgte datasæt fra databasen
+        public DTO_Datasæt hentDatasæt(DTO_Datasæt ds)
         {
-            cmd = new SqlCommand("INSERT INTO EKGMAALING(sfp_anskommentar) WHERE ekgmaaleid = '" + id + "' VALUES('" + kommentar + "')", conn);
+            try
+            {
+                cmd = new SqlCommand("SELECT * FROM EKGDATA WHERE ekgmaaleid =" + ds.EkgId_, conn);
+
+                conn.Open();
+
+                rdr = cmd.ExecuteReader();
+
+                if (rdr.Read())
+                {
+                    if ((long)rdr["ekgmaaleid"] == ds.EkgId_)
+                    {
+                        byte[] bytes = (byte[])rdr["raa_data"];
+
+                        for (int i = 0; i < bytes.Length; i += 8)
+                        {
+                            ds.Data_.Add(BitConverter.ToDouble(bytes, i));
+                        }
+                    }
+                }
+
+                conn.Close();
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        //Skriver kommentar for ansvarstager til søgt ekg id
+        public void gemKommentar(DTO_Datasæt  ds)
+        {
+            cmd = new SqlCommand("UPDATE db_owner.EKGMAALING SET sfp_anskommentar = '" 
+                + ds.printAnsvarstagerKommentar() + "' WHERE ekgmaaleid = " + ds.EkgId_, conn);
+
             conn.Open();
             cmd.ExecuteScalar();
             conn.Close();
+
         }
     }
 }

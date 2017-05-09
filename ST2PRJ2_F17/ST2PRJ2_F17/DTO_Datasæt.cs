@@ -39,8 +39,9 @@ namespace DTO
 
         public string MåleformatType_ { get; set; }
 
-        public DateTime StartTid_ { get; set; }
+        public long EkgId_ { get; set; }
 
+        public DateTime StartTid_ { get; set; }
 
         public DTO_Datasæt()
         {
@@ -67,11 +68,23 @@ namespace DTO
         }
 
 
-        public string printMåltagerKommentarer()
+        public string printMåltagerKommentar()
         {
             string output = "";
 
             foreach(string e in MåltagerKommentar_)
+            {
+                output += "" + e + "\n";
+            }
+
+            return output;
+        }
+
+        public string printAnsvarstagerKommentar()
+        {
+            string output = "";
+
+            foreach (string e in AnsvarstagerKommentar_)
             {
                 output += "" + e + "\n";
             }
