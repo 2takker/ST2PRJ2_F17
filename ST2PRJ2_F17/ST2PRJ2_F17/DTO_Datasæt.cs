@@ -9,7 +9,7 @@ namespace DTO
 {
     class DTO_Datasæt
     {
-        public List<string> Ip_ { get; set; }
+        public List<int> Ip_ { get; set; }
 
         public List<string> MåltagerKommentar_ { get; set; }
 
@@ -44,7 +44,7 @@ namespace DTO
 
         public DTO_Datasæt()
         {
-            Ip_ = new List<string>();
+            Ip_ = new List<int>();
             MåltagerKommentar_ = new List<string>();
             AnsvarstagerKommentar_ = new List<string>();
             Data_ = new List<double>();
