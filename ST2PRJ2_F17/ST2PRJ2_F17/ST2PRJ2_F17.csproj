@@ -67,6 +67,7 @@
     <Compile Include="Gennemse data.Designer.cs">
       <DependentUpon>Gennemse data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gennemse_data_controller.cs" />
     <Compile Include="Hjemmeskærm.cs">
       <SubType>Form</SubType>
     </Compile>
