@@ -81,3 +81,8 @@
 --SELECT * FROM db_owner.EKGMAALING
 
 --UPDATE db_owner.EKGMAALING SET sfp_anskommentar = 'Ny kommentar' WHERE ekgmaaleid = 8
+
+--ALTER TABLE EKGDATA
+--ADD interessepunkter VARBINARY(MAX)
+
+--SELECT * FROM EKGDATA
