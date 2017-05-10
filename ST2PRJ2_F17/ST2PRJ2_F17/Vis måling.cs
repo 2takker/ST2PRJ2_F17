@@ -15,13 +15,41 @@ namespace Præsentationslag
       private gennemse_data frm;
       private Gennemse_data_controller GennemseController;
       private double x;
+      private List<double> ipliste;
+      private double ip;
+      private int count;
+      private List<double> dataListe_;
 
       public vis_måling(gennemse_data frm, Gennemse_data_controller GennemseController)
       {
          InitializeComponent();
          this.frm = frm;
          this.GennemseController = GennemseController;
+         ipliste = new List<double>();
+         count = 0;
+
+         dataListe_ = GennemseController.hentAnalyseretDatasæt;
+
+         checkForIP();
+
+         ip = (ipliste[0] / 500) -4;
+
+         skrivTilGraf(ip);
       }
+
+
+      public void checkForIP()
+      {
+         if (dataListe_[0].Ip_.count == 0)
+         {
+            ipliste = GennemseController.findRR();
+         }
+         else
+         {
+            ipliste = GennemseController.hentIP();
+         }
+      }
+
 
       private void skrivTilGraf(double start)
       {
@@ -64,12 +92,16 @@ namespace Præsentationslag
 
       private void ipTilbageKnap_Click(object sender, EventArgs e)
       {
-
+         count--;
+         ip = (ipliste[count] / 500) - 4;
+         skrivTilGraf(ip);
       }
 
       private void ipFremKnap_Click(object sender, EventArgs e)
       {
-
+         count++;
+         ip = (ipliste[count] / 500) - 4;
+         skrivTilGraf(ip);
       }
 
       private void gemKommentarKnap_Click(object sender, EventArgs e)

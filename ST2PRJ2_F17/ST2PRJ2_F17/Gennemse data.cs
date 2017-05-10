@@ -50,18 +50,20 @@ namespace Præsentationslag
 
       private void analyserDataKnap_Click(object sender, EventArgs e)
       {
-         //if (GennemseController.analyserValgtDatasæt(datasætListBox.SelectedIndex) == true)
-         //{
-         //   vis_måling visMåling = new vis_måling(this, GennemseController);
-         //   visMåling.åbenVisMålingVindue();
-         //}
+         if (GennemseController.analyserValgtDatasæt(datasætListBox.SelectedIndex) == true)
+         {
+            vis_måling visMåling = new vis_måling(this, GennemseController);
+            visMåling.åbenVisMålingVindue();
+         }
+
+
       }
 
 
       private void visMålingKnap_Click(object sender, EventArgs e)
       {
-         //vis_måling visMåling = new vis_måling(this, GennemseController);
-         //visMåling.åbenVisMålingVindue();
+         vis_måling visMåling = new vis_måling(this, GennemseController);
+         visMåling.åbenVisMålingVindue();
       }
 
       public void åbenGennemseDataVindue()
