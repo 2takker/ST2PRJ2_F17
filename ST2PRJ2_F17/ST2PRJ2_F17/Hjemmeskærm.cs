@@ -23,6 +23,7 @@ namespace Præsentationslag
 
             loginvindue_ = new log_ind(this);
             loginvindue_.åbenLoginVindue();
+            loginvindue_.TopMost = true;
         }
 
         public void låsHjemmeskærm(bool lås)
