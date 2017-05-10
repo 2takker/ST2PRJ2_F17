@@ -73,10 +73,16 @@
 --OUTPUT INSERTED.ekgmaaleid 
 --VALUES(CONVERT(DATETIME,'2017-05-04 11:57:30'),1 ,'NN', 'Dette er en C-skarp test', 'NN', 'Gruppe 6', '1112962146')
 
+--ALTER TABLE db_owner.EKGDATA
+--ALTER COLUMN raa_data VARBINARY(MAX)
 
 --SELECT * FROM db_owner.EKGMAALING
 
---SELECT * FROM db_owner.EKGDATA
+--SELECT * FROM db_owner.EKGMAALING
 
---ALTER TABLE db_owner.EKGDATA
---ALTER COLUMN raa_data VARBINARY(MAX)
+--UPDATE db_owner.EKGMAALING SET sfp_anskommentar = 'Ny kommentar' WHERE ekgmaaleid = 8
+
+--ALTER TABLE EKGDATA
+--ADD interessepunkter VARBINARY(MAX)
+
+--SELECT * FROM EKGDATA
