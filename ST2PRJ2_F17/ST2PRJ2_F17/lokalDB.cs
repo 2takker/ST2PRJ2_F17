@@ -198,6 +198,19 @@ namespace DB
         //Henter de valgte datasæt fra databasen
         public DTO_Datasæt hentDatasæt(DTO_Datasæt ds)
         {
+            cmd = new SqlCommand("SELECT * FROM EKGMAALING WHERE ekgmaaleid =" + ds.EkgId_, conn);
+
+            conn.Open();
+
+            rdr = cmd.ExecuteReader();
+
+            if(rdr.Read())
+            {
+                ds.MåltagerKommentar_.Add(Convert.ToString(rdr["sfp_mt_kommentar"]));
+                ds.AnsvarstagerKommentar_.Add(Convert.ToString(rdr["sfp_anskommentar"]));
+            }
+            conn.Close();
+
             try
             {
                 cmd = new SqlCommand("SELECT * FROM EKGDATA WHERE ekgmaaleid =" + ds.EkgId_, conn);
@@ -216,16 +229,27 @@ namespace DB
                         {
                             ds.Data_.Add(BitConverter.ToDouble(bytes, i));
                         }
+
+                        bytes = (byte[])rdr["interessepunkter"];
+                        for (int i = 0; i < bytes.Length; i += 8)
+                        {
+                            ds.Ip_.Add(BitConverter.ToDouble(bytes, i));
+                        }
                     }
                 }
 
                 conn.Close();
-                return ds;
+                
             }
             catch (Exception ex)
             {
                 return null;
             }
+            
+
+            return ds;
+
+            
         }
 
         //Skriver kommentar for ansvarstager til søgt ekg id

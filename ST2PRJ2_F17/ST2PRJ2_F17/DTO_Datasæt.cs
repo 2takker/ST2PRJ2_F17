@@ -9,7 +9,7 @@ namespace DTO
 {
     class DTO_Datasæt
     {
-        public List<string> Ip_ { get; set; }
+        public List<double> Ip_ { get; set; }
 
         public List<string> MåltagerKommentar_ { get; set; }
 
