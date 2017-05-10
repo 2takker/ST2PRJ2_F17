@@ -33,9 +33,9 @@ namespace Logik
                     var line = reader.ReadLine();
                     var values = line.Split(',', '\"');
 
-                    //dataListe_.Add(Convert.ToDouble(values[2])); //Christiane                    
+                    dataListe_.Add(double.Parse((values[2]), System.Globalization.CultureInfo.InvariantCulture)); //Christiane                    
 
-                    dataListe_.Add(double.Parse((values[1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke
+                    //dataListe_.Add(double.Parse((values[1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke
                 }
                 dtoDatasæt_.Data_ = dataListe_;  
 
