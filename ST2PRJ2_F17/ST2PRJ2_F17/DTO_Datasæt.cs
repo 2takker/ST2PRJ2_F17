@@ -7,7 +7,7 @@ using DTO;
 
 namespace DTO
 {
-    class DTO_Datasæt
+    public class DTO_Datasæt
     {
         public List<double> Ip_ { get; set; }
 
@@ -45,7 +45,7 @@ namespace DTO
 
         public DTO_Datasæt()
         {
-            Ip_ = new List<int>();
+            Ip_ = new List<double>();
             MåltagerKommentar_ = new List<string>();
             AnsvarstagerKommentar_ = new List<string>();
             Data_ = new List<double>();

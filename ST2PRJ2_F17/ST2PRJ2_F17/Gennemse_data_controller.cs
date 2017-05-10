@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using DTO;
 using DB;
 
-namespace ST2PRJ2_F17
+namespace Logik
 {
-    class Gennemse_data_controller
+    public class Gennemse_data_controller
     {
         private lokalDB lokalDB_;
         private DTO_Datasæt dtoDatasæt_;
@@ -50,7 +50,6 @@ namespace ST2PRJ2_F17
         {
             if (lokalDB_.findCPR(cpr) == true)
             {
-
                 return true;
             }
 
@@ -62,31 +61,37 @@ namespace ST2PRJ2_F17
 
         public List<DTO_Datasæt> visPatientData(string cpr)
         {
-                         
+            return dtoDatasætList_ = lokalDB_.hentCPRData(cpr);
         }
 
         
         public bool analyserValgtDatasæt(int index)
         {
-            index_ = index;
-            analyserDataListe_ = dtoDatasætList_[index].Data_;
+            index_ = index;           
+                
+            dtoDatasæt_ = lokalDB_.hentDatasæt( dtoDatasætList_[index]);
 
-            return true;         
+            if (dtoDatasætList_[index].Ip_.Count == 0)
+            {
+                dtoDatasæt_.Ip_ = findRR(dtoDatasæt_.Data_);                
+            }
+            else
+            {
+                dtoDatasæt_.Ip_ = dtoDatasætList_[index].Ip_;                
+            }
+
+            return true;
         }
 
-        public List<double> hentIP()
+
+        public DTO_Datasæt hentAnalyseretDatasæt()
         {
-            ipListe_ = dtoDatasætList_[index_].Ip_;
-            return ipListe_;
-        }
-        public List<double> hentAnalyseretDatasæt()
-        {
-            return analyserDataListe_;
+            return dtoDatasæt_;
         }
 
-        public List<double> findRR()
+        public List<double> findRR(List<double> liste)
         {
-            List<double> toppunktsListeX = findToppunkt(analyserDataListe_);
+            List<double> toppunktsListeX = findToppunkt(liste);
 
             for (int i = 0; i < (toppunktsListeX.Count - 1); i++)
             {
@@ -157,6 +162,12 @@ namespace ST2PRJ2_F17
                 return false;
             }
 
+        }
+
+        public bool gemKommentar(DTO_Datasæt ds)
+        {
+            lokalDB_.gemKommentar(ds);
+            return true;
         }
     }
 }

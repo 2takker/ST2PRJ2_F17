@@ -18,7 +18,7 @@ namespace Præsentationslag
         private Preview_controller PreviewController;
         private CPR_nummer cprvindue;
         private double x;
-        List<double> dataListe_;
+        private List<double> dataListe_;
 
 
         public preview(string brugerID)

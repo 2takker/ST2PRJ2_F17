@@ -160,11 +160,12 @@ namespace DB
             {
                 if (Convert.ToString(rdr["borger_cprnr"]) == cpr)
                 {
+                    ds = new DTO_Datasæt();
                     ds.EkgId_ = (Convert.ToInt64(rdr["ekgmaaleid"]));
                     ds.Dato_ = (Convert.ToDateTime(rdr["dato"]));
                     ds.Pd_.CPRNummer_ = Convert.ToString(rdr["borger_cprnr"]);
-                    dsListe.Add(ds);
                 }
+                dsListe.Add(ds);
             }
 
             conn.Close();
@@ -229,12 +230,16 @@ namespace DB
                         {
                             ds.Data_.Add(BitConverter.ToDouble(bytes, i));
                         }
-
-                        bytes = (byte[])rdr["interessepunkter"];
-                        for (int i = 0; i < bytes.Length; i += 8)
+                        if (rdr["interessepunkter"] != null)
                         {
-                            ds.Ip_.Add(BitConverter.ToDouble(bytes, i));
+                            bytes = (byte[])rdr["interessepunkter"];
+
+                            for (int i = 0; i < bytes.Length; i += 8)
+                            {
+                                ds.Ip_.Add(BitConverter.ToDouble(bytes, i));
+                            }
                         }
+
                     }
                 }
 
