@@ -93,7 +93,7 @@ namespace Præsentationslag
             }
             else
             {
-                MessageBox.Show("Kommentar ikke gemt");
+                MessageBox.Show("Kommentar ikke gemt");              
             }
 
         }

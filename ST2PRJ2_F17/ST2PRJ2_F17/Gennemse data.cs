@@ -22,11 +22,20 @@ namespace Præsentationslag
         {
             InitializeComponent();
             GennemseController = new Gennemse_data_controller();
+            
         }
 
         private void indlæsCPRKnap_Click(object sender, EventArgs e)
         {
+            
             string cpr = CPRTextBox.Text;
+
+            if (GennemseController.validerCPR(cpr) == false)
+            {
+                MessageBox.Show("CPR - nummeret er ugyldigt");
+                CPRTextBox.Clear();
+                
+            }
 
             if (GennemseController.indlæsCPR(cpr) == true)
             {
@@ -48,6 +57,7 @@ namespace Præsentationslag
                     }
                 }
             }
+            
         }
 
         private void analyserDataKnap_Click(object sender, EventArgs e)

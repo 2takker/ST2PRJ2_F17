@@ -30,6 +30,7 @@ namespace Præsentationslag
             ipliste = new List<double>();
             count = 0;
             ipTilbageKnap.Enabled = false;
+            
 
             datasæt_ = GennemseController.hentAnalyseretDatasæt();
 
@@ -45,7 +46,7 @@ namespace Præsentationslag
 
         private bool checkForIP()
         {
-            if (datasæt_.Ip_.Count == 0) //Ingen interessepunkter
+            if (datasæt_.Ip_.Count == 0) 
             {
                 ipFremKnap.Enabled = false;
                 labelNoIP.Visible = true;
