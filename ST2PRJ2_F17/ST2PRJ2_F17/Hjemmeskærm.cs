@@ -70,6 +70,7 @@ namespace Præsentationslag
             låsHjemmeskærm(true);
             LoggetIndSomtextBox.Clear();
             loginvindue_.åbenLoginVindue();
+         
         }
     }
 }

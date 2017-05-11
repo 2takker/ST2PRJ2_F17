@@ -110,11 +110,11 @@
             this.analyseretData.Legends.Add(legend3);
             this.analyseretData.Location = new System.Drawing.Point(15, 71);
             this.analyseretData.Name = "analyseretData";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "EKG";
-            this.analyseretData.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "EKG";
+            this.analyseretData.Series.Add(series1);
             this.analyseretData.Size = new System.Drawing.Size(840, 300);
             this.analyseretData.TabIndex = 14;
             this.analyseretData.Text = "analyseretData";
@@ -208,18 +208,30 @@
             // 
             // gammelKommentartextBox
             // 
-            this.gammelKommentartextBox.Enabled = false;
             this.gammelKommentartextBox.Location = new System.Drawing.Point(20, 461);
             this.gammelKommentartextBox.Multiline = true;
             this.gammelKommentartextBox.Name = "gammelKommentartextBox";
+            this.gammelKommentartextBox.ReadOnly = true;
+            this.gammelKommentartextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gammelKommentartextBox.Size = new System.Drawing.Size(364, 155);
             this.gammelKommentartextBox.TabIndex = 24;
+            // 
+            // GemAnalyseretDataKnap
+            // 
+            this.GemAnalyseretDataKnap.Location = new System.Drawing.Point(730, 25);
+            this.GemAnalyseretDataKnap.Name = "GemAnalyseretDataKnap";
+            this.GemAnalyseretDataKnap.Size = new System.Drawing.Size(125, 23);
+            this.GemAnalyseretDataKnap.TabIndex = 25;
+            this.GemAnalyseretDataKnap.Text = "Gem analyseret data";
+            this.GemAnalyseretDataKnap.UseVisualStyleBackColor = true;
+            this.GemAnalyseretDataKnap.Click += new System.EventHandler(this.GemAnalyseretDataKnap_Click);
             // 
             // vis_måling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 656);
+            this.ClientSize = new System.Drawing.Size(885, 695);
+            this.Controls.Add(this.GemAnalyseretDataKnap);
             this.Controls.Add(this.gammelKommentartextBox);
             this.Controls.Add(this.labelNoIP);
             this.Controls.Add(this.gemKommentarKnap);
@@ -242,10 +254,10 @@
             this.Name = "vis_måling";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Vis måling";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.vis_måling_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.analyseretData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
       }
 
       #endregion
@@ -267,5 +279,6 @@
       private System.Windows.Forms.Button gemKommentarKnap;
         private System.Windows.Forms.Label labelNoIP;
         private System.Windows.Forms.TextBox gammelKommentartextBox;
-    }
+      private System.Windows.Forms.Button GemAnalyseretDataKnap;
+   }
 }

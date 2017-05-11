@@ -53,7 +53,7 @@
          // 
          // søgKnap
          // 
-         this.søgKnap.Location = new System.Drawing.Point(130, 46);
+         this.søgKnap.Location = new System.Drawing.Point(130, 47);
          this.søgKnap.Name = "søgKnap";
          this.søgKnap.Size = new System.Drawing.Size(49, 23);
          this.søgKnap.TabIndex = 2;
