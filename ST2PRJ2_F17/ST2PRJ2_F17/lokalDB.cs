@@ -259,13 +259,34 @@ namespace DB
         //Skriver kommentar for ansvarstager til søgt ekg id
         public void gemKommentar(DTO_Datasæt  ds)
         {
-            cmd = new SqlCommand("UPDATE db_owner.EKGMAALING SET sfp_anskommentar = '" 
+            cmd = new SqlCommand("UPDATE EKGMAALING SET sfp_anskommentar = '" 
                 + ds.printAnsvarstagerKommentar() + "' WHERE ekgmaaleid = " + ds.EkgId_, conn);
 
             conn.Open();
             cmd.ExecuteScalar();
             conn.Close();
-
         }
+
+        //Gemmer fundne interessepunkter til db
+        public void gemIP(DTO_Datasæt ds)
+        {
+            string sql = "UPDATE EKGDATA SET interessepunkter = @data WHERE ekgmaaleid =" + ds.EkgId_; ;
+
+            cmd = new SqlCommand(sql, conn);
+
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@data", ds.Ip_.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray());
+
+            cmd.ExecuteScalar();
+
+            conn.Close();
+        }
+
+
+        //
+        // Use case 5
+        //
+
     }
 }

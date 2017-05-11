@@ -26,7 +26,7 @@ namespace Præsentationslag
       {
          DTO_PatientData pd = new DTO_PatientData(CPRTextBox.Text, fornavnTextBox.Text, efternavnTextBox.Text);
 
-         if (OpretPatientController.validerCPR(pd.CPRNummer_)==false)
+         if (OpretPatientController.validerCPR(pd.CPRNummer_) == false)
          {
             MessageBox.Show("CPR-nummeret er ugyldigt");
             CPRTextBox.Clear();

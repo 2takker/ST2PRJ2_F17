@@ -29,7 +29,7 @@ namespace Præsentationslag
             this.GennemseController = GennemseController;
             ipliste = new List<double>();
             count = 0;
-            ipTilbageKnap.Enabled = false;
+            ipTilbageKnap.Enabled = false;            
 
             datasæt_ = GennemseController.hentAnalyseretDatasæt();
 
@@ -39,7 +39,7 @@ namespace Præsentationslag
 
             gammelkommentar();
             
-            skrivTilGraf(0);
+            skrivTilGraf(0, true);
         }
 
       private void gammelkommentar()
@@ -50,11 +50,11 @@ namespace Præsentationslag
 
         private bool checkForIP()
         {
-            if (datasæt_.Ip_.Count == 0) //Ingen interessepunkter
+            if (datasæt_.Ip_.Count == 0) 
             {
                 ipFremKnap.Enabled = false;
                 labelNoIP.Visible = true;
-                return false;                
+                return false;
             }
             else
             {
@@ -63,18 +63,20 @@ namespace Præsentationslag
         }
 
 
-        private void skrivTilGraf(double start)
+        private void skrivTilGraf(double start, bool nextIp)
         {
-            if (checkForIP())
+
+            if (checkForIP() && nextIp)
             {
-                x = (datasæt_.Ip_[0] / 500) - 4;
+                x = (datasæt_.Ip_[count] / 500) - 4;
                 start = x;
             }
             else
             {
                 x = start;
             }
-            
+
+
             analyseretData.Series["EKG"].Points.Clear();
 
             for (double i = (x * 500); i <= (start + 10) * 500; i++)
@@ -92,7 +94,7 @@ namespace Præsentationslag
             if (x != 0)
             {
                 x = x - 20;
-                skrivTilGraf(x);
+                skrivTilGraf(x, false);
                 if (x <= 10)
                 {
                     tiSekTilbageKnap.Enabled = false;
@@ -103,7 +105,7 @@ namespace Præsentationslag
 
         private void tiSekFremKnap_Click(object sender, EventArgs e)
         {
-            skrivTilGraf(x);
+            skrivTilGraf(x, false);
             if (x >= (datasæt_.Data_.Count / 500))
             {
                 tiSekFremKnap.Enabled = false;
@@ -112,14 +114,14 @@ namespace Præsentationslag
         }
 
         private void ipTilbageKnap_Click(object sender, EventArgs e)
-        {            
+        {
             count--;
             ip = (datasæt_.Ip_[count] / 500) - 4;
-            skrivTilGraf(ip);
+            skrivTilGraf(ip,true);
 
             ipFremKnap.Enabled = true;
 
-            if(count == 0)
+            if (count == 0)
             {
                 ipTilbageKnap.Enabled = false;
             }
@@ -129,11 +131,11 @@ namespace Præsentationslag
         {
             count++;
             ip = (datasæt_.Ip_[count] / 500) - 4;
-            skrivTilGraf(ip);
+            skrivTilGraf(ip,true);
 
             ipTilbageKnap.Enabled = true;
 
-            if(count == datasæt_.Ip_.Count)
+            if (count == datasæt_.Ip_.Count -1)
             {
                 ipFremKnap.Enabled = false;
             }
