@@ -230,13 +230,15 @@ namespace DB
                         {
                             ds.Data_.Add(BitConverter.ToDouble(bytes, i));
                         }
-                        if (rdr["interessepunkter"] != null)
-                        {
-                            bytes = (byte[])rdr["interessepunkter"];
+                                              
 
-                            for (int i = 0; i < bytes.Length; i += 8)
+                        if (rdr["interessepunkter"] != DBNull.Value)
+                        {
+                            byte[] bytesIP = (byte[])rdr["interessepunkter"];
+
+                            for (int i = 0; i < bytesIP.Length; i += 8)
                             {
-                                ds.Ip_.Add(BitConverter.ToDouble(bytes, i));
+                                ds.Ip_.Add(BitConverter.ToDouble(bytesIP, i));
                             }
                         }
 
@@ -244,17 +246,14 @@ namespace DB
                 }
 
                 conn.Close();
-                
+                return ds;
+
             }
             catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show("" + ex);
                 return null;
             }
-            
-
-            return ds;
-
-            
         }
 
         //Skriver kommentar for ansvarstager til søgt ekg id
