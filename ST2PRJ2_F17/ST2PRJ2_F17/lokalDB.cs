@@ -17,7 +17,7 @@ namespace DB
         private const string db = "F17ST2ITS2201500391";
         private DTO_Sundhedspersonale sp_;
 
-
+        //Default constructor
         public lokalDB()
         {
             conn = new SqlConnection("Data Source =i4dab.ase.au.dk; Initial Catalog=" + db +
@@ -29,6 +29,7 @@ namespace DB
         //Use-case 1
         //
 
+        //Validerer login, og sender brugerID tilbage i en DTO
         public DTO_Sundhedspersonale validerLogin(DTO_Sundhedspersonale sp)
         {
             cmd = new SqlCommand("SELECT * FROM Sundhedspersonale WHERE bruger_id ='" + sp.BrugerID_ + "'", conn);
@@ -57,6 +58,7 @@ namespace DB
         //Use-case 2
         //
 
+        //Fortæller om et cpr-nummer findes i lokal db
         public bool findCPR(string cpr)
         {
             cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + cpr + "'", conn);
@@ -82,6 +84,9 @@ namespace DB
             return false;
         }
 
+
+        //gemmer et valgt datasæt i databasen
+        //Bruges også til usecase 5
         public void gemDatasæt(DTO_Datasæt ds)
         {
             string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
@@ -116,6 +121,7 @@ namespace DB
             conn.Close();
         }
 
+
         //
         //Use-case 3
         //
@@ -138,6 +144,7 @@ namespace DB
 
             conn.Close();
         }
+
 
         //
         //Use case 4
@@ -284,9 +291,7 @@ namespace DB
         }
 
 
-        //
-        // Use case 5
-        //
+
 
     }
 }

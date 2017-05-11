@@ -57,16 +57,15 @@ namespace DTO
             //Standard værdier
             Dato_ = DateTime.Now;
             StartTid_ = DateTime.Now.AddDays(-1);
-            BinEllerTxt_ = 'B';
+            BinEllerTxt_ = 'b';
             SampleRateHz_ = 500;
             AnsvarstagerOrg_ = "Gruppe 6";
             IntervalSek_ = 86400;
-            DataFormat_ = "andet";
-            MåleformatType_ = "Double";
+            DataFormat_ = "byte array";
+            MåleformatType_ = "double";
             AntalMålinger_ = 1;
             AnsvarstagerBrugerId_ = "NN";
-            MåltagerBrugerId_ = "NN";
-            
+            MåltagerBrugerId_ = "NN";            
         }
 
 
