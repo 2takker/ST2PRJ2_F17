@@ -33,7 +33,7 @@ namespace DB
         //
 
         //søger efter søgeord i offentlig database
-        public List<DTO_Datasæt> SøgIOffDB(string søgeord)
+        public List<DTO_Datasæt> søgIOffDB(string søgeord)
         {
             List<DTO_Datasæt> dsList = new List<DTO_Datasæt>();
 
@@ -58,11 +58,32 @@ namespace DB
                 while (rdr.Read())
                 {
                     DTO_Datasæt ds = new DTO_Datasæt();
+                    if (rdr["borger_cprnr"] != DBNull.Value)
+                    {
+                        ds.Pd_.CPRNummer_ = (string)rdr["borger_cprnr"];
+                    }
+                    if (rdr["borger_fornavn"] != DBNull.Value)
+                    {
+                        ds.Pd_.Fornavn_ = (string)rdr["borger_fornavn"];
+                    }
+                    if (rdr["borger_efternavn"] != DBNull.Value)
+                    {
+                        ds.Pd_.Efternavn_ = (string)rdr["borger_efternavn"];
+                    }
+
                     ds.EkgId_ = (long)rdr["ekgmaaleid"];
-                    ds.AnsvarstagerKommentar_.Add((string)rdr["sfp_anskommentar"]);
-                    ds.MåltagerKommentar_.Add((string)rdr["sfp_mt_kommentar"]);
-                    ds.Pd_.CPRNummer_ = (string)rdr["borger_cprnr"];
-                    ds.Dato_ = (DateTime)rdr["dato"];
+
+                    if (rdr["sfp_anskommentar"] != DBNull.Value)
+                    {
+                        ds.AnsvarstagerKommentar_.Add((string)rdr["sfp_anskommentar"]);
+                    }
+
+                    if(rdr["sfp_mt_kommentar"] != DBNull.Value)
+                    {
+                        ds.MåltagerKommentar_.Add((string)rdr["sfp_mt_kommentar"]);
+                    }
+                   
+                    ds.Dato_ = Convert.ToDateTime(rdr["dato"]);
                     ds.AnsvarstagerOrg_ = (string)rdr["sfp_ans_org"];
                     ds.AnsvarstagerBrugerId_ = (string)rdr["sfp_ansvrmedarbjnr"];
                     ds.MåltagerBrugerId_ = (string)rdr["sfp_maaltagermedarbjnr"];
@@ -88,36 +109,39 @@ namespace DB
         {
             string output = "";
 
-            output += "Ansvarstagers kommentar: " + sqlRdr["sfp_anskommentar"] + "\r\n";
-
-            if (Convert.ToString(sqlRdr["sfp_mt_kommentar"]).Contains(søgOrd))
-            {
-                output += "Måletagers kommentar: " + sqlRdr["sfp_mt_kommentar"] + "\r\n";
-            }
-
-            if (Convert.ToString(sqlRdr["borger_cprnr"]).Contains(søgOrd))
-            {
-                output += "Borgers CPR-nummer: " + sqlRdr["borger_cprnr"] + "\r\n";
-            }
-
-            if (Convert.ToString(sqlRdr["dato"]).Contains(søgOrd))
+            try
             {
                 output += "Dato for måling: " + sqlRdr["dato"] + "\r\n";
-            }
+                output += "Ansvarstagers kommentar: " + sqlRdr["sfp_anskommentar"] + "\r\n";
 
-            if (Convert.ToString(sqlRdr["sfp_ans_org"]).Contains(søgOrd))
-            {
-                output += "Ansvarstagers organisation" + sqlRdr["sfp_ans_org"] + "\r\n";
-            }
+                if (Convert.ToString(sqlRdr["sfp_mt_kommentar"]).Contains(søgOrd))
+                {
+                    output += "Måletagers kommentar: " + sqlRdr["sfp_mt_kommentar"] + "\r\n";
+                }
 
-            if (Convert.ToString(sqlRdr["sfp_ansvrmedarbjnr"]).Contains(søgOrd))
-            {
-                output += "Ansvarstagers medarbejdrnr.: " + sqlRdr["sfp_ansvrmedarbjnr"] + "\r\n";
-            }
+                if (Convert.ToString(sqlRdr["borger_cprnr"]).Contains(søgOrd))
+                {
+                    output += "Borgers CPR-nummer: " + sqlRdr["borger_cprnr"] + "\r\n";
+                }
 
-            if (Convert.ToString(sqlRdr["sfp_maaltagermedarbjnr"]).Contains(søgOrd))
+                if (Convert.ToString(sqlRdr["sfp_ans_org"]).Contains(søgOrd))
+                {
+                    output += "Ansvarstagers organisation: " + sqlRdr["sfp_ans_org"] + "\r\n";
+                }
+
+                if (Convert.ToString(sqlRdr["sfp_ansvrmedarbjnr"]).Contains(søgOrd))
+                {
+                    output += "Ansvarstagers medarbejdrnr.: " + sqlRdr["sfp_ansvrmedarbjnr"] + "\r\n";
+                }
+
+                if (Convert.ToString(sqlRdr["sfp_maaltagermedarbjnr"]).Contains(søgOrd))
+                {
+                    output += "Måletagers medarbejdernr.: " + sqlRdr["sfp_maaltagermedarbjnr"] + "\r\n";
+                }
+            }
+            catch (Exception ex)
             {
-                output += "Måletagers medarbejdernr.: " + sqlRdr["sfp_maaltagermedarbjnr"] + "\r\n";
+                System.Windows.Forms.MessageBox.Show("" + ex);
             }
 
             return output;
@@ -137,12 +161,12 @@ namespace DB
 
                 if (rdr.Read() && (long)rdr["ekgmaaleid"] == ds.EkgId_)
                 {
-                    ds.SampleRateHz_ = (int)rdr["samplerate_hz"];
-                    ds.IntervalSek_ = (int)rdr["interval_sec"];
+                    ds.SampleRateHz_ = Convert.ToDouble(rdr["samplerate_hz"]);
+                    ds.IntervalSek_ = (long)rdr["interval_sec"];
                     ds.DataFormat_ = (string)rdr["data_format"];
-                    ds.BinEllerTxt_ = (char)rdr["bin_eller_tekst"];
+                    ds.BinEllerTxt_ = Convert.ToChar(rdr["bin_eller_tekst"]);
                     ds.MåleformatType_ = (string)rdr["maaleformat_type"];
-                    ds.StartTid_ = (DateTime)rdr["start_tid"];
+                    ds.StartTid_ = Convert.ToDateTime(rdr["start_tid"]);
 
                     byte[] bytes = (byte[])rdr["raa_data"];
 
@@ -168,5 +192,62 @@ namespace DB
         //Use-case 6
         //
 
+        //Gemmer et datasæt i den lokale database.
+        public bool gemDatasæt(DTO_Datasæt ds, bool annonymt)
+        {
+            try
+            {
+                if (annonymt)
+                {
+                    ds.Pd_.CPRNummer_ = "1234567890";
+                    ds.Pd_.Fornavn_ = "N";
+                    ds.Pd_.Efternavn_ = "N";
+                }
+
+                string sql = "INSERT INTO EKGMAELING(dato, antalmaalinger, " +
+                    "sfp_maaltagermedarbjnr, sfp_mt_kommentar, sfp_ansvrmedarbjnr, " +
+                    "sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, " +
+                    "borger_cprnr)" +
+                    "OUTPUT INSERTED.ekgmaaleid " +
+                    "VALUES(CONVERT(DATETIME, '" + ds.Dato_ + "'), " + ds.AntalMålinger_ + ", '"
+                    + ds.MåltagerBrugerId_ + "', '" + ds.printMåltagerKommentar() + "', '"
+                    + ds.AnsvarstagerBrugerId_ + "', '" + ds.AnsvarstagerOrg_ + "', '"
+                    + ds.printIP() + "" + ds.printAnsvarstagerKommentar() + "', '"
+                    + ds.Pd_.Fornavn_ + "', '" + ds.Pd_.Efternavn_ + "', '" + ds.Pd_.CPRNummer_ + "')";
+
+                cmd = new SqlCommand(sql, conn);
+
+                conn.Open();
+
+                long ekgMåleId = (long)cmd.ExecuteScalar();
+
+                conn.Close();
+
+                sql = "INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, " +
+                    "data_format, bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid) "
+                    + "VALUES(@data, " + ds.SampleRateHz_ + ", " + ds.IntervalSek_ + ", '"
+                    + ds.DataFormat_ + "', '" + ds.BinEllerTxt_ + "', '" + ds.MåleformatType_ + "', "
+                    + "CONVERT(DATETIME, '" + ds.StartTid_ + "'), " + ekgMåleId + ")";
+
+                cmd = new SqlCommand(sql, conn);
+
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@data", ds.Data_.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray());
+
+                cmd.ExecuteScalar();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                System.Windows.Forms.MessageBox.Show("" + ex);
+                return false;
+            }
+
+
+            return true;
+        }
     }
 }

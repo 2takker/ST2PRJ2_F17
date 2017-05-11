@@ -147,7 +147,7 @@ namespace DB
 
 
         //
-        //Use case 4
+        //Use-case 4
         //
 
         //Henter relevant data til visning, ud fra det søgte cpr
@@ -212,7 +212,7 @@ namespace DB
 
             rdr = cmd.ExecuteReader();
 
-            if(rdr.Read())
+            if (rdr.Read())
             {
                 ds.MåltagerKommentar_.Add(Convert.ToString(rdr["sfp_mt_kommentar"]));
                 ds.AnsvarstagerKommentar_.Add(Convert.ToString(rdr["sfp_anskommentar"]));
@@ -231,13 +231,20 @@ namespace DB
                 {
                     if ((long)rdr["ekgmaaleid"] == ds.EkgId_)
                     {
+                        ds.SampleRateHz_ = Convert.ToDouble(rdr["samplerate_hz"]);
+                        ds.IntervalSek_ = Convert.ToInt64(rdr["interval_sec"]);
+                        ds.DataFormat_ = (string)rdr["data_format"];
+                        ds.BinEllerTxt_ = Convert.ToChar(rdr["bin_eller_tekst"]);
+                        ds.MåleformatType_ = (string)rdr["maaleformat_type"];
+                        ds.StartTid_ = Convert.ToDateTime(rdr["start_tid"]);
+
                         byte[] bytes = (byte[])rdr["raa_data"];
 
                         for (int i = 0; i < bytes.Length; i += 8)
                         {
                             ds.Data_.Add(BitConverter.ToDouble(bytes, i));
                         }
-                                              
+
 
                         if (rdr["interessepunkter"] != DBNull.Value)
                         {
@@ -259,6 +266,7 @@ namespace DB
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("" + ex);
+                conn.Close();
                 return null;
             }
         }
@@ -289,9 +297,5 @@ namespace DB
 
             conn.Close();
         }
-
-
-
-
     }
 }

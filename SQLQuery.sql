@@ -85,8 +85,25 @@
 --ALTER TABLE EKGDATA
 --ADD interessepunkter VARBINARY(MAX)
 
-SELECT * FROM EKGDATA
+--SELECT * FROM EKGDATA
 
 --SELECT * FROM db_owner.EKGMAALING
 
 --UPDATE db_owner.EKGDATA SET interessepunkter = @data 
+
+--DECLARE @searchString NVARCHAR(100)
+--SET @searchString = '%Hvis%'
+
+--SELECT * FROM EKGMAALING 
+--WHERE sfp_mt_kommentar LIKE @searchString 
+--OR sfp_anskommentar LIKE  @searchString
+--OR borger_cprnr LIKE @searchString
+--OR dato LIKE @searchString
+--OR sfp_ans_org LIKE @searchString
+--OR sfp_ansvrmedarbejnr LIKE @searchString
+--OR sfp_maaltagermedarbjnr LIKE @searchString
+
+SELECT * FROM EKGMAELING --Offentlig DB
+
+SELECT * FROM dbo.EKGDATA --Offentlig DB
+

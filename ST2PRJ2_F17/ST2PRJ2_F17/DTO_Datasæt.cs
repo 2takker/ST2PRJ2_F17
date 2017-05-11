@@ -29,9 +29,9 @@ namespace DTO
 
         public List<double> Data_ { get; set; }
 
-        public int SampleRateHz_ { get; set; }
+        public double SampleRateHz_ { get; set; }
 
-        public int IntervalSek_ { get; set; }
+        public long IntervalSek_ { get; set; }
 
         public string DataFormat_ { get; set; }
 
@@ -57,15 +57,19 @@ namespace DTO
             //Standard værdier
             Dato_ = DateTime.Now;
             StartTid_ = DateTime.Now.AddDays(-1);
-            BinEllerTxt_ = 'b';
+            BinEllerTxt_ = 'B';
             SampleRateHz_ = 500;
             AnsvarstagerOrg_ = "Gruppe 6";
             IntervalSek_ = 86400;
-            DataFormat_ = "byte array";
-            MåleformatType_ = "double";
+            DataFormat_ = "andet";
+            MåleformatType_ = "Double";
             AntalMålinger_ = 1;
             AnsvarstagerBrugerId_ = "NN";
-            MåltagerBrugerId_ = "NN";            
+            MåltagerBrugerId_ = "NN";
+            Pd_.CPRNummer_ = "1234567890";
+            Pd_.Fornavn_ = "N";
+            Pd_.Efternavn_ = "N";
+
         }
 
 
@@ -73,7 +77,7 @@ namespace DTO
         {
             string output = "";
 
-            foreach(string e in MåltagerKommentar_)
+            foreach (string e in MåltagerKommentar_)
             {
                 output += "" + e + "\r\n";
             }
@@ -93,10 +97,20 @@ namespace DTO
             return output;
         }
 
-        public string printDato()
+
+        public string printIP()
         {
-            return Dato_.Year + "-" + Dato_.Month + "-" + Dato_.Day + " " + Dato_.Hour
-                + ":" + Dato_.Minute + ":" + Dato_.Second;
+            string output = "";
+            if (Ip_.Count != 0)
+            {
+                output += "**Autogeneret kommentar**\r\n";
+                for (int i = 0; i < Ip_.Count; i++)
+                {
+                    output += "Interessepunkt " + (i + 1) + " ved: " + (Ip_[0] / 500) + " sekunder\r\n";
+                }
+                output += "*********************\r\n";
+            }
+            return output;
         }
 
     }
