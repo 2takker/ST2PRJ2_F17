@@ -37,11 +37,16 @@ namespace Præsentationslag
             fornavnTextBox.Text = datasæt_.Pd_.Fornavn_;
             efternavnTextBox.Text = datasæt_.Pd_.Efternavn_;
 
-            gammelKommentartextBox.Text = "Måltagers kommentar: \r\n" + datasæt_.printMåltagerKommentar()
-                + "\r\n\r\nTidligere kommentarer fra ansvarstager(e): \r\n" + datasæt_.printAnsvarstagerKommentar();
+            gammelkommentar();
             
             skrivTilGraf(0);
         }
+
+      private void gammelkommentar()
+      {
+         gammelKommentartextBox.Text = "Måltagers kommentar: \r\n" + datasæt_.printMåltagerKommentar()
+                + "\r\n\r\nTidligere kommentarer fra ansvarstager(e): \r\n" + datasæt_.printAnsvarstagerKommentar() + "\r\n";
+      }
 
         private bool checkForIP()
         {
@@ -139,7 +144,8 @@ namespace Præsentationslag
             datasæt_.AnsvarstagerKommentar_.Add(kommentarTextBox.Text);
             if (GennemseController.gemKommentar(datasæt_) == true)
             {
-                MessageBox.Show("Kommentar gemt");
+               kommentarTextBox.Clear();
+               gammelkommentar();
             }
         }
 
@@ -151,5 +157,18 @@ namespace Præsentationslag
         {
             Close();
         }
-    }
+
+      private void vis_måling_FormClosing(object sender, FormClosingEventArgs e)
+      {
+         frm.lukGennemseDataVindue();
+      }
+
+      private void GemAnalyseretDataKnap_Click(object sender, EventArgs e)
+      {
+         if (GennemseController.gemAnalyseretData(datasæt_) == true)
+         {
+            MessageBox.Show("Datasæt gemt");
+         }
+      }
+   }
 }

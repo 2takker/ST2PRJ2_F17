@@ -35,6 +35,7 @@ namespace Præsentationslag
         public void åbenLoginVindue()
         {
             Show();
+         loggedIn_ = false;
         }
 
         private void lukLoginVindue()

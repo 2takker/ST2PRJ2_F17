@@ -74,7 +74,7 @@ namespace DTO
 
             foreach(string e in MåltagerKommentar_)
             {
-                output += "" + e + "\n";
+                output += "" + e + "\r\n";
             }
 
             return output;
@@ -86,7 +86,7 @@ namespace DTO
 
             foreach (string e in AnsvarstagerKommentar_)
             {
-                output += "" + e + "\n";
+                output += "" + e + "\r\n";
             }
 
             return output;

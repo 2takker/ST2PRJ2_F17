@@ -169,5 +169,11 @@ namespace Logik
             lokalDB_.gemKommentar(ds);
             return true;
         }
+
+         public bool gemAnalyseretData(DTO_Datasæt ds)
+      {
+         lokalDB_.gemIP(ds);
+         return true;
+      }      
     }
 }
