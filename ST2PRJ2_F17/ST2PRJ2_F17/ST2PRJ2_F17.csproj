@@ -81,6 +81,7 @@
     <Compile Include="Log ind.Designer.cs">
       <DependentUpon>Log ind.cs</DependentUpon>
     </Compile>
+    <Compile Include="OffentligDB.cs" />
     <Compile Include="Opret ny patient.cs">
       <SubType>Form</SubType>
     </Compile>
