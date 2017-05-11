@@ -79,7 +79,7 @@ namespace Præsentationslag
 
             analyseretData.Series["EKG"].Points.Clear();
 
-            for (double i = (x * 500); i <= (start + 10) * 500; i++)
+            for (double i = (x * 500); i < (start + 10) * 500; i++)
             {
                 analyseretData.Series["EKG"].Points.AddXY(x + 0.002, datasæt_.Data_[Convert.ToInt32(i)]);
                 x += 0.002;

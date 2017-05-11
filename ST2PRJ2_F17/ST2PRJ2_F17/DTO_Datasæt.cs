@@ -43,6 +43,8 @@ namespace DTO
 
         public DateTime StartTid_ { get; set; }
 
+        public string SøgeResultat_ { get; set; }
+
         public DTO_Datasæt()
         {
             Ip_ = new List<double>();

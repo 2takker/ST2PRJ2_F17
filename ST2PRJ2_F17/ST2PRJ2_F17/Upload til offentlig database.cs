@@ -14,14 +14,14 @@ namespace Præsentationslag
 {
    public partial class upload_til_offentlig_database : Form
    {
-      private Upload_controller UploadController;
+      //private Upload_controller UploadController;
       private List<DTO_Datasæt> datasætListe;
       private bool anonym;
 
       public upload_til_offentlig_database()
       {
          InitializeComponent();
-         UploadController = new Upload_controller();
+         //UploadController = new Upload_controller();
          datasætListe = new List<DTO_Datasæt>();
       }
 
@@ -30,7 +30,7 @@ namespace Præsentationslag
          string cpr;
          cpr = CPRTextBox.Text;
 
-         datasætListe = UploadController.VisSøgning(cpr);
+         //datasætListe = UploadController.VisSøgning(cpr);
 
          if (datasætListe.Count != 0)
          {
@@ -47,7 +47,7 @@ namespace Præsentationslag
 
       private void uploadKnap_Click(object sender, EventArgs e)
       {
-         UploadController.indlæsValgtDatasæt(valgAfDatasætListBox.SelectedIndex,anonym);
+         //UploadController.indlæsValgtDatasæt(valgAfDatasætListBox.SelectedIndex,anonym);
       }
 
       public void åbenUploadVindue()

@@ -118,7 +118,12 @@ namespace Præsentationslag
                         {
                             dataListe_ = PreviewController.importerDatafil(myStream);
                             skrivTilGraf(0);
-                            tiSekFremKnap.Enabled = true;
+
+                            if (x >= (dataListe_.Count / 500))
+                            {
+                                tiSekFremKnap.Enabled = false;
+                            }
+
                             importerFilKnap.Enabled = false;
                         }
                     }
@@ -136,7 +141,7 @@ namespace Præsentationslag
             x = start;
             previewData.Series["EKG"].Points.Clear();
 
-            for (double i = (x * 500); i <= (start + 10) * 500; i++)
+            for (double i = (x * 500); i < (start + 10) * 500; i++)
             {
                 previewData.Series["EKG"].Points.AddXY(x + 0.002, dataListe_[Convert.ToInt32(i)]);
                 x += 0.002;

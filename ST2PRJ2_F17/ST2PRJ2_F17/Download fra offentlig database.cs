@@ -29,7 +29,7 @@ namespace Præsentationslag
          søgeord = SøgeTextBox.Text;
 
 
-         datasætListe = DownloadController.VisSøgning(søgeord);
+         datasætListe = DownloadController.visSøgning(søgeord);
 
          if (datasætListe.Count != 0)
          {
@@ -47,7 +47,8 @@ namespace Præsentationslag
 
       private void downloadKnap_Click(object sender, EventArgs e)
       {
-         DownloadController.indlæsValgtDatasæt(SøgeresultaterListBox.SelectedIndex);
+
+         //DownloadController.indlæsValgtDatasæt(SøgeresultaterListBox.SelectedIndex);
       }
 
       public void åbenDownloadVindue()
