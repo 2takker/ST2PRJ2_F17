@@ -88,3 +88,5 @@
 SELECT * FROM EKGDATA
 
 --SELECT * FROM db_owner.EKGMAALING
+
+--UPDATE db_owner.EKGDATA SET interessepunkter = @data 
