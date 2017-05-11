@@ -30,7 +30,8 @@ namespace Logik
         public DTO_Datasæt indlæsValgtDatasæt(int index)
         {
             datasæt_ = offentligDB_.hentDSFraOffDB(datasætListe_[index]);
-
+            lokalDB_.gemDatasæt2(datasæt_);
+            
             return datasæt_;
         }
     }
