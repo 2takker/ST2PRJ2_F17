@@ -89,6 +89,7 @@
          this.UdenPatientDataCheckBox.TabIndex = 8;
          this.UdenPatientDataCheckBox.Text = "Upload uden patientdata";
          this.UdenPatientDataCheckBox.UseVisualStyleBackColor = true;
+         this.UdenPatientDataCheckBox.CheckedChanged += new System.EventHandler(this.UdenPatientDataCheckBox_CheckedChanged);
          // 
          // upload_til_offentlig_database
          // 
