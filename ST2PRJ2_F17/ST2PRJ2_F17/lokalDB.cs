@@ -17,7 +17,7 @@ namespace DB
         private const string db = "F17ST2ITS2201500391";
         private DTO_Sundhedspersonale sp_;
 
-
+        //Default constructor
         public lokalDB()
         {
             conn = new SqlConnection("Data Source =i4dab.ase.au.dk; Initial Catalog=" + db +
@@ -29,6 +29,7 @@ namespace DB
         //Use-case 1
         //
 
+        //Validerer login, og sender brugerID tilbage i en DTO
         public DTO_Sundhedspersonale validerLogin(DTO_Sundhedspersonale sp)
         {
             cmd = new SqlCommand("SELECT * FROM Sundhedspersonale WHERE bruger_id ='" + sp.BrugerID_ + "'", conn);
@@ -57,6 +58,7 @@ namespace DB
         //Use-case 2
         //
 
+        //Fortæller om et cpr-nummer findes i lokal db
         public bool findCPR(string cpr)
         {
             cmd = new SqlCommand("SELECT * FROM PatientData WHERE CPR ='" + cpr + "'", conn);
@@ -82,6 +84,9 @@ namespace DB
             return false;
         }
 
+
+        //gemmer et valgt datasæt i databasen
+        //Bruges også til usecase 5
         public void gemDatasæt(DTO_Datasæt ds)
         {
             string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
@@ -116,6 +121,7 @@ namespace DB
             conn.Close();
         }
 
+
         //
         //Use-case 3
         //
@@ -139,8 +145,9 @@ namespace DB
             conn.Close();
         }
 
+
         //
-        //Use case 4
+        //Use-case 4
         //
 
         //Henter relevant data til visning, ud fra det søgte cpr
@@ -205,7 +212,7 @@ namespace DB
 
             rdr = cmd.ExecuteReader();
 
-            if(rdr.Read())
+            if (rdr.Read())
             {
                 ds.MåltagerKommentar_.Add(Convert.ToString(rdr["sfp_mt_kommentar"]));
                 ds.AnsvarstagerKommentar_.Add(Convert.ToString(rdr["sfp_anskommentar"]));
@@ -224,13 +231,20 @@ namespace DB
                 {
                     if ((long)rdr["ekgmaaleid"] == ds.EkgId_)
                     {
+                        ds.SampleRateHz_ = Convert.ToDouble(rdr["samplerate_hz"]);
+                        ds.IntervalSek_ = Convert.ToInt64(rdr["interval_sec"]);
+                        ds.DataFormat_ = (string)rdr["data_format"];
+                        ds.BinEllerTxt_ = Convert.ToChar(rdr["bin_eller_tekst"]);
+                        ds.MåleformatType_ = (string)rdr["maaleformat_type"];
+                        ds.StartTid_ = Convert.ToDateTime(rdr["start_tid"]);
+
                         byte[] bytes = (byte[])rdr["raa_data"];
 
                         for (int i = 0; i < bytes.Length; i += 8)
                         {
                             ds.Data_.Add(BitConverter.ToDouble(bytes, i));
                         }
-                                              
+
 
                         if (rdr["interessepunkter"] != DBNull.Value)
                         {
@@ -252,6 +266,7 @@ namespace DB
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("" + ex);
+                conn.Close();
                 return null;
             }
         }
@@ -282,11 +297,5 @@ namespace DB
 
             conn.Close();
         }
-
-
-        //
-        // Use case 5
-        //
-
     }
 }
