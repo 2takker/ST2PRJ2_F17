@@ -31,7 +31,7 @@ namespace DTO
 
         public double SampleRateHz_ { get; set; }
 
-        public long IntervalSek_ { get; set; }
+        private long intervalSek_;
 
         public string DataFormat_ { get; set; }
 
@@ -44,6 +44,15 @@ namespace DTO
         public DateTime StartTid_ { get; set; }
 
         public string SøgeResultat_ { get; set; }
+
+        public long IntervalSek_
+        {
+            get
+            {
+                return (Data_.Count / (int)SampleRateHz_);
+            }
+            set { }
+        }
 
         public DTO_Datasæt()
         {
@@ -62,14 +71,13 @@ namespace DTO
             AnsvarstagerOrg_ = "Gruppe 6";
             IntervalSek_ = 86400;
             DataFormat_ = "andet";
-            MåleformatType_ = "Double";
+            MåleformatType_ = "double";
             AntalMålinger_ = 1;
             AnsvarstagerBrugerId_ = "NN";
             MåltagerBrugerId_ = "NN";
             Pd_.CPRNummer_ = "1234567890";
             Pd_.Fornavn_ = "N";
             Pd_.Efternavn_ = "N";
-
         }
 
 

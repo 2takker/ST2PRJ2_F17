@@ -28,71 +28,78 @@
       /// </summary>
       private void InitializeComponent()
       {
-         this.SøgeTextBox = new System.Windows.Forms.TextBox();
-         this.søgeord = new System.Windows.Forms.Label();
-         this.søgKnap = new System.Windows.Forms.Button();
-         this.SøgeresultaterListBox = new System.Windows.Forms.ListBox();
-         this.downloadKnap = new System.Windows.Forms.Button();
-         this.SuspendLayout();
-         // 
-         // SøgeTextBox
-         // 
-         this.SøgeTextBox.Location = new System.Drawing.Point(24, 49);
-         this.SøgeTextBox.Name = "SøgeTextBox";
-         this.SøgeTextBox.Size = new System.Drawing.Size(100, 20);
-         this.SøgeTextBox.TabIndex = 0;
-         // 
-         // søgeord
-         // 
-         this.søgeord.AutoSize = true;
-         this.søgeord.Location = new System.Drawing.Point(24, 30);
-         this.søgeord.Name = "søgeord";
-         this.søgeord.Size = new System.Drawing.Size(47, 13);
-         this.søgeord.TabIndex = 1;
-         this.søgeord.Text = "Søgeord";
-         // 
-         // søgKnap
-         // 
-         this.søgKnap.Location = new System.Drawing.Point(130, 47);
-         this.søgKnap.Name = "søgKnap";
-         this.søgKnap.Size = new System.Drawing.Size(49, 23);
-         this.søgKnap.TabIndex = 2;
-         this.søgKnap.Text = "Søg";
-         this.søgKnap.UseVisualStyleBackColor = true;
-         this.søgKnap.Click += new System.EventHandler(this.søgKnap_Click);
-         // 
-         // SøgeresultaterListBox
-         // 
-         this.SøgeresultaterListBox.FormattingEnabled = true;
-         this.SøgeresultaterListBox.Location = new System.Drawing.Point(24, 111);
-         this.SøgeresultaterListBox.Name = "SøgeresultaterListBox";
-         this.SøgeresultaterListBox.Size = new System.Drawing.Size(155, 160);
-         this.SøgeresultaterListBox.TabIndex = 3;
-         // 
-         // downloadKnap
-         // 
-         this.downloadKnap.Location = new System.Drawing.Point(185, 248);
-         this.downloadKnap.Name = "downloadKnap";
-         this.downloadKnap.Size = new System.Drawing.Size(75, 23);
-         this.downloadKnap.TabIndex = 4;
-         this.downloadKnap.Text = "Download";
-         this.downloadKnap.UseVisualStyleBackColor = true;
-         this.downloadKnap.Click += new System.EventHandler(this.downloadKnap_Click);
-         // 
-         // Download_fra_offentlig_database
-         // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(377, 309);
-         this.Controls.Add(this.downloadKnap);
-         this.Controls.Add(this.SøgeresultaterListBox);
-         this.Controls.Add(this.søgKnap);
-         this.Controls.Add(this.søgeord);
-         this.Controls.Add(this.SøgeTextBox);
-         this.Name = "Download_fra_offentlig_database";
-         this.Text = "Download fra offentlig database";
-         this.ResumeLayout(false);
-         this.PerformLayout();
+            this.SøgeTextBox = new System.Windows.Forms.TextBox();
+            this.søgeord = new System.Windows.Forms.Label();
+            this.søgKnap = new System.Windows.Forms.Button();
+            this.SøgeresultaterListBox = new System.Windows.Forms.ListBox();
+            this.downloadKnap = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // SøgeTextBox
+            // 
+            this.SøgeTextBox.Location = new System.Drawing.Point(48, 94);
+            this.SøgeTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SøgeTextBox.Name = "SøgeTextBox";
+            this.SøgeTextBox.Size = new System.Drawing.Size(196, 31);
+            this.SøgeTextBox.TabIndex = 0;
+            // 
+            // søgeord
+            // 
+            this.søgeord.AutoSize = true;
+            this.søgeord.Location = new System.Drawing.Point(48, 58);
+            this.søgeord.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.søgeord.Name = "søgeord";
+            this.søgeord.Size = new System.Drawing.Size(93, 25);
+            this.søgeord.TabIndex = 1;
+            this.søgeord.Text = "Søgeord";
+            // 
+            // søgKnap
+            // 
+            this.søgKnap.Location = new System.Drawing.Point(260, 90);
+            this.søgKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.søgKnap.Name = "søgKnap";
+            this.søgKnap.Size = new System.Drawing.Size(98, 44);
+            this.søgKnap.TabIndex = 2;
+            this.søgKnap.Text = "Søg";
+            this.søgKnap.UseVisualStyleBackColor = true;
+            this.søgKnap.Click += new System.EventHandler(this.søgKnap_Click);
+            // 
+            // SøgeresultaterListBox
+            // 
+            this.SøgeresultaterListBox.FormattingEnabled = true;
+            this.SøgeresultaterListBox.ItemHeight = 25;
+            this.SøgeresultaterListBox.Location = new System.Drawing.Point(48, 213);
+            this.SøgeresultaterListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SøgeresultaterListBox.Name = "SøgeresultaterListBox";
+            this.SøgeresultaterListBox.Size = new System.Drawing.Size(626, 304);
+            this.SøgeresultaterListBox.TabIndex = 3;
+            // 
+            // downloadKnap
+            // 
+            this.downloadKnap.Location = new System.Drawing.Point(524, 529);
+            this.downloadKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.downloadKnap.Name = "downloadKnap";
+            this.downloadKnap.Size = new System.Drawing.Size(150, 44);
+            this.downloadKnap.TabIndex = 4;
+            this.downloadKnap.Text = "Download";
+            this.downloadKnap.UseVisualStyleBackColor = true;
+            this.downloadKnap.Click += new System.EventHandler(this.downloadKnap_Click);
+            // 
+            // Download_fra_offentlig_database
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(754, 594);
+            this.Controls.Add(this.downloadKnap);
+            this.Controls.Add(this.SøgeresultaterListBox);
+            this.Controls.Add(this.søgKnap);
+            this.Controls.Add(this.søgeord);
+            this.Controls.Add(this.SøgeTextBox);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Name = "Download_fra_offentlig_database";
+            this.Text = "Download fra offentlig database";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
       }
 

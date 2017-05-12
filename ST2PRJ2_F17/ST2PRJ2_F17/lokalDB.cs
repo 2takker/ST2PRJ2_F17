@@ -87,38 +87,49 @@ namespace DB
 
         //gemmer et valgt datasæt i databasen
         //Bruges også til usecase 5
-        public void gemDatasæt(DTO_Datasæt ds)
+        public bool gemDatasæt(DTO_Datasæt ds)
         {
-            string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
-                       "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
-                       + " OUTPUT INSERTED.ekgmaaleid"
-                       + " VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
-                           + ds.printMåltagerKommentar() + "','" + ds.AnsvarstagerBrugerId_ + "','"
-                           + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')";
+            try
+            {
+                string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
+                 "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
+                 + " OUTPUT INSERTED.ekgmaaleid"
+                 + " VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
+                     + ds.printMåltagerKommentar() + "','" + ds.AnsvarstagerBrugerId_ + "','"
+                     + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')";
 
-            cmd = new SqlCommand(sql, conn);
+                cmd = new SqlCommand(sql, conn);
 
-            conn.Open();
+                conn.Open();
 
-            long ekgMåleId = (long)cmd.ExecuteScalar();
+                long ekgMåleId = (long)cmd.ExecuteScalar();
 
-            conn.Close();
+                conn.Close();
 
-            sql = "INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
-                   "bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid)"
-                   + " VALUES(@data, " + ds.SampleRateHz_ + "," + ds.IntervalSek_ + ",'" + ds.DataFormat_ + "','"
-                       + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_ + "'),"
-                       + ekgMåleId + ")";
+                sql = "INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
+                       "bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid)"
+                       + " VALUES(@data, " + ds.SampleRateHz_ + "," + ds.IntervalSek_ + ",'" + ds.DataFormat_ + "','"
+                           + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_ + "'),"
+                           + ekgMåleId + ")";
 
-            cmd = new SqlCommand(sql, conn);
+                cmd = new SqlCommand(sql, conn);
 
-            conn.Open();
+                conn.Open();
 
-            cmd.Parameters.AddWithValue("@data", ds.Data_.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray());
+                cmd.Parameters.AddWithValue("@data", ds.Data_.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray());
 
-            cmd.ExecuteScalar();
+                cmd.ExecuteScalar();
 
-            conn.Close();
+                conn.Close();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                conn.Close();
+                System.Windows.Forms.MessageBox.Show("" + ex);
+                return false;
+            }
         }
 
 
@@ -183,14 +194,14 @@ namespace DB
             conn.Open();
             rdr = cmd.ExecuteReader();
 
-            if(rdr.Read())
+            if (rdr.Read())
             {
                 if (Convert.ToString(rdr["CPR"]) == ds.Pd_.CPRNummer_)
                 {
                     ds.Pd_.Fornavn_ = Convert.ToString(rdr["Fornavn"]);
                     ds.Pd_.Efternavn_ = Convert.ToString(rdr["Efternavn"]);
-                    
-                    foreach(DTO_Datasæt e in dsListe)
+
+                    foreach (DTO_Datasæt e in dsListe)
                     {
                         e.Pd_.Fornavn_ = ds.Pd_.Fornavn_;
                         e.Pd_.Efternavn_ = ds.Pd_.Efternavn_;
@@ -272,9 +283,9 @@ namespace DB
         }
 
         //Skriver kommentar for ansvarstager til søgt ekg id
-        public void gemKommentar(DTO_Datasæt  ds)
+        public void gemKommentar(DTO_Datasæt ds)
         {
-            cmd = new SqlCommand("UPDATE EKGMAALING SET sfp_anskommentar = '" 
+            cmd = new SqlCommand("UPDATE EKGMAALING SET sfp_anskommentar = '"
                 + ds.printAnsvarstagerKommentar() + "' WHERE ekgmaaleid = " + ds.EkgId_, conn);
 
             conn.Open();

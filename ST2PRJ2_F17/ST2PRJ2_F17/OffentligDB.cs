@@ -37,7 +37,7 @@ namespace DB
         {
             List<DTO_Datasæt> dsList = new List<DTO_Datasæt>();
 
-            string sql = "DECLARE @searchString NVARCHAR(100)" +
+            string sql = "DECLARE @searchString NVARCHAR(100) " +
                 "SET @searchString = '%" + søgeord + "%' " +
                 "SELECT * FROM EKGMAELING " +
                 "WHERE sfp_mt_kommentar LIKE @searchString " +
@@ -46,7 +46,9 @@ namespace DB
                 "OR dato LIKE @searchString " +
                 "OR sfp_ans_org LIKE @searchString " +
                 "OR sfp_ansvrmedarbjnr LIKE @searchString " +
-                "OR sfp_maaltagermedarbjnr LIKE @searchString ";
+                "OR sfp_maaltagermedarbjnr LIKE @searchString " +
+                "OR borger_fornavn LIKE @searchString " +
+                "OR borger_efternavn LIKE @searchString";
 
             cmd = new SqlCommand(sql, conn);
 
@@ -86,7 +88,12 @@ namespace DB
                     ds.Dato_ = Convert.ToDateTime(rdr["dato"]);
                     ds.AnsvarstagerOrg_ = (string)rdr["sfp_ans_org"];
                     ds.AnsvarstagerBrugerId_ = (string)rdr["sfp_ansvrmedarbjnr"];
-                    ds.MåltagerBrugerId_ = (string)rdr["sfp_maaltagermedarbjnr"];
+
+                    if(rdr["sfp_maaltagermedarbjnr"] != DBNull.Value)
+                    {
+                        ds.MåltagerBrugerId_ = (string)rdr["sfp_maaltagermedarbjnr"];
+                    }
+                    
 
                     ds.SøgeResultat_ = omskrivSøgeResultat(rdr, søgeord);
 
@@ -122,6 +129,16 @@ namespace DB
                 if (Convert.ToString(sqlRdr["borger_cprnr"]).Contains(søgOrd))
                 {
                     output += "Borgers CPR-nummer: " + sqlRdr["borger_cprnr"] + "\r\n";
+                }
+
+                if(Convert.ToString(sqlRdr["borger_fornavn"]).Contains(søgOrd))
+                {
+                    output += "Borgers fornavn: " + sqlRdr["borger_fornavn"] + "\r\n";
+                }
+
+                if(Convert.ToString(sqlRdr["borger_efternavn"]).Contains(søgOrd))
+                {
+                    output += "Borgers efternavn: " + sqlRdr["borger_efternavn"] + "\r\n";
                 }
 
                 if (Convert.ToString(sqlRdr["sfp_ans_org"]).Contains(søgOrd))
@@ -245,8 +262,7 @@ namespace DB
                 System.Windows.Forms.MessageBox.Show("" + ex);
                 return false;
             }
-
-
+            
             return true;
         }
     }

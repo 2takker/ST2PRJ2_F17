@@ -16,7 +16,6 @@ namespace Logik
         private DTO_PatientData dtoPD_;
         private List<double> ipListe_;
         private List<double> analyserDataListe_;
-        private int index_;
 
         public Gennemse_data_controller()
         {
@@ -67,8 +66,6 @@ namespace Logik
         
         public bool analyserValgtDatasæt(int index)
         {
-            index_ = index;           
-                
             dtoDatasæt_ = lokalDB_.hentDatasæt( dtoDatasætList_[index]);
 
             if (dtoDatasætList_[index].Ip_.Count == 0)

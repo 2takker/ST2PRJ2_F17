@@ -11,13 +11,13 @@ namespace Logik
     class Download_controller
     {
         private lokalDB lokalDB_;
-        private offentligDB offentligDB_;
+        private OffentligDB offentligDB_;
         private List<DTO_Datasæt> datasætListe_;
         private DTO_Datasæt datasæt_;
         public Download_controller()
         {
             lokalDB_ = new lokalDB();
-            offentligDB_ = new offentligDB();
+            offentligDB_ = new OffentligDB();
             datasætListe_ = new List<DTO_Datasæt>();
             datasæt_ = new DTO_Datasæt();
         }
@@ -27,12 +27,20 @@ namespace Logik
             return datasætListe_ = offentligDB_.søgIOffDB(søgeord);
         }
 
-        public DTO_Datasæt indlæsValgtDatasæt(int index)
+        public bool indlæsValgtDatasæt(int index)
         {
-            datasæt_ = offentligDB_.hentDSFraOffDB(datasætListe_[index]);
-            lokalDB_.gemDatasæt2(datasæt_);
+            try
+            {
+                datasæt_ = offentligDB_.downloadDataFraOffDB(datasætListe_[index]);
+                lokalDB_.gemDatasæt(datasæt_);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
             
-            return datasæt_;
         }
     }
 }

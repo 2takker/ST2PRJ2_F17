@@ -103,7 +103,11 @@
 --OR sfp_ansvrmedarbejnr LIKE @searchString
 --OR sfp_maaltagermedarbjnr LIKE @searchString
 
-SELECT * FROM EKGMAELING --Offentlig DB
+--SELECT * FROM EKGMAELING --Offentlig DB
 
-SELECT * FROM dbo.EKGDATA --Offentlig DB
+--SELECT * FROM dbo.EKGDATA --Offentlig DB
+
+SELECT * FROM db_owner.EKGMAALING
+
+SELECT * FROM db_owner.EKGDATA
 

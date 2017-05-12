@@ -47,8 +47,11 @@ namespace Præsentationslag
 
       private void downloadKnap_Click(object sender, EventArgs e)
       {
-
-         //DownloadController.indlæsValgtDatasæt(SøgeresultaterListBox.SelectedIndex);
+         if(DownloadController.indlæsValgtDatasæt(SøgeresultaterListBox.SelectedIndex))
+            {
+                MessageBox.Show("Datasæt downloaded");
+                lukDownloadVindue();
+            }
       }
 
       public void åbenDownloadVindue()

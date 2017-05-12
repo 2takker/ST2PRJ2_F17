@@ -68,7 +68,7 @@ namespace Præsentationslag
 
             if (checkForIP() && nextIp)
             {
-                x = (datasæt_.Ip_[count] / 500) - 4;
+                x = (datasæt_.Ip_[count] / (1/datasæt_.SampleRateHz_)) - 4;
                 start = x;
             }
             else
@@ -76,17 +76,28 @@ namespace Præsentationslag
                 x = start;
             }
 
-
             analyseretData.Series["EKG"].Points.Clear();
 
-            for (double i = (x * 500); i < (start + 10) * 500; i++)
+            for (double i = (x * datasæt_.SampleRateHz_); 
+                i < (start + 10) * datasæt_.SampleRateHz_ && i < datasæt_.Data_.Count; i++)
             {
-                analyseretData.Series["EKG"].Points.AddXY(x + 0.002, datasæt_.Data_[Convert.ToInt32(i)]);
-                x += 0.002;
-                x = Math.Round(x, 3);
+                analyseretData.Series["EKG"].Points.AddXY(x + (1/datasæt_.SampleRateHz_), datasæt_.Data_[Convert.ToInt32(i)]);
+                x += (1/datasæt_.SampleRateHz_);
+                x = Math.Round(x, 4);
             }
-            x -= 0.002;
-            x = Math.Round(x, 3);
+            x -= (1/datasæt_.SampleRateHz_);
+            x = Math.Round(x, 4);
+
+            if (x <= 10)
+            {
+                tiSekTilbageKnap.Enabled = false;
+            }
+
+            if (x >= (datasæt_.Data_.Count / datasæt_.SampleRateHz_)-500)
+            {
+                tiSekFremKnap.Enabled = false;
+            }
+
         }
 
         private void tiSekTilbageKnap_Click(object sender, EventArgs e)
@@ -106,7 +117,7 @@ namespace Præsentationslag
         private void tiSekFremKnap_Click(object sender, EventArgs e)
         {
             skrivTilGraf(x, false);
-            if (x >= (datasæt_.Data_.Count / 500))
+            if (x >= (datasæt_.Data_.Count /datasæt_.SampleRateHz_)-500)
             {
                 tiSekFremKnap.Enabled = false;
             }

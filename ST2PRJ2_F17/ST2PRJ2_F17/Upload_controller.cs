@@ -11,7 +11,7 @@ namespace Logik
     class Upload_controller
     {
         private lokalDB lokalDB_;
-        private offentligDB offentligDB_;
+        private OffentligDB offentligDB_;
         private List<DTO_Datasæt> datasætListe_;
         private DTO_Datasæt datasæt_;
 
@@ -19,7 +19,7 @@ namespace Logik
         public Upload_controller()
         {
             lokalDB_ = new lokalDB();
-            offentligDB_ = new offentligDB();
+            offentligDB_ = new OffentligDB();
             datasætListe_ = new List<DTO_Datasæt>();
             datasæt_ = new DTO_Datasæt();
         }
@@ -36,43 +36,33 @@ namespace Logik
         }
         public List<DTO_Datasæt> visSøgning(string cpr)
         {
-            if (lokalDB_.findDatasæt(cpr) != null)
+            if (lokalDB_.hentCPRData(cpr) != null)
             {
-                datasætListe_ = lokalDB_.findDatasæt(cpr);
+                datasætListe_ = lokalDB_.hentCPRData(cpr);
                 return datasætListe_;
             }
 
             else return null;
-            
+
         }
 
-        private void fjernPatientData(DTO_Datasæt ds)
-        {
-            ds.Pd_.CPRNummer_ = null;
-            ds.Pd_.Fornavn_ = null;
-            ds.Pd_.Efternavn_ = null;
-        }
+
         public bool indlæsValgtDatasæt(int index, bool anonym)
         {
-            //try
-            //{
+            try
+            {
                 datasæt_ = lokalDB_.hentDatasæt(datasætListe_[index]);
-            
-
-
-                if (anonym == true)
-                {
-                    fjernPatientData(datasæt_);
-                }
-
-                offentligDB_.gemDatasæt(datasæt_);
+                offentligDB_.gemDatasæt(datasæt_, anonym);
 
                 return true;
             }
-            //catch (Exception ex)
-            //{
-            //    return false;
-            //}
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("" + ex);
+                return false;
+            }
         }
+
     }
 }
+
