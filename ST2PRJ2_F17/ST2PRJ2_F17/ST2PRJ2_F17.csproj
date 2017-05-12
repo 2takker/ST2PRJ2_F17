@@ -106,6 +106,7 @@
     <Compile Include="Upload til offentlig database.Designer.cs">
       <DependentUpon>Upload til offentlig database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Upload_controller.cs" />
     <Compile Include="Vis måling.cs">
       <SubType>Form</SubType>
     </Compile>
