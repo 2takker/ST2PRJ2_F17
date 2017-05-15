@@ -32,6 +32,9 @@ namespace Præsentationslag
 
             tiSekFremKnap.Enabled = false;
             tiSekTilbageKnap.Enabled = false;
+            genKnap.Enabled = false;
+            kasserKnap.Enabled = false;
+            gemKommentar.Enabled = false;
         }
 
         private void genKnap_Click(object sender, EventArgs e)
@@ -119,12 +122,16 @@ namespace Præsentationslag
                             dataListe_ = PreviewController.importerDatafil(myStream);
                             skrivTilGraf(0);
 
-                            if (x >= (dataListe_.Count / 500))
+                            if (x < (dataListe_.Count / 500))
                             {
-                                tiSekFremKnap.Enabled = false;
+                                tiSekFremKnap.Enabled = true;
                             }
 
+
                             importerFilKnap.Enabled = false;
+                            genKnap.Enabled = true;
+                            kasserKnap.Enabled = true;
+                            gemKommentar.Enabled = true;
                         }
                     }
                 }
@@ -147,8 +154,8 @@ namespace Præsentationslag
                 x += 0.002;
                 x = Math.Round(x, 3);
             }
-            x -= 0.002;
-            x = Math.Round(x, 3);
+            //x -= 0.002;
+            //x = Math.Round(x, 3);
         }
 
 
@@ -160,6 +167,7 @@ namespace Præsentationslag
         {
             Close();
         }
+
     }
 
 }

@@ -111,3 +111,6 @@ SELECT * FROM db_owner.EKGMAALING
 
 SELECT * FROM db_owner.EKGDATA
 
+--UPDATE patientdata SET Fornavn = 'N', Efternavn = 'N' WHERE CPR = '1234567890'
+
+--SELECT * FROM patientdata

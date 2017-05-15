@@ -14,7 +14,7 @@ namespace Præsentationslag
     {
         log_ind loginvindue_;
 
-        public string brugerID_ { get; set; }
+        public string BrugerID_ { get; set; }
 
         public Hjemmeskærm()
         {
@@ -31,7 +31,7 @@ namespace Præsentationslag
             Enabled = !lås;
          if (!lås)
          {
-            LoggetIndSomtextBox.Text = brugerID_;
+            LoggetIndSomtextBox.Text = BrugerID_;
          }
       }
 
@@ -43,13 +43,13 @@ namespace Præsentationslag
 
         private void previewKnap_Click(object sender, EventArgs e)
         {
-            preview previewVindue = new preview(brugerID_);
+            preview previewVindue = new preview(BrugerID_);
             previewVindue.åbenPreviewVindue();
         }
 
         private void GennemseDataKnap_Click(object sender, EventArgs e)
         {
-            gennemse_data gennemseData = new gennemse_data();
+            gennemse_data gennemseData = new gennemse_data(BrugerID_);
             gennemseData.åbenGennemseDataVindue();
         }
 

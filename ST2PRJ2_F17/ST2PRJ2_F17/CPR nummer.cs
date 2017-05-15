@@ -38,20 +38,28 @@ namespace Præsentationslag
                 CPRTextBox.Clear();
             }
             else
-            {
-                if (PreviewController.indlæsCPR(cpr) == true)
+            {                
+                switch (PreviewController.indlæsCPR(cpr))
                 {
-
-                    MessageBox.Show("Datasæt gemt");
-                    lukCPRVindue();
-                    frm.lukPreviewVindue();
+                    case 0:
+                        {
+                            MessageBox.Show("Datasæt gemt");
+                            lukCPRVindue();
+                            frm.lukPreviewVindue();
+                            break;
+                        }
+                    case 1:
+                        {
+                            MessageBox.Show("Datasæt ikke gemt");
+                            break;
+                        }
+                    case 2:
+                        {
+                            OpretPatientVindue = new opret_ny_patient();
+                            OpretPatientVindue.åbenOpretNyPatientVindue();
+                            break;
+                        }
                 }
-                else
-                {
-                    OpretPatientVindue = new opret_ny_patient();
-                    OpretPatientVindue.åbenOpretNyPatientVindue();
-                }
-
             }
         }
 
@@ -68,6 +76,14 @@ namespace Præsentationslag
         public void lukCPRVindue()
         {
             Close();
+        }
+
+        private void CPRTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter))
+            {
+                gemKnap.PerformClick();
+            }
         }
     }
 }

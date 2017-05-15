@@ -14,16 +14,17 @@ namespace Logik
         private DTO_Datasæt dtoDatasæt_;
         private List<DTO_Datasæt> dtoDatasætList_;
         private DTO_PatientData dtoPD_;
-        private List<double> ipListe_;
-        private List<double> analyserDataListe_;
+        private List<double> ipListe_; 
+        private string brugerId_;
 
-        public Gennemse_data_controller()
+        public Gennemse_data_controller(string brugerId)
         {
             lokalDB_ = new lokalDB();
             dtoDatasæt_ = new DTO_Datasæt();
             dtoDatasætList_ = new List<DTO_Datasæt>();
             dtoPD_ = new DTO_PatientData();
             ipListe_ = new List<double>();
+            brugerId_ = brugerId;
         }
 
         public bool validerCPR(string cpr)
@@ -63,18 +64,18 @@ namespace Logik
             return dtoDatasætList_ = lokalDB_.hentCPRData(cpr);
         }
 
-        
+
         public bool analyserValgtDatasæt(int index)
         {
-            dtoDatasæt_ = lokalDB_.hentDatasæt( dtoDatasætList_[index]);
+            dtoDatasæt_ = lokalDB_.hentDatasæt(dtoDatasætList_[index]);
 
             if (dtoDatasætList_[index].Ip_.Count == 0)
             {
-                dtoDatasæt_.Ip_ = findRR(dtoDatasæt_.Data_);                
+                dtoDatasæt_.Ip_ = findRR(dtoDatasæt_.Data_);
             }
             else
             {
-                dtoDatasæt_.Ip_ = dtoDatasætList_[index].Ip_;                
+                dtoDatasæt_.Ip_ = dtoDatasætList_[index].Ip_;
             }
 
             return true;
@@ -163,14 +164,24 @@ namespace Logik
 
         public bool gemKommentar(DTO_Datasæt ds)
         {
+            ds.AnsvarstagerBrugerId_ = brugerId_;
             lokalDB_.gemKommentar(ds);
             return true;
         }
 
-         public bool gemAnalyseretData(DTO_Datasæt ds)
-      {
-         lokalDB_.gemIP(ds);
-         return true;
-      }      
+        public bool gemAnalyseretData(DTO_Datasæt ds)
+        {
+            try
+            {
+                lokalDB_.gemIP(ds);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+            
+        }
     }
 }

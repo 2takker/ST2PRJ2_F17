@@ -94,7 +94,7 @@ namespace DB
                 string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
                  "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
                  + " OUTPUT INSERTED.ekgmaaleid"
-                 + " VALUES(CONVERT(DATETIME,'" + ds.Dato_ + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
+                 + " VALUES(CONVERT(DATETIME,'" + ds.Dato_.ToString("yyyy-MM-dd HH:mm:ss") + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
                      + ds.printMåltagerKommentar() + "','" + ds.AnsvarstagerBrugerId_ + "','"
                      + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')";
 
@@ -109,7 +109,7 @@ namespace DB
                 sql = "INSERT INTO EKGDATA(raa_data, samplerate_hz, interval_sec, data_format, " +
                        "bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid)"
                        + " VALUES(@data, " + ds.SampleRateHz_ + "," + ds.IntervalSek_ + ",'" + ds.DataFormat_ + "','"
-                           + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_ + "'),"
+                           + ds.BinEllerTxt_ + "','" + ds.MåleformatType_ + "', CONVERT(DATETIME,'" + ds.StartTid_.ToString("yyy-MM-dd HH:mm:ss") + "'),"
                            + ekgMåleId + ")";
 
                 cmd = new SqlCommand(sql, conn);
@@ -285,12 +285,24 @@ namespace DB
         //Skriver kommentar for ansvarstager til søgt ekg id
         public void gemKommentar(DTO_Datasæt ds)
         {
-            cmd = new SqlCommand("UPDATE EKGMAALING SET sfp_anskommentar = '"
-                + ds.printAnsvarstagerKommentar() + "' WHERE ekgmaaleid = " + ds.EkgId_, conn);
+            try
+            {
+                string sql = "UPDATE EKGMAALING SET sfp_anskommentar = '"
+                + ds.printAnsvarstagerKommentar() + "', sfp_ansvrmedarbejnr = '"
+                + ds.AnsvarstagerBrugerId_ + "'  WHERE ekgmaaleid = " + ds.EkgId_;
 
-            conn.Open();
-            cmd.ExecuteScalar();
-            conn.Close();
+                cmd = new SqlCommand(sql, conn);
+
+                conn.Open();
+                cmd.ExecuteScalar();
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                conn.Close();
+                System.Windows.Forms.MessageBox.Show("" + ex);
+            }
+            
         }
 
         //Gemmer fundne interessepunkter til db

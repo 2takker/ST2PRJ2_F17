@@ -18,27 +18,30 @@ namespace Præsentationslag
         private Gennemse_data_controller GennemseController;
         private List<DTO_Datasæt> datasætListe;
 
-        public gennemse_data()
+        public gennemse_data(string brugerId)
         {
             InitializeComponent();
-            GennemseController = new Gennemse_data_controller();
-            
+            GennemseController = new Gennemse_data_controller(brugerId);
+
         }
 
         private void indlæsCPRKnap_Click(object sender, EventArgs e)
         {
-            
-            string cpr = CPRTextBox.Text;
 
-            if (GennemseController.validerCPR(cpr) == false)
+            string cpr = CPRTextBox.Text;
+            datasætListBox.Items.Clear();
+
+            if (GennemseController.validerCPR(cpr) == false && cpr != "1234567890")
             {
                 MessageBox.Show("CPR - nummeret er ugyldigt");
                 CPRTextBox.Clear();
-                
             }
-
-            if (GennemseController.indlæsCPR(cpr) == true)
+            else if (GennemseController.indlæsCPR(cpr) == true)
             {
+                if (cpr == "1234567890")
+                {
+                    MessageBox.Show("Advarsel: Dette er CPR-nummer er gældende for alle anonyme patienter");
+                }
 
                 if (GennemseController.visPatientData(cpr) == null)
                 {
@@ -57,7 +60,12 @@ namespace Præsentationslag
                     }
                 }
             }
+
             
+
+            
+
+
         }
 
         private void analyserDataKnap_Click(object sender, EventArgs e)

@@ -21,6 +21,7 @@ namespace Præsentationslag
         private double ip;
         private int count;
         private DTO_Datasæt datasæt_;
+        private double dataCountCorr;
 
         public vis_måling(gennemse_data frm, Gennemse_data_controller GennemseController)
         {
@@ -29,7 +30,8 @@ namespace Præsentationslag
             this.GennemseController = GennemseController;
             ipliste = new List<double>();
             count = 0;
-            ipTilbageKnap.Enabled = false;            
+            ipTilbageKnap.Enabled = false;
+            analyseretData.Annotations["IP"].Visible = false;
 
             datasæt_ = GennemseController.hentAnalyseretDatasæt();
 
@@ -38,6 +40,8 @@ namespace Præsentationslag
             efternavnTextBox.Text = datasæt_.Pd_.Efternavn_;
 
             gammelkommentar();
+
+            dataCountCorr = ((datasæt_.Data_.Count)  - (datasæt_.Data_.Count % datasæt_.SampleRateHz_))/datasæt_.SampleRateHz_;
             
             skrivTilGraf(0, true);
         }
@@ -54,6 +58,8 @@ namespace Præsentationslag
             {
                 ipFremKnap.Enabled = false;
                 labelNoIP.Visible = true;
+                GemAnalyseretDataKnap.Enabled = false;
+
                 return false;
             }
             else
@@ -68,8 +74,22 @@ namespace Præsentationslag
 
             if (checkForIP() && nextIp)
             {
-                x = (datasæt_.Ip_[count] / (1/datasæt_.SampleRateHz_)) - 4;
+                double preCorrX = (datasæt_.Ip_[count] / datasæt_.SampleRateHz_);
+                double corr = preCorrX % 10;
+                analyseretData.Annotations["IP"].X = preCorrX+1;
+                analyseretData.Annotations["IP"].Visible = true;
+                x = preCorrX - corr;
                 start = x;
+
+                if (count == 0)
+                {
+                    ipTilbageKnap.Enabled = false;
+                }
+
+                if (count == datasæt_.Ip_.Count - 1)
+                {
+                    ipFremKnap.Enabled = false;
+                }
             }
             else
             {
@@ -85,15 +105,13 @@ namespace Præsentationslag
                 x += (1/datasæt_.SampleRateHz_);
                 x = Math.Round(x, 4);
             }
-            x -= (1/datasæt_.SampleRateHz_);
-            x = Math.Round(x, 4);
 
             if (x <= 10)
             {
                 tiSekTilbageKnap.Enabled = false;
             }
 
-            if (x >= (datasæt_.Data_.Count / datasæt_.SampleRateHz_)-500)
+            if (x >= dataCountCorr)
             {
                 tiSekFremKnap.Enabled = false;
             }
@@ -102,54 +120,40 @@ namespace Præsentationslag
 
         private void tiSekTilbageKnap_Click(object sender, EventArgs e)
         {
+            analyseretData.Annotations["IP"].Visible = false;
             if (x != 0)
             {
                 x = x - 20;
                 skrivTilGraf(x, false);
-                if (x <= 10)
-                {
-                    tiSekTilbageKnap.Enabled = false;
-                }
+
                 tiSekFremKnap.Enabled = true;
             }
         }
 
         private void tiSekFremKnap_Click(object sender, EventArgs e)
         {
+            analyseretData.Annotations["IP"].Visible = false;
             skrivTilGraf(x, false);
-            if (x >= (datasæt_.Data_.Count /datasæt_.SampleRateHz_)-500)
-            {
-                tiSekFremKnap.Enabled = false;
-            }
+            
             tiSekTilbageKnap.Enabled = true;
         }
 
         private void ipTilbageKnap_Click(object sender, EventArgs e)
         {
             count--;
-            ip = (datasæt_.Ip_[count] / 500) - 4;
+            ip = (datasæt_.Ip_[count] / datasæt_.SampleRateHz_);
             skrivTilGraf(ip,true);
 
-            ipFremKnap.Enabled = true;
-
-            if (count == 0)
-            {
-                ipTilbageKnap.Enabled = false;
-            }
+            ipFremKnap.Enabled = true;            
         }
 
         private void ipFremKnap_Click(object sender, EventArgs e)
         {
             count++;
-            ip = (datasæt_.Ip_[count] / 500) - 4;
+            ip = (datasæt_.Ip_[count] / datasæt_.SampleRateHz_);
             skrivTilGraf(ip,true);
 
-            ipTilbageKnap.Enabled = true;
-
-            if (count == datasæt_.Ip_.Count -1)
-            {
-                ipFremKnap.Enabled = false;
-            }
+            ipTilbageKnap.Enabled = true;            
         }
 
         private void gemKommentarKnap_Click(object sender, EventArgs e)
