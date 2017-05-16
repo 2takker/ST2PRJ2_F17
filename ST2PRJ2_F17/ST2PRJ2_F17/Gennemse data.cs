@@ -42,13 +42,6 @@ namespace Præsentationslag
                 {
                     MessageBox.Show("Advarsel: Dette er CPR-nummer er gældende for alle anonyme patienter");
                 }
-
-                if (GennemseController.visPatientData(cpr) == null)
-                {
-                    datasætListBox.Text = "Der findes ingen datasæt til pågældende patient";
-                }
-                else
-                {
                     datasætListe = GennemseController.visPatientData(cpr);
 
                     fornavnTextBox.Text = datasætListe[0].Pd_.Fornavn_;
@@ -57,9 +50,13 @@ namespace Præsentationslag
                     foreach (DTO_Datasæt ds in datasætListe)
                     {
                         datasætListBox.Items.Add(Convert.ToString(ds.Dato_));
-                    }
-                }
+                    }                
             }
+            else
+            {
+                MessageBox.Show("Der findes ingen datasæt til pågældende patient");                
+            }
+            
 
             
 

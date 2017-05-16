@@ -33,10 +33,11 @@ namespace Præsentationslag
             this.Location = new Point((screen.Width - w) / 2, (screen.Height - h) / 2);
             this.Size = new Size(w, h);
 
-            analyseretData.Width = w - 150;
+            analyseretData.Width = w - 10;
             analyseretData.Height = w / 8;
 
-            GemAnalyseretDataKnap.Location = new Point(w-150,44);
+            GemAnalyseretDataKnap.Location = new Point(w - 30 - GemAnalyseretDataKnap.Width-GemAnalyseretDataKnap.Margin.Right, 
+                GemAnalyseretDataKnap.Height);
 
             this.frm = frm;
             this.GennemseController = GennemseController;
