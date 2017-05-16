@@ -35,7 +35,7 @@ namespace Logik
 
                     //dataListe_.Add(double.Parse((values[2]), System.Globalization.CultureInfo.InvariantCulture)); //Christiane                    
 
-                    dataListe_.Add(double.Parse((values[1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke
+                    dataListe_.Add(double.Parse((values[values.Length-1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke
                 }
                 dtoDatasæt_.Data_ = dataListe_;
 

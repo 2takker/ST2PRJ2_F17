@@ -28,9 +28,9 @@
       /// </summary>
       private void InitializeComponent()
       {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.genKnap = new System.Windows.Forms.Button();
             this.kasserKnap = new System.Windows.Forms.Button();
             this.previewData = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -46,9 +46,10 @@
             // 
             // genKnap
             // 
-            this.genKnap.Location = new System.Drawing.Point(24, 64);
+            this.genKnap.Location = new System.Drawing.Point(48, 128);
+            this.genKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.genKnap.Name = "genKnap";
-            this.genKnap.Size = new System.Drawing.Size(75, 23);
+            this.genKnap.Size = new System.Drawing.Size(150, 46);
             this.genKnap.TabIndex = 0;
             this.genKnap.Text = "Gem";
             this.genKnap.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // 
             // kasserKnap
             // 
-            this.kasserKnap.Location = new System.Drawing.Point(24, 102);
+            this.kasserKnap.Location = new System.Drawing.Point(48, 204);
+            this.kasserKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.kasserKnap.Name = "kasserKnap";
-            this.kasserKnap.Size = new System.Drawing.Size(75, 23);
+            this.kasserKnap.Size = new System.Drawing.Size(150, 46);
             this.kasserKnap.TabIndex = 1;
             this.kasserKnap.Text = "Kassér";
             this.kasserKnap.UseVisualStyleBackColor = true;
@@ -67,44 +69,46 @@
             // previewData
             // 
             this.previewData.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.AxisX.MajorGrid.Interval = 0.2D;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisX.MajorTickMark.Interval = 1D;
-            chartArea1.AxisX.MinorGrid.Enabled = true;
-            chartArea1.AxisX.MinorGrid.Interval = 0.04D;
-            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisX.Title = "s";
-            chartArea1.AxisY.MajorGrid.Interval = 0.5D;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisY.MajorTickMark.Interval = 0.5D;
-            chartArea1.AxisY.MinorGrid.Enabled = true;
-            chartArea1.AxisY.MinorGrid.Interval = 0.1D;
-            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisY.Title = "mV";
-            chartArea1.BackColor = System.Drawing.Color.White;
-            chartArea1.Name = "ChartArea1";
-            this.previewData.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.previewData.Legends.Add(legend1);
-            this.previewData.Location = new System.Drawing.Point(125, 24);
+            chartArea6.AxisX.MajorGrid.Interval = 0.2D;
+            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea6.AxisX.MajorTickMark.Interval = 1D;
+            chartArea6.AxisX.MinorGrid.Enabled = true;
+            chartArea6.AxisX.MinorGrid.Interval = 0.04D;
+            chartArea6.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea6.AxisX.Title = "s";
+            chartArea6.AxisY.MajorGrid.Interval = 0.5D;
+            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea6.AxisY.MajorTickMark.Interval = 0.5D;
+            chartArea6.AxisY.MinorGrid.Enabled = true;
+            chartArea6.AxisY.MinorGrid.Interval = 0.1D;
+            chartArea6.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea6.AxisY.Title = "mV";
+            chartArea6.BackColor = System.Drawing.Color.White;
+            chartArea6.Name = "ChartArea1";
+            this.previewData.ChartAreas.Add(chartArea6);
+            legend6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend6.Enabled = false;
+            legend6.Name = "Legend1";
+            this.previewData.Legends.Add(legend6);
+            this.previewData.Location = new System.Drawing.Point(250, 48);
+            this.previewData.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.previewData.Name = "previewData";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Color = System.Drawing.Color.Red;
-            series1.Legend = "Legend1";
-            series1.Name = "EKG";
-            this.previewData.Series.Add(series1);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.Color = System.Drawing.Color.Red;
+            series6.Legend = "Legend1";
+            series6.Name = "EKG";
+            this.previewData.Series.Add(series6);
             this.previewData.Size = new System.Drawing.Size(1400, 175);
             this.previewData.TabIndex = 2;
             this.previewData.Text = "previewData";
             // 
             // tiSekTilbageKnap
             // 
-            this.tiSekTilbageKnap.Location = new System.Drawing.Point(1433, 274);
+            this.tiSekTilbageKnap.Location = new System.Drawing.Point(2866, 548);
+            this.tiSekTilbageKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tiSekTilbageKnap.Name = "tiSekTilbageKnap";
-            this.tiSekTilbageKnap.Size = new System.Drawing.Size(31, 23);
+            this.tiSekTilbageKnap.Size = new System.Drawing.Size(62, 46);
             this.tiSekTilbageKnap.TabIndex = 3;
             this.tiSekTilbageKnap.Text = "<";
             this.tiSekTilbageKnap.UseVisualStyleBackColor = true;
@@ -112,9 +116,10 @@
             // 
             // tiSekFremKnap
             // 
-            this.tiSekFremKnap.Location = new System.Drawing.Point(1470, 274);
+            this.tiSekFremKnap.Location = new System.Drawing.Point(2940, 548);
+            this.tiSekFremKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tiSekFremKnap.Name = "tiSekFremKnap";
-            this.tiSekFremKnap.Size = new System.Drawing.Size(31, 23);
+            this.tiSekFremKnap.Size = new System.Drawing.Size(62, 46);
             this.tiSekFremKnap.TabIndex = 4;
             this.tiSekFremKnap.Text = ">";
             this.tiSekFremKnap.UseVisualStyleBackColor = true;
@@ -123,34 +128,38 @@
             // fremogtilbage
             // 
             this.fremogtilbage.AutoSize = true;
-            this.fremogtilbage.Location = new System.Drawing.Point(1400, 300);
+            this.fremogtilbage.Location = new System.Drawing.Point(2800, 600);
+            this.fremogtilbage.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.fremogtilbage.Name = "fremogtilbage";
-            this.fremogtilbage.Size = new System.Drawing.Size(125, 13);
+            this.fremogtilbage.Size = new System.Drawing.Size(249, 25);
             this.fremogtilbage.TabIndex = 5;
             this.fremogtilbage.Text = "10 sekunder frem/tilbage";
             // 
             // kommentarTextBox
             // 
-            this.kommentarTextBox.Location = new System.Drawing.Point(122, 221);
+            this.kommentarTextBox.Location = new System.Drawing.Point(43, 329);
+            this.kommentarTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.kommentarTextBox.Multiline = true;
             this.kommentarTextBox.Name = "kommentarTextBox";
-            this.kommentarTextBox.Size = new System.Drawing.Size(266, 68);
+            this.kommentarTextBox.Size = new System.Drawing.Size(934, 132);
             this.kommentarTextBox.TabIndex = 6;
             // 
             // kommentar
             // 
             this.kommentar.AutoSize = true;
-            this.kommentar.Location = new System.Drawing.Point(122, 202);
+            this.kommentar.Location = new System.Drawing.Point(43, 291);
+            this.kommentar.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.kommentar.Name = "kommentar";
-            this.kommentar.Size = new System.Drawing.Size(60, 13);
+            this.kommentar.Size = new System.Drawing.Size(121, 25);
             this.kommentar.TabIndex = 7;
             this.kommentar.Text = "Kommentar";
             // 
             // gemKommentar
             // 
-            this.gemKommentar.Location = new System.Drawing.Point(286, 295);
+            this.gemKommentar.Location = new System.Drawing.Point(773, 473);
+            this.gemKommentar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.gemKommentar.Name = "gemKommentar";
-            this.gemKommentar.Size = new System.Drawing.Size(102, 23);
+            this.gemKommentar.Size = new System.Drawing.Size(204, 46);
             this.gemKommentar.TabIndex = 8;
             this.gemKommentar.Text = "Gem kommentar";
             this.gemKommentar.UseVisualStyleBackColor = true;
@@ -158,9 +167,10 @@
             // 
             // importerFilKnap
             // 
-            this.importerFilKnap.Location = new System.Drawing.Point(24, 24);
+            this.importerFilKnap.Location = new System.Drawing.Point(48, 48);
+            this.importerFilKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.importerFilKnap.Name = "importerFilKnap";
-            this.importerFilKnap.Size = new System.Drawing.Size(75, 23);
+            this.importerFilKnap.Size = new System.Drawing.Size(150, 46);
             this.importerFilKnap.TabIndex = 9;
             this.importerFilKnap.Text = "Importer fil";
             this.importerFilKnap.UseVisualStyleBackColor = true;
@@ -168,10 +178,10 @@
             // 
             // preview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1584, 361);
+            this.ClientSize = new System.Drawing.Size(1720, 553);
             this.Controls.Add(this.importerFilKnap);
             this.Controls.Add(this.gemKommentar);
             this.Controls.Add(this.kommentar);
@@ -182,9 +192,9 @@
             this.Controls.Add(this.previewData);
             this.Controls.Add(this.kasserKnap);
             this.Controls.Add(this.genKnap);
-            this.MaximumSize = new System.Drawing.Size(1600, 400);
-            this.MinimumSize = new System.Drawing.Size(1600, 400);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "preview";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Preview";
             ((System.ComponentModel.ISupportInitialize)(this.previewData)).EndInit();
             this.ResumeLayout(false);

@@ -26,6 +26,18 @@ namespace Præsentationslag
         public vis_måling(gennemse_data frm, Gennemse_data_controller GennemseController)
         {
             InitializeComponent();
+
+            Rectangle screen = Screen.PrimaryScreen.WorkingArea;
+            int w = Width >= screen.Width ? screen.Width : (screen.Width + Width) / 2;
+            int h = Height >= screen.Height ? screen.Height : (screen.Height + Height) / 2;
+            this.Location = new Point((screen.Width - w) / 2, (screen.Height - h) / 2);
+            this.Size = new Size(w, h);
+
+            analyseretData.Width = w - 150;
+            analyseretData.Height = w / 8;
+
+            GemAnalyseretDataKnap.Location = new Point(w-150,44);
+
             this.frm = frm;
             this.GennemseController = GennemseController;
             ipliste = new List<double>();
