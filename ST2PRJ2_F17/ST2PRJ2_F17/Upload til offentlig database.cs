@@ -48,7 +48,11 @@ namespace Præsentationslag
 
         private void uploadKnap_Click(object sender, EventArgs e)
         {
-            UploadController.indlæsValgtDatasæt(valgAfDatasætListBox.SelectedIndex, anonym);
+            if(UploadController.indlæsValgtDatasæt(valgAfDatasætListBox.SelectedIndex, anonym))
+            {
+                MessageBox.Show("Datasæt uploaded");
+            }
+
         }
 
         public void åbenUploadVindue()
