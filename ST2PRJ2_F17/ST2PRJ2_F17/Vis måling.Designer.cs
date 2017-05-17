@@ -28,10 +28,10 @@
       /// </summary>
       private void InitializeComponent()
       {
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation3 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.efternavnTextBox = new System.Windows.Forms.TextBox();
             this.fornavnTextBox = new System.Windows.Forms.TextBox();
             this.CPRTextBox = new System.Windows.Forms.TextBox();
@@ -50,6 +50,8 @@
             this.labelNoIP = new System.Windows.Forms.Label();
             this.gammelKommentartextBox = new System.Windows.Forms.TextBox();
             this.GemAnalyseretDataKnap = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.analyseretData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,54 +108,62 @@
             // 
             // analyseretData
             // 
-            lineAnnotation3.AxisXName = "ChartArea1\\rX";
-            lineAnnotation3.Height = -10D;
-            lineAnnotation3.Name = "IP";
-            lineAnnotation3.StartCap = System.Windows.Forms.DataVisualization.Charting.LineAnchorCapStyle.Arrow;
-            lineAnnotation3.ToolTip = "Interessepunkt";
-            lineAnnotation3.Width = 2D;
-            lineAnnotation3.X = 3D;
-            lineAnnotation3.Y = 1.5D;
-            lineAnnotation3.YAxisName = "ChartArea1\\rY";
-            this.analyseretData.Annotations.Add(lineAnnotation3);
+            lineAnnotation1.AxisXName = "ChartArea1\\rX";
+            lineAnnotation1.Height = -10D;
+            lineAnnotation1.Name = "IP";
+            lineAnnotation1.StartCap = System.Windows.Forms.DataVisualization.Charting.LineAnchorCapStyle.Arrow;
+            lineAnnotation1.ToolTip = "Interessepunkt";
+            lineAnnotation1.Width = 2D;
+            lineAnnotation1.X = 3D;
+            lineAnnotation1.Y = 1.5D;
+            lineAnnotation1.YAxisName = "ChartArea1\\rY";
+            this.analyseretData.Annotations.Add(lineAnnotation1);
             this.analyseretData.BackColor = System.Drawing.SystemColors.Control;
-            chartArea3.AxisX.MajorGrid.Interval = 0.2D;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea3.AxisX.MajorTickMark.Interval = 0.04D;
-            chartArea3.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea3.AxisX.MinorGrid.Enabled = true;
-            chartArea3.AxisX.MinorGrid.Interval = 0.04D;
-            chartArea3.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea3.AxisY.Interval = 0.5D;
-            chartArea3.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea3.AxisY.MajorGrid.Interval = 0.5D;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea3.AxisY.Maximum = 2D;
-            chartArea3.AxisY.Minimum = -0.5D;
-            chartArea3.AxisY.MinorGrid.Enabled = true;
-            chartArea3.AxisY.MinorGrid.Interval = 0.1D;
-            chartArea3.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea3.Name = "ChartArea1";
-            this.analyseretData.ChartAreas.Add(chartArea3);
-            legend3.Enabled = false;
-            legend3.Name = "Legend1";
-            this.analyseretData.Legends.Add(legend3);
-            this.analyseretData.Location = new System.Drawing.Point(15, 71);
+            chartArea1.AxisX.MajorGrid.Interval = 0.2D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX.MajorTickMark.Interval = 0.04D;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.MinorGrid.Interval = 0.04D;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.Title = "Tid [s]";
+            chartArea1.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea1.AxisY.Interval = 0.5D;
+            chartArea1.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisY.MajorGrid.Interval = 0.5D;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea1.AxisY.Maximum = 2D;
+            chartArea1.AxisY.Minimum = -0.5D;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.Interval = 0.1D;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated90;
+            chartArea1.AxisY.Title = "EKG [mV]";
+            chartArea1.AxisY.TitleAlignment = System.Drawing.StringAlignment.Near;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 100F;
+            chartArea1.Position.Width = 100F;
+            this.analyseretData.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.analyseretData.Legends.Add(legend1);
+            this.analyseretData.Location = new System.Drawing.Point(15, 51);
             this.analyseretData.Name = "analyseretData";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Color = System.Drawing.Color.Red;
-            series3.Legend = "Legend1";
-            series3.Name = "EKG";
-            this.analyseretData.Series.Add(series3);
-            this.analyseretData.Size = new System.Drawing.Size(1400, 175);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Red;
+            series1.Legend = "Legend1";
+            series1.Name = "EKG";
+            this.analyseretData.Series.Add(series1);
+            this.analyseretData.Size = new System.Drawing.Size(1200, 150);
             this.analyseretData.TabIndex = 14;
             this.analyseretData.Text = "analyseretData";
             // 
             // fremogtilbage
             // 
             this.fremogtilbage.AutoSize = true;
-            this.fremogtilbage.Location = new System.Drawing.Point(12, 251);
+            this.fremogtilbage.Location = new System.Drawing.Point(72, 237);
             this.fremogtilbage.Name = "fremogtilbage";
             this.fremogtilbage.Size = new System.Drawing.Size(125, 13);
             this.fremogtilbage.TabIndex = 17;
@@ -161,7 +171,7 @@
             // 
             // tiSekFremKnap
             // 
-            this.tiSekFremKnap.Location = new System.Drawing.Point(82, 225);
+            this.tiSekFremKnap.Location = new System.Drawing.Point(137, 211);
             this.tiSekFremKnap.Name = "tiSekFremKnap";
             this.tiSekFremKnap.Size = new System.Drawing.Size(31, 23);
             this.tiSekFremKnap.TabIndex = 16;
@@ -171,7 +181,7 @@
             // 
             // tiSekTilbageKnap
             // 
-            this.tiSekTilbageKnap.Location = new System.Drawing.Point(46, 225);
+            this.tiSekTilbageKnap.Location = new System.Drawing.Point(100, 211);
             this.tiSekTilbageKnap.Name = "tiSekTilbageKnap";
             this.tiSekTilbageKnap.Size = new System.Drawing.Size(31, 23);
             this.tiSekTilbageKnap.TabIndex = 15;
@@ -182,7 +192,7 @@
             // springMellemIP
             // 
             this.springMellemIP.AutoSize = true;
-            this.springMellemIP.Location = new System.Drawing.Point(594, 251);
+            this.springMellemIP.Location = new System.Drawing.Point(1085, 237);
             this.springMellemIP.Name = "springMellemIP";
             this.springMellemIP.Size = new System.Drawing.Size(86, 13);
             this.springMellemIP.TabIndex = 20;
@@ -190,7 +200,7 @@
             // 
             // ipFremKnap
             // 
-            this.ipFremKnap.Location = new System.Drawing.Point(640, 225);
+            this.ipFremKnap.Location = new System.Drawing.Point(1131, 211);
             this.ipFremKnap.Name = "ipFremKnap";
             this.ipFremKnap.Size = new System.Drawing.Size(31, 23);
             this.ipFremKnap.TabIndex = 19;
@@ -200,7 +210,7 @@
             // 
             // ipTilbageKnap
             // 
-            this.ipTilbageKnap.Location = new System.Drawing.Point(602, 225);
+            this.ipTilbageKnap.Location = new System.Drawing.Point(1093, 211);
             this.ipTilbageKnap.Name = "ipTilbageKnap";
             this.ipTilbageKnap.Size = new System.Drawing.Size(31, 23);
             this.ipTilbageKnap.TabIndex = 18;
@@ -210,15 +220,15 @@
             // 
             // kommentarTextBox
             // 
-            this.kommentarTextBox.Location = new System.Drawing.Point(392, 289);
+            this.kommentarTextBox.Location = new System.Drawing.Point(675, 323);
             this.kommentarTextBox.Multiline = true;
             this.kommentarTextBox.Name = "kommentarTextBox";
-            this.kommentarTextBox.Size = new System.Drawing.Size(324, 150);
+            this.kommentarTextBox.Size = new System.Drawing.Size(530, 200);
             this.kommentarTextBox.TabIndex = 21;
             // 
             // gemKommentarKnap
             // 
-            this.gemKommentarKnap.Location = new System.Drawing.Point(610, 444);
+            this.gemKommentarKnap.Location = new System.Drawing.Point(1100, 529);
             this.gemKommentarKnap.Name = "gemKommentarKnap";
             this.gemKommentarKnap.Size = new System.Drawing.Size(105, 23);
             this.gemKommentarKnap.TabIndex = 22;
@@ -230,7 +240,7 @@
             // 
             this.labelNoIP.AutoSize = true;
             this.labelNoIP.ForeColor = System.Drawing.Color.Red;
-            this.labelNoIP.Location = new System.Drawing.Point(566, 264);
+            this.labelNoIP.Location = new System.Drawing.Point(1057, 250);
             this.labelNoIP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNoIP.Name = "labelNoIP";
             this.labelNoIP.Size = new System.Drawing.Size(148, 13);
@@ -240,17 +250,17 @@
             // 
             // gammelKommentartextBox
             // 
-            this.gammelKommentartextBox.Location = new System.Drawing.Point(15, 289);
+            this.gammelKommentartextBox.Location = new System.Drawing.Point(15, 323);
             this.gammelKommentartextBox.Multiline = true;
             this.gammelKommentartextBox.Name = "gammelKommentartextBox";
             this.gammelKommentartextBox.ReadOnly = true;
             this.gammelKommentartextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.gammelKommentartextBox.Size = new System.Drawing.Size(374, 150);
+            this.gammelKommentartextBox.Size = new System.Drawing.Size(654, 200);
             this.gammelKommentartextBox.TabIndex = 24;
             // 
             // GemAnalyseretDataKnap
             // 
-            this.GemAnalyseretDataKnap.Location = new System.Drawing.Point(589, 21);
+            this.GemAnalyseretDataKnap.Location = new System.Drawing.Point(1080, 25);
             this.GemAnalyseretDataKnap.Name = "GemAnalyseretDataKnap";
             this.GemAnalyseretDataKnap.Size = new System.Drawing.Size(125, 23);
             this.GemAnalyseretDataKnap.TabIndex = 25;
@@ -258,10 +268,32 @@
             this.GemAnalyseretDataKnap.UseVisualStyleBackColor = true;
             this.GemAnalyseretDataKnap.Click += new System.EventHandler(this.GemAnalyseretDataKnap_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 304);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 13);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Tidligere kommentarer";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(672, 304);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Kommentar";
+            // 
             // vis_måling
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1410, 506);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1234, 561);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.GemAnalyseretDataKnap);
             this.Controls.Add(this.gammelKommentartextBox);
             this.Controls.Add(this.labelNoIP);
@@ -282,7 +314,6 @@
             this.Controls.Add(this.CPRnummer);
             this.Name = "vis_måling";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Vis måling";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.vis_måling_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.analyseretData)).EndInit();
@@ -311,5 +342,7 @@
         private System.Windows.Forms.Label labelNoIP;
         private System.Windows.Forms.TextBox gammelKommentartextBox;
       private System.Windows.Forms.Button GemAnalyseretDataKnap;
-   }
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+    }
 }
