@@ -28,9 +28,9 @@
       /// </summary>
       private void InitializeComponent()
       {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.genKnap = new System.Windows.Forms.Button();
             this.kasserKnap = new System.Windows.Forms.Button();
             this.previewData = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -69,41 +69,41 @@
             // previewData
             // 
             this.previewData.BackColor = System.Drawing.SystemColors.Control;
-            chartArea10.AxisX.MajorGrid.Interval = 0.2D;
-            chartArea10.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea10.AxisX.MajorTickMark.Interval = 1D;
-            chartArea10.AxisX.MinorGrid.Enabled = true;
-            chartArea10.AxisX.MinorGrid.Interval = 0.04D;
-            chartArea10.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea10.AxisX.Title = "Tid [s]";
-            chartArea10.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
-            chartArea10.AxisY.MajorGrid.Interval = 0.5D;
-            chartArea10.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea10.AxisY.MajorTickMark.Interval = 0.5D;
-            chartArea10.AxisY.MinorGrid.Enabled = true;
-            chartArea10.AxisY.MinorGrid.Interval = 0.1D;
-            chartArea10.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea10.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated90;
-            chartArea10.AxisY.Title = "EKG [mV]";
-            chartArea10.AxisY.TitleAlignment = System.Drawing.StringAlignment.Near;
-            chartArea10.BackColor = System.Drawing.Color.White;
-            chartArea10.Name = "ChartArea1";
-            chartArea10.Position.Auto = false;
-            chartArea10.Position.Height = 100F;
-            chartArea10.Position.Width = 100F;
-            this.previewData.ChartAreas.Add(chartArea10);
-            legend10.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend10.Enabled = false;
-            legend10.Name = "Legend1";
-            this.previewData.Legends.Add(legend10);
+            chartArea1.AxisX.MajorGrid.Interval = 0.2D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea1.AxisX.MajorTickMark.Interval = 1D;
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.MinorGrid.Interval = 0.04D;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.Title = "Tid [s]";
+            chartArea1.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea1.AxisY.MajorGrid.Interval = 0.5D;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea1.AxisY.MajorTickMark.Interval = 0.5D;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.Interval = 0.1D;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated90;
+            chartArea1.AxisY.Title = "EKG [mV]";
+            chartArea1.AxisY.TitleAlignment = System.Drawing.StringAlignment.Near;
+            chartArea1.BackColor = System.Drawing.Color.White;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 100F;
+            chartArea1.Position.Width = 100F;
+            this.previewData.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.previewData.Legends.Add(legend1);
             this.previewData.Location = new System.Drawing.Point(15, 51);
             this.previewData.Name = "previewData";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series10.Color = System.Drawing.Color.Red;
-            series10.Legend = "Legend1";
-            series10.Name = "EKG";
-            this.previewData.Series.Add(series10);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Red;
+            series1.Legend = "Legend1";
+            series1.Name = "EKG";
+            this.previewData.Series.Add(series1);
             this.previewData.Size = new System.Drawing.Size(1200, 150);
             this.previewData.TabIndex = 2;
             this.previewData.Text = "previewData";
@@ -189,9 +189,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 304);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 13);
+            this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 27;
-            this.label1.Text = "Tidligere kommentarer";
+            this.label1.Text = "Gemte kommentarer";
             // 
             // preview
             // 
@@ -214,6 +214,7 @@
             this.Controls.Add(this.genKnap);
             this.Name = "preview";
             this.Text = "Preview";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.preview_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.previewData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

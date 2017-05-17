@@ -19,11 +19,15 @@ namespace Præsentationslag
         private CPR_nummer cprvindue;
         private double x;
         private List<double> dataListe_;
+        private List<string> kommListe_;
+        private Hjemmeskærm frm_;
 
 
-        public preview(string brugerID)
+        public preview(string brugerID, Hjemmeskærm frm)
         {
             InitializeComponent();
+
+            frm_ = frm;
 
             //Rectangle screen = Screen.PrimaryScreen.WorkingArea;
             //int w = Width >= screen.Width ? screen.Width : (screen.Width + Width*3)/3;
@@ -36,6 +40,7 @@ namespace Præsentationslag
 
             PreviewController = new Preview_controller();
             dataListe_ = new List<double>();
+            kommListe_ = new List<string>();
 
             x = 0;
 
@@ -90,7 +95,7 @@ namespace Præsentationslag
 
         private void tiSekFremKnap_Click(object sender, EventArgs e)
         {
-            skrivTilGraf(x);            
+            skrivTilGraf(x);
             if (x >= (dataListe_.Count / 500))
             {
                 tiSekFremKnap.Enabled = false;
@@ -102,12 +107,13 @@ namespace Præsentationslag
         {
             if (PreviewController.gemKommentar(kommentarTextBox.Text) == true)
             {
+                kommListe_.Add(kommentarTextBox.Text);
+                gammelKommentartextBox.Text = gemteKommentarer();
                 kommentarTextBox.Clear();
-                MessageBox.Show("Kommentar gemt");
             }
             else
             {
-                MessageBox.Show("Kommentar ikke gemt");              
+                MessageBox.Show("Kommentar ikke gemt");
             }
 
         }
@@ -151,7 +157,8 @@ namespace Præsentationslag
                     MessageBox.Show("Kunne ikke læse filen fra disken: " + ex.Message);
                 }
             }
-            
+            kommentarTextBox.Focus();
+
         }
 
         private void skrivTilGraf(double start)
@@ -165,20 +172,36 @@ namespace Præsentationslag
                 x += 0.002;
                 x = Math.Round(x, 3);
             }
-            //x -= 0.002;
-            //x = Math.Round(x, 3);
         }
 
 
         public void åbenPreviewVindue()
         {
+            frm_.låsHjemmeskærm(true);
             Show();
         }
         public void lukPreviewVindue()
         {
+            frm_.låsHjemmeskærm(false);
             Close();
         }
 
+        private string gemteKommentarer()
+        {
+            string output = "";
+
+            foreach (string e in kommListe_)
+            {
+                output += "" + e + "\r\n";
+            }
+
+            return output;
+        }
+
+        private void preview_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm_.låsHjemmeskærm(false);
+        }
     }
 
 }

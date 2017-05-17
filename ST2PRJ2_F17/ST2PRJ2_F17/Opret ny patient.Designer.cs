@@ -123,6 +123,7 @@
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "opret_ny_patient";
             this.Text = "Opret ny patient";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.opret_ny_patient_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

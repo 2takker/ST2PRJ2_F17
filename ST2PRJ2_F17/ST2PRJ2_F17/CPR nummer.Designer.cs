@@ -84,6 +84,7 @@
             this.MinimumSize = new System.Drawing.Size(250, 180);
             this.Name = "CPR_nummer";
             this.Text = "CPR nummer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CPR_nummer_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

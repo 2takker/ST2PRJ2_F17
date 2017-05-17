@@ -66,12 +66,12 @@
             this.SøgeresultaterListBox.FormattingEnabled = true;
             this.SøgeresultaterListBox.Location = new System.Drawing.Point(24, 76);
             this.SøgeresultaterListBox.Name = "SøgeresultaterListBox";
-            this.SøgeresultaterListBox.Size = new System.Drawing.Size(407, 472);
+            this.SøgeresultaterListBox.Size = new System.Drawing.Size(407, 459);
             this.SøgeresultaterListBox.TabIndex = 3;
             // 
             // downloadKnap
             // 
-            this.downloadKnap.Location = new System.Drawing.Point(437, 525);
+            this.downloadKnap.Location = new System.Drawing.Point(437, 512);
             this.downloadKnap.Name = "downloadKnap";
             this.downloadKnap.Size = new System.Drawing.Size(75, 23);
             this.downloadKnap.TabIndex = 4;
@@ -91,6 +91,7 @@
             this.Controls.Add(this.SøgeTextBox);
             this.Name = "Download_fra_offentlig_database";
             this.Text = "Download fra offentlig database";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Download_fra_offentlig_database_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

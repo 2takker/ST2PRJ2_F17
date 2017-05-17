@@ -26,6 +26,7 @@ namespace Præsentationslag
             OpretPatientController = new Opret_ny_patient_controller();
             this.frm = frm;
             this.PreviewController = PreviewController;
+            CPRTextBox.Focus();
         }
 
         private void gemKnap_Click(object sender, EventArgs e)
@@ -55,8 +56,8 @@ namespace Præsentationslag
                         }
                     case 2:
                         {
-                            OpretPatientVindue = new opret_ny_patient();
-                            OpretPatientVindue.åbenOpretNyPatientVindue();
+                            OpretPatientVindue = new opret_ny_patient(null,this);
+                            OpretPatientVindue.åbenOpretNyPatientVindue(CPRTextBox.Text);
                             break;
                         }
                 }
@@ -70,11 +71,12 @@ namespace Præsentationslag
 
         public void åbenCPRVindue()
         {
+            frm.Enabled = false;
             Show();
         }
 
         public void lukCPRVindue()
-        {
+        {           
             Close();
         }
 
@@ -84,6 +86,11 @@ namespace Præsentationslag
             {
                 gemKnap.PerformClick();
             }
+        }
+
+        private void CPR_nummer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm.Enabled = true;
         }
     }
 }

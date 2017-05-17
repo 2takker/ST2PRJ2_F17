@@ -12,56 +12,89 @@ using Logik;
 
 namespace Præsentationslag
 {
-   public partial class opret_ny_patient : Form
-   {
-      private Opret_ny_patient_controller OpretPatientController;
-      public opret_ny_patient()
-      {         
+    public partial class opret_ny_patient : Form
+    {
+        private Opret_ny_patient_controller OpretPatientController;
+        private Hjemmeskærm frm_;
+        private CPR_nummer cprFrm_;
+      public opret_ny_patient(Hjemmeskærm frm, CPR_nummer cprFrm)
+        {
             InitializeComponent();
 
-            OpretPatientController = new Opret_ny_patient_controller();         
-      }
+            frm_ = frm;
+            cprFrm_ = cprFrm;            
 
-      private void gemKnap_Click(object sender, EventArgs e)
-      {
-         DTO_PatientData pd = new DTO_PatientData(CPRTextBox.Text, fornavnTextBox.Text, efternavnTextBox.Text);
+            OpretPatientController = new Opret_ny_patient_controller();
+        }
 
-         if (OpretPatientController.validerCPR(pd.CPRNummer_) == false)
-         {
-            MessageBox.Show("CPR-nummeret er ugyldigt");
-            CPRTextBox.Clear();
-         }
-         else
-         {
-            if (OpretPatientController.gemPatientData(pd) == true)
+        private void gemKnap_Click(object sender, EventArgs e)
+        {
+            DTO_PatientData pd = new DTO_PatientData(CPRTextBox.Text, fornavnTextBox.Text, efternavnTextBox.Text);
+
+            if (OpretPatientController.validerCPR(pd.CPRNummer_) == false)
             {
-               
-               MessageBox.Show("Patient findes allerede");
-               lukOpretNyPatientVindue();
+                MessageBox.Show("CPR-nummeret er ugyldigt");
+                CPRTextBox.Clear();
             }
             else
             {
-               MessageBox.Show("Data er gemt");
-               lukOpretNyPatientVindue();
+                if (OpretPatientController.gemPatientData(pd) == true)
+                {
+
+                    MessageBox.Show("Patient findes allerede");
+                    lukOpretNyPatientVindue();
+                }
+                else
+                {
+                    MessageBox.Show("Patient gemt");
+                    lukOpretNyPatientVindue();
+                }
+
             }
-            
-         }
-         
-      }
 
-      private void fortrydKnap_Click(object sender, EventArgs e)
-      {
-         lukOpretNyPatientVindue();
-      }
+        }
 
-      private void lukOpretNyPatientVindue()
-      {
-         this.Close();
-      }
+        private void fortrydKnap_Click(object sender, EventArgs e)
+        {
+            lukOpretNyPatientVindue();
+        }
 
-      public void åbenOpretNyPatientVindue()
-      {
-         this.Show();
-      }
-   }
+        private void lukOpretNyPatientVindue()
+        {            
+            Close();
+        }
+
+        public void åbenOpretNyPatientVindue(string cpr)
+        {
+            CPRTextBox.Focus();
+            if(frm_ != null)
+            {
+                frm_.låsHjemmeskærm(true);
+            }
+            if(cprFrm_ != null)
+            {
+                cprFrm_.Enabled = false;
+            }
+            if(cpr != null)
+            {
+                CPRTextBox.Text = cpr;
+                fornavnTextBox.Focus();
+            }
+                        
+            Show();
+        }
+
+        private void opret_ny_patient_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(frm_ != null)
+            {
+                frm_.låsHjemmeskærm(false);
+            }
+
+            if(cprFrm_ != null)
+            {
+                cprFrm_.Enabled = true;
+            }
+        }
+    }
 }

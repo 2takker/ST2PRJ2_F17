@@ -17,10 +17,14 @@ namespace Præsentationslag
         private Upload_controller UploadController;
         private List<DTO_Datasæt> datasætListe;
         private bool anonym;
+        private Hjemmeskærm frm_;
 
-        public upload_til_offentlig_database()
+        public upload_til_offentlig_database(Hjemmeskærm frm)
         {
             InitializeComponent();
+
+            frm_ = frm;
+
             UploadController = new Upload_controller();
             datasætListe = new List<DTO_Datasæt>();
             anonym = false;
@@ -57,11 +61,13 @@ namespace Præsentationslag
 
         public void åbenUploadVindue()
         {
+            frm_.låsHjemmeskærm(true);
             Show();
         }
 
         public void lukUploadVindue()
         {
+            frm_.låsHjemmeskærm(false);
             Close();
         }
 

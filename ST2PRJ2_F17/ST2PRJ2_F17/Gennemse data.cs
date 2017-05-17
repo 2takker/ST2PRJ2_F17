@@ -17,10 +17,14 @@ namespace Præsentationslag
     {
         private Gennemse_data_controller GennemseController;
         private List<DTO_Datasæt> datasætListe;
+        private Hjemmeskærm frm_;
 
-        public gennemse_data(string brugerId)
+        public gennemse_data(string brugerId, Hjemmeskærm frm)
         {
             InitializeComponent();
+
+            frm_ = frm;
+
             GennemseController = new Gennemse_data_controller(brugerId);
 
         }
@@ -77,17 +81,24 @@ namespace Præsentationslag
 
         public void åbenGennemseDataVindue()
         {
+            frm_.låsHjemmeskærm(true);
             Show();
         }
 
         public void lukGennemseDataVindue()
         {
+            frm_.låsHjemmeskærm(false);
             Close();
         }
 
         private void datasætListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             analyserDataKnap.Enabled = true;
+        }
+
+        private void gennemse_data_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm_.låsHjemmeskærm(false);
         }
     }
 }
