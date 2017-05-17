@@ -143,8 +143,7 @@ namespace Præsentationslag
                             {
                                 tiSekFremKnap.Enabled = true;
                             }
-
-
+                            
                             importerFilKnap.Enabled = false;
                             genKnap.Enabled = true;
                             kasserKnap.Enabled = true;

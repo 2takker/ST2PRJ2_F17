@@ -68,17 +68,24 @@ namespace Logik
         public bool analyserValgtDatasæt(int index)
         {
             dtoDatasæt_ = lokalDB_.hentDatasæt(dtoDatasætList_[index]);
-
-            if (dtoDatasætList_[index].Ip_.Count == 0)
+            try
             {
-                dtoDatasæt_.Ip_ = findRR(dtoDatasæt_.Data_);
-            }
-            else
-            {
-                dtoDatasæt_.Ip_ = dtoDatasætList_[index].Ip_;
-            }
+                if (dtoDatasætList_[index].Ip_.Count == 0)
+                {
+                    dtoDatasæt_.Ip_ = findRR(dtoDatasæt_.Data_);
+                }
+                else
+                {
+                    dtoDatasæt_.Ip_ = dtoDatasætList_[index].Ip_;
+                }
 
-            return true;
+                return true;
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Kunne ikke hente datasæt" + ex.Message);
+                return false;
+            }
         }
 
 
