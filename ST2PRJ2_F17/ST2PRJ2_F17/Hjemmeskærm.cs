@@ -72,5 +72,6 @@ namespace Præsentationslag
             loginvindue_.åbenLoginVindue();
          
         }
-    }
+
+   }
 }
