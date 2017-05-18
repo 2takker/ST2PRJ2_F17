@@ -41,63 +41,56 @@
             // CPRnummer
             // 
             this.CPRnummer.AutoSize = true;
-            this.CPRnummer.Location = new System.Drawing.Point(178, 56);
-            this.CPRnummer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.CPRnummer.Location = new System.Drawing.Point(89, 29);
             this.CPRnummer.Name = "CPRnummer";
-            this.CPRnummer.Size = new System.Drawing.Size(146, 25);
+            this.CPRnummer.Size = new System.Drawing.Size(72, 13);
             this.CPRnummer.TabIndex = 0;
             this.CPRnummer.Text = "CPR- nummer";
             // 
             // fornavn
             // 
             this.fornavn.AutoSize = true;
-            this.fornavn.Location = new System.Drawing.Point(178, 165);
-            this.fornavn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.fornavn.Location = new System.Drawing.Point(89, 86);
             this.fornavn.Name = "fornavn";
-            this.fornavn.Size = new System.Drawing.Size(97, 25);
+            this.fornavn.Size = new System.Drawing.Size(49, 13);
             this.fornavn.TabIndex = 1;
             this.fornavn.Text = "Fornavn:";
             // 
             // efternavn
             // 
             this.efternavn.AutoSize = true;
-            this.efternavn.Location = new System.Drawing.Point(178, 283);
-            this.efternavn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.efternavn.Location = new System.Drawing.Point(89, 147);
             this.efternavn.Name = "efternavn";
-            this.efternavn.Size = new System.Drawing.Size(110, 25);
+            this.efternavn.Size = new System.Drawing.Size(56, 13);
             this.efternavn.TabIndex = 2;
             this.efternavn.Text = "Efternavn:";
             // 
             // CPRTextBox
             // 
-            this.CPRTextBox.Location = new System.Drawing.Point(184, 87);
-            this.CPRTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CPRTextBox.Location = new System.Drawing.Point(92, 45);
             this.CPRTextBox.Name = "CPRTextBox";
-            this.CPRTextBox.Size = new System.Drawing.Size(196, 31);
+            this.CPRTextBox.Size = new System.Drawing.Size(100, 20);
             this.CPRTextBox.TabIndex = 3;
             // 
             // fornavnTextBox
             // 
-            this.fornavnTextBox.Location = new System.Drawing.Point(184, 196);
-            this.fornavnTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.fornavnTextBox.Location = new System.Drawing.Point(92, 102);
             this.fornavnTextBox.Name = "fornavnTextBox";
-            this.fornavnTextBox.Size = new System.Drawing.Size(196, 31);
+            this.fornavnTextBox.Size = new System.Drawing.Size(100, 20);
             this.fornavnTextBox.TabIndex = 4;
             // 
             // efternavnTextBox
             // 
-            this.efternavnTextBox.Location = new System.Drawing.Point(184, 313);
-            this.efternavnTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.efternavnTextBox.Location = new System.Drawing.Point(92, 163);
             this.efternavnTextBox.Name = "efternavnTextBox";
-            this.efternavnTextBox.Size = new System.Drawing.Size(196, 31);
+            this.efternavnTextBox.Size = new System.Drawing.Size(100, 20);
             this.efternavnTextBox.TabIndex = 5;
             // 
             // gemKnap
             // 
-            this.gemKnap.Location = new System.Drawing.Point(90, 408);
-            this.gemKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gemKnap.Location = new System.Drawing.Point(45, 212);
             this.gemKnap.Name = "gemKnap";
-            this.gemKnap.Size = new System.Drawing.Size(150, 44);
+            this.gemKnap.Size = new System.Drawing.Size(75, 23);
             this.gemKnap.TabIndex = 6;
             this.gemKnap.Text = "Gem";
             this.gemKnap.UseVisualStyleBackColor = true;
@@ -105,10 +98,9 @@
             // 
             // fortrydKnap
             // 
-            this.fortrydKnap.Location = new System.Drawing.Point(304, 408);
-            this.fortrydKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.fortrydKnap.Location = new System.Drawing.Point(152, 212);
             this.fortrydKnap.Name = "fortrydKnap";
-            this.fortrydKnap.Size = new System.Drawing.Size(150, 44);
+            this.fortrydKnap.Size = new System.Drawing.Size(75, 23);
             this.fortrydKnap.TabIndex = 7;
             this.fortrydKnap.Text = "Fortryd";
             this.fortrydKnap.UseVisualStyleBackColor = true;
@@ -116,9 +108,9 @@
             // 
             // opret_ny_patient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 440);
+            this.ClientSize = new System.Drawing.Size(279, 245);
             this.Controls.Add(this.fortrydKnap);
             this.Controls.Add(this.gemKnap);
             this.Controls.Add(this.efternavnTextBox);
@@ -127,9 +119,9 @@
             this.Controls.Add(this.efternavn);
             this.Controls.Add(this.fornavn);
             this.Controls.Add(this.CPRnummer);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.MaximumSize = new System.Drawing.Size(574, 511);
-            this.MinimumSize = new System.Drawing.Size(574, 511);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(295, 284);
+            this.MinimumSize = new System.Drawing.Size(295, 284);
             this.Name = "opret_ny_patient";
             this.Text = "Opret ny patient";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.opret_ny_patient_FormClosing);

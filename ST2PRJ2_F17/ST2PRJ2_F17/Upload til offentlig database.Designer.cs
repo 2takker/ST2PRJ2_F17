@@ -38,10 +38,9 @@
             // 
             // IndlæsCPRKnap
             // 
-            this.IndlæsCPRKnap.Location = new System.Drawing.Point(264, 87);
-            this.IndlæsCPRKnap.Margin = new System.Windows.Forms.Padding(6);
+            this.IndlæsCPRKnap.Location = new System.Drawing.Point(132, 45);
             this.IndlæsCPRKnap.Name = "IndlæsCPRKnap";
-            this.IndlæsCPRKnap.Size = new System.Drawing.Size(154, 44);
+            this.IndlæsCPRKnap.Size = new System.Drawing.Size(77, 23);
             this.IndlæsCPRKnap.TabIndex = 5;
             this.IndlæsCPRKnap.Text = "Indlæs CPR";
             this.IndlæsCPRKnap.UseVisualStyleBackColor = true;
@@ -50,38 +49,33 @@
             // CPRnummer
             // 
             this.CPRnummer.AutoSize = true;
-            this.CPRnummer.Location = new System.Drawing.Point(52, 56);
-            this.CPRnummer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.CPRnummer.Location = new System.Drawing.Point(26, 29);
             this.CPRnummer.Name = "CPRnummer";
-            this.CPRnummer.Size = new System.Drawing.Size(139, 25);
+            this.CPRnummer.Size = new System.Drawing.Size(69, 13);
             this.CPRnummer.TabIndex = 4;
             this.CPRnummer.Text = "CPR nummer";
             // 
             // CPRTextBox
             // 
-            this.CPRTextBox.Location = new System.Drawing.Point(52, 92);
-            this.CPRTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.CPRTextBox.Location = new System.Drawing.Point(26, 48);
             this.CPRTextBox.Name = "CPRTextBox";
-            this.CPRTextBox.Size = new System.Drawing.Size(196, 31);
+            this.CPRTextBox.Size = new System.Drawing.Size(100, 20);
             this.CPRTextBox.TabIndex = 3;
             this.CPRTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CPRTextBox_KeyDown);
             // 
             // valgAfDatasætListBox
             // 
             this.valgAfDatasætListBox.FormattingEnabled = true;
-            this.valgAfDatasætListBox.ItemHeight = 25;
-            this.valgAfDatasætListBox.Location = new System.Drawing.Point(52, 202);
-            this.valgAfDatasætListBox.Margin = new System.Windows.Forms.Padding(6);
+            this.valgAfDatasætListBox.Location = new System.Drawing.Point(26, 105);
             this.valgAfDatasætListBox.Name = "valgAfDatasætListBox";
-            this.valgAfDatasætListBox.Size = new System.Drawing.Size(362, 279);
+            this.valgAfDatasætListBox.Size = new System.Drawing.Size(183, 147);
             this.valgAfDatasætListBox.TabIndex = 6;
             // 
             // uploadKnap
             // 
-            this.uploadKnap.Location = new System.Drawing.Point(430, 440);
-            this.uploadKnap.Margin = new System.Windows.Forms.Padding(6);
+            this.uploadKnap.Location = new System.Drawing.Point(215, 229);
             this.uploadKnap.Name = "uploadKnap";
-            this.uploadKnap.Size = new System.Drawing.Size(150, 44);
+            this.uploadKnap.Size = new System.Drawing.Size(75, 23);
             this.uploadKnap.TabIndex = 7;
             this.uploadKnap.Text = "Upload";
             this.uploadKnap.UseVisualStyleBackColor = true;
@@ -90,10 +84,9 @@
             // UdenPatientDataCheckBox
             // 
             this.UdenPatientDataCheckBox.AutoSize = true;
-            this.UdenPatientDataCheckBox.Location = new System.Drawing.Point(432, 396);
-            this.UdenPatientDataCheckBox.Margin = new System.Windows.Forms.Padding(6);
+            this.UdenPatientDataCheckBox.Location = new System.Drawing.Point(216, 206);
             this.UdenPatientDataCheckBox.Name = "UdenPatientDataCheckBox";
-            this.UdenPatientDataCheckBox.Size = new System.Drawing.Size(279, 29);
+            this.UdenPatientDataCheckBox.Size = new System.Drawing.Size(143, 17);
             this.UdenPatientDataCheckBox.TabIndex = 8;
             this.UdenPatientDataCheckBox.Text = "Upload uden patientdata";
             this.UdenPatientDataCheckBox.UseVisualStyleBackColor = true;
@@ -101,18 +94,16 @@
             // 
             // upload_til_offentlig_database
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 488);
+            this.ClientSize = new System.Drawing.Size(364, 276);
             this.Controls.Add(this.UdenPatientDataCheckBox);
             this.Controls.Add(this.uploadKnap);
             this.Controls.Add(this.valgAfDatasætListBox);
             this.Controls.Add(this.IndlæsCPRKnap);
             this.Controls.Add(this.CPRnummer);
             this.Controls.Add(this.CPRTextBox);
-            this.Margin = new System.Windows.Forms.Padding(6);
-            this.MaximumSize = new System.Drawing.Size(744, 559);
-            this.MinimumSize = new System.Drawing.Size(744, 559);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "upload_til_offentlig_database";
             this.Text = "Upload til offentlig database";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.upload_til_offentlig_database_FormClosing);

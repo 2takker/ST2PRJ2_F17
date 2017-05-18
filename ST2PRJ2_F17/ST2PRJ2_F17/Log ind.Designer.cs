@@ -40,49 +40,49 @@
             // 
             // brugernavnTextBox
             // 
-            this.brugernavnTextBox.Location = new System.Drawing.Point(174, 81);
-            this.brugernavnTextBox.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.brugernavnTextBox.Location = new System.Drawing.Point(87, 39);
+            this.brugernavnTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.brugernavnTextBox.MaxLength = 3456;
             this.brugernavnTextBox.Name = "brugernavnTextBox";
-            this.brugernavnTextBox.Size = new System.Drawing.Size(196, 31);
+            this.brugernavnTextBox.Size = new System.Drawing.Size(100, 20);
             this.brugernavnTextBox.TabIndex = 0;
             // 
             // adgangskodeTextBox
             // 
-            this.adgangskodeTextBox.Location = new System.Drawing.Point(174, 163);
-            this.adgangskodeTextBox.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.adgangskodeTextBox.Location = new System.Drawing.Point(87, 82);
+            this.adgangskodeTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.adgangskodeTextBox.Name = "adgangskodeTextBox";
             this.adgangskodeTextBox.PasswordChar = '*';
-            this.adgangskodeTextBox.Size = new System.Drawing.Size(196, 31);
+            this.adgangskodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.adgangskodeTextBox.TabIndex = 1;
             this.adgangskodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.adgangskodeTextBox_KeyPress);
             // 
             // brugernavn
             // 
             this.brugernavn.AutoSize = true;
-            this.brugernavn.Location = new System.Drawing.Point(168, 50);
-            this.brugernavn.Margin = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.brugernavn.Location = new System.Drawing.Point(89, 23);
+            this.brugernavn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.brugernavn.Name = "brugernavn";
-            this.brugernavn.Size = new System.Drawing.Size(123, 25);
+            this.brugernavn.Size = new System.Drawing.Size(62, 13);
             this.brugernavn.TabIndex = 2;
             this.brugernavn.Text = "Brugernavn";
             // 
             // adgangskode
             // 
             this.adgangskode.AutoSize = true;
-            this.adgangskode.Location = new System.Drawing.Point(168, 133);
-            this.adgangskode.Margin = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.adgangskode.Location = new System.Drawing.Point(89, 68);
+            this.adgangskode.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.adgangskode.Name = "adgangskode";
-            this.adgangskode.Size = new System.Drawing.Size(144, 25);
+            this.adgangskode.Size = new System.Drawing.Size(73, 13);
             this.adgangskode.TabIndex = 3;
             this.adgangskode.Text = "Adgangskode";
             // 
             // LogIndKnap
             // 
-            this.LogIndKnap.Location = new System.Drawing.Point(174, 240);
-            this.LogIndKnap.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.LogIndKnap.Location = new System.Drawing.Point(87, 122);
+            this.LogIndKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.LogIndKnap.Name = "LogIndKnap";
-            this.LogIndKnap.Size = new System.Drawing.Size(200, 44);
+            this.LogIndKnap.Size = new System.Drawing.Size(100, 23);
             this.LogIndKnap.TabIndex = 4;
             this.LogIndKnap.Text = "Log ind";
             this.LogIndKnap.UseVisualStyleBackColor = true;
@@ -91,10 +91,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(24, 279);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(7, 142);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(520, 250);
+            this.pictureBox1.Size = new System.Drawing.Size(260, 130);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -102,9 +101,9 @@
             // log_ind
             // 
             this.AcceptButton = this.LogIndKnap;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 440);
+            this.ClientSize = new System.Drawing.Size(279, 265);
             this.Controls.Add(this.LogIndKnap);
             this.Controls.Add(this.adgangskode);
             this.Controls.Add(this.brugernavn);
@@ -112,9 +111,8 @@
             this.Controls.Add(this.brugernavnTextBox);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
-            this.MaximumSize = new System.Drawing.Size(574, 511);
-            this.MinimumSize = new System.Drawing.Size(574, 511);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "log_ind";
             this.Text = "Log ind";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.log_ind_FormClosing);
