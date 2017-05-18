@@ -153,15 +153,21 @@ namespace Præsentationslag
 
         private void skrivTilGraf(double start)
         {
+            
             x = start;
             previewData.Series["EKG"].Points.Clear();
+            låsknapper(true);
+
 
             for (double i = (x * 500); i < (start + 10) * 500; i++)
             {
                 previewData.Series["EKG"].Points.AddXY(x + 0.002, dataListe_[Convert.ToInt32(i)]);
                 x += 0.002;
                 x = Math.Round(x, 3);
-            }
+            }            
+
+            låsknapper(false);
+            
         }
 
 
@@ -191,6 +197,12 @@ namespace Præsentationslag
         private void preview_FormClosing(object sender, FormClosingEventArgs e)
         {
             frm_.låsHjemmeskærm(false);
+        }
+
+        private void låsknapper(bool lås)
+        {
+            tiSekFremKnap.Enabled = !lås;
+            tiSekTilbageKnap.Enabled = !lås;
         }
     }
 

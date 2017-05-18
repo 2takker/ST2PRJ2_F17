@@ -24,7 +24,7 @@ namespace Logik
         }
 
         public List<double> importerDatafil(Stream st)
-        {
+        {            
             using (var fs = st)
             using (var reader = new StreamReader(fs))
             {
@@ -35,7 +35,7 @@ namespace Logik
 
                     //dataListe_.Add(double.Parse((values[2]), System.Globalization.CultureInfo.InvariantCulture)); //Christiane                    
 
-                    dataListe_.Add(double.Parse((values[values.Length-1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke                    
+                    dataListe_.Add(double.Parse((values[values.Length-1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke 
                 }
                 dtoDatasæt_.Data_ = dataListe_;
 
@@ -94,6 +94,6 @@ namespace Logik
         public void indlæsBrugerId(string brugerID)
         {
             dtoDatasæt_.MåltagerBrugerId_ = brugerID;
-        }
+        }        
     }
 }

@@ -24,7 +24,7 @@ namespace Logik
         {
             DTO_Sundhedspersonale sp1 = lokalDB_.validerLogin(sp);
 
-            if (sp1.BrugerID_ != null)
+            if (sp1 != null)
             {
                 return sp1.BrugerID_;
             }
