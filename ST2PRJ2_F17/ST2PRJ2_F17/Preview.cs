@@ -29,15 +29,6 @@ namespace Præsentationslag
 
             frm_ = frm;
 
-            //Rectangle screen = Screen.PrimaryScreen.WorkingArea;
-            //int w = Width >= screen.Width ? screen.Width : (screen.Width + Width*3)/3;
-            //int h = Height >= screen.Height ? screen.Height : (screen.Height + Height*2/3) /3;
-            //this.Location = new Point((screen.Width - w) / 2, (screen.Height - h) / 3);
-            //this.Size = new Size(w, h);
-
-            //previewData.Width = w-150;
-            //previewData.Height = previewData.Width/8;
-
             PreviewController = new Preview_controller();
             dataListe_ = new List<double>();
             kommListe_ = new List<string>();
@@ -191,7 +182,7 @@ namespace Præsentationslag
 
             foreach (string e in kommListe_)
             {
-                output += "" + e + "\r\n";
+                output += "" + e + "\r\n\r\n";
             }
 
             return output;

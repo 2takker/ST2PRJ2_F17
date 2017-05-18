@@ -111,11 +111,11 @@ namespace DB
             try
             {
                 string sql = "INSERT INTO EKGMAALING(dato, antalmaalinger, sfp_maaltagermedarbjnr, " +
-                 "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr)"
+                 "sfp_mt_kommentar, sfp_ansvrmedarbejnr, sfp_ans_org,  borger_cprnr, sfp_anskommentar)"
                  + " OUTPUT INSERTED.ekgmaaleid"
                  + " VALUES(CONVERT(DATETIME,'" + ds.Dato_.ToString("yyyy-MM-dd HH:mm:ss") + "')," + ds.AntalMålinger_ + ",'" + ds.MåltagerBrugerId_ + "','"
                      + ds.printMåltagerKommentar() + "','" + ds.AnsvarstagerBrugerId_ + "','"
-                     + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "')";
+                     + ds.AnsvarstagerOrg_ + "','" + ds.Pd_.CPRNummer_ + "' , '" + ds.printAnsvarstagerKommentar() + "')";
 
                 cmd = new SqlCommand(sql, conn);
 

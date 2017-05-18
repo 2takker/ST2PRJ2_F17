@@ -49,7 +49,7 @@
             // genKnap
             // 
             this.genKnap.Location = new System.Drawing.Point(186, 23);
-            this.genKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.genKnap.Margin = new System.Windows.Forms.Padding(6);
             this.genKnap.Name = "genKnap";
             this.genKnap.Size = new System.Drawing.Size(150, 44);
             this.genKnap.TabIndex = 0;
@@ -60,7 +60,7 @@
             // kasserKnap
             // 
             this.kasserKnap.Location = new System.Drawing.Point(348, 23);
-            this.kasserKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kasserKnap.Margin = new System.Windows.Forms.Padding(6);
             this.kasserKnap.Name = "kasserKnap";
             this.kasserKnap.Size = new System.Drawing.Size(150, 44);
             this.kasserKnap.TabIndex = 1;
@@ -99,7 +99,7 @@
             legend1.Name = "Legend1";
             this.previewData.Legends.Add(legend1);
             this.previewData.Location = new System.Drawing.Point(30, 98);
-            this.previewData.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.previewData.Margin = new System.Windows.Forms.Padding(6);
             this.previewData.Name = "previewData";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -114,7 +114,7 @@
             // tiSekTilbageKnap
             // 
             this.tiSekTilbageKnap.Location = new System.Drawing.Point(200, 406);
-            this.tiSekTilbageKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tiSekTilbageKnap.Margin = new System.Windows.Forms.Padding(6);
             this.tiSekTilbageKnap.Name = "tiSekTilbageKnap";
             this.tiSekTilbageKnap.Size = new System.Drawing.Size(62, 44);
             this.tiSekTilbageKnap.TabIndex = 3;
@@ -125,7 +125,7 @@
             // tiSekFremKnap
             // 
             this.tiSekFremKnap.Location = new System.Drawing.Point(274, 406);
-            this.tiSekFremKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tiSekFremKnap.Margin = new System.Windows.Forms.Padding(6);
             this.tiSekFremKnap.Name = "tiSekFremKnap";
             this.tiSekFremKnap.Size = new System.Drawing.Size(62, 44);
             this.tiSekFremKnap.TabIndex = 4;
@@ -146,7 +146,7 @@
             // kommentarTextBox
             // 
             this.kommentarTextBox.Location = new System.Drawing.Point(1350, 621);
-            this.kommentarTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kommentarTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.kommentarTextBox.Multiline = true;
             this.kommentarTextBox.Name = "kommentarTextBox";
             this.kommentarTextBox.Size = new System.Drawing.Size(1056, 381);
@@ -165,7 +165,7 @@
             // gemKommentar
             // 
             this.gemKommentar.Location = new System.Drawing.Point(2200, 1017);
-            this.gemKommentar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gemKommentar.Margin = new System.Windows.Forms.Padding(6);
             this.gemKommentar.Name = "gemKommentar";
             this.gemKommentar.Size = new System.Drawing.Size(210, 44);
             this.gemKommentar.TabIndex = 8;
@@ -176,7 +176,7 @@
             // importerFilKnap
             // 
             this.importerFilKnap.Location = new System.Drawing.Point(24, 23);
-            this.importerFilKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.importerFilKnap.Margin = new System.Windows.Forms.Padding(6);
             this.importerFilKnap.Name = "importerFilKnap";
             this.importerFilKnap.Size = new System.Drawing.Size(150, 44);
             this.importerFilKnap.TabIndex = 9;
@@ -187,7 +187,7 @@
             // gammelKommentartextBox
             // 
             this.gammelKommentartextBox.Location = new System.Drawing.Point(30, 621);
-            this.gammelKommentartextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gammelKommentartextBox.Margin = new System.Windows.Forms.Padding(6);
             this.gammelKommentartextBox.Multiline = true;
             this.gammelKommentartextBox.Name = "gammelKommentartextBox";
             this.gammelKommentartextBox.ReadOnly = true;
@@ -224,7 +224,7 @@
             this.Controls.Add(this.previewData);
             this.Controls.Add(this.kasserKnap);
             this.Controls.Add(this.genKnap);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "preview";
             this.Text = "Preview";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.preview_FormClosing);

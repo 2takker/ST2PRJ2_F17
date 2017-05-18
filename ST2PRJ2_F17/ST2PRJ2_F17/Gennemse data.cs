@@ -58,6 +58,9 @@ namespace Præsentationslag
             }
             else
             {
+                CPRTextBox.Clear();
+                fornavnTextBox.Clear();
+                efternavnTextBox.Clear();
                 MessageBox.Show("Der findes ingen datasæt til pågældende patient");                
             }
             
@@ -83,6 +86,7 @@ namespace Præsentationslag
         {
             frm_.låsHjemmeskærm(true);
             Show();
+            CPRTextBox.Focus();
         }
 
         public void lukGennemseDataVindue()

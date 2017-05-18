@@ -40,12 +40,12 @@ namespace Præsentationslag
             {
                 foreach (DTO_Datasæt ds in datasætListe)
                 {
-                    SøgeresultaterListBox.Items.Add(ds.SøgeResultat_);
+                    SøgeresultaterListBox.Items.Add(ds.SøgeResultat_);                    
                 }
             }
             else
             {
-                SøgeresultaterListBox.Text = "Der findes ingen datasæt til pågældende søgeord";
+                MessageBox.Show("Der findes ingen datasæt til pågældende søgeord");
             }
         }
 
@@ -54,8 +54,11 @@ namespace Præsentationslag
         {
             if (DownloadController.indlæsValgtDatasæt(SøgeresultaterListBox.SelectedIndex))
             {
-                MessageBox.Show("Datasæt downloaded");
-                lukDownloadVindue();
+                MessageBox.Show("Datasæt downloaded");                
+            }
+            else
+            {
+                MessageBox.Show("Datasæt blev ikke downloaded");
             }
         }
 
@@ -73,6 +76,25 @@ namespace Præsentationslag
         private void Download_fra_offentlig_database_FormClosing(object sender, FormClosingEventArgs e)
         {
             frm_.låsHjemmeskærm(false);
+        }
+
+        private void SøgeTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                søgKnap.PerformClick();
+            }
+        }
+
+        private void SøgeresultaterListBox_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            e.ItemHeight = 60;
+        }
+
+        private void SøgeresultaterListBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            e.Graphics.DrawString(SøgeresultaterListBox.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
         }
     }
 }

@@ -56,6 +56,10 @@ namespace Præsentationslag
             {
                 MessageBox.Show("Datasæt uploaded");
             }
+            else
+            {
+                MessageBox.Show("Datasæt blev ikke uploaded");
+            }
 
         }
 
@@ -81,6 +85,19 @@ namespace Præsentationslag
             {
                 anonym = false;
             }
+        }
+
+        private void CPRTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                IndlæsCPRKnap.PerformClick();
+            }
+        }
+
+        private void upload_til_offentlig_database_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm_.låsHjemmeskærm(false);
         }
     }
 }

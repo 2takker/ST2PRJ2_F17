@@ -121,17 +121,14 @@ namespace DB
 
             try
             {
+                output += "Borgers CPR-nummer: " + sqlRdr["borger_cprnr"] + "\r\n";
                 output += "Dato for måling: " + sqlRdr["dato"] + "\r\n";
                 output += "Ansvarstagers kommentar: " + sqlRdr["sfp_anskommentar"] + "\r\n";
+
 
                 if (Convert.ToString(sqlRdr["sfp_mt_kommentar"]).Contains(søgOrd))
                 {
                     output += "Måletagers kommentar: " + sqlRdr["sfp_mt_kommentar"] + "\r\n";
-                }
-
-                if (Convert.ToString(sqlRdr["borger_cprnr"]).Contains(søgOrd))
-                {
-                    output += "Borgers CPR-nummer: " + sqlRdr["borger_cprnr"] + "\r\n";
                 }
 
                 if (Convert.ToString(sqlRdr["borger_fornavn"]).Contains(søgOrd))
@@ -230,7 +227,7 @@ namespace DB
                     "sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, " +
                     "borger_cprnr)" +
                     "OUTPUT INSERTED.ekgmaaleid " +
-                    "VALUES(CONVERT(DATETIME, '" + ds.Dato_ + "'), " + ds.AntalMålinger_ + ", '"
+                    "VALUES(CONVERT(DATETIME, '" + ds.Dato_.ToString("yyy-MM-dd HH:mm:ss") + "'), " + ds.AntalMålinger_ + ", '"
                     + ds.MåltagerBrugerId_ + "', '" + ds.printMåltagerKommentar() + "', '"
                     + ds.AnsvarstagerBrugerId_ + "', '" + ds.AnsvarstagerOrg_ + "', '"
                     + ds.printIP() + "" + ds.printAnsvarstagerKommentar() + "', '"
@@ -248,7 +245,7 @@ namespace DB
                     "data_format, bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid) "
                     + "VALUES(@data, " + ds.SampleRateHz_ + ", " + ds.IntervalSek_ + ", '"
                     + ds.DataFormat_ + "', '" + ds.BinEllerTxt_ + "', '" + ds.MåleformatType_ + "', "
-                    + "CONVERT(DATETIME, '" + ds.StartTid_ + "'), " + ekgMåleId + ")";
+                    + "CONVERT(DATETIME, '" + ds.StartTid_.ToString("yyy-MM-dd HH:mm:ss") + "'), " + ekgMåleId + ")";
 
                 cmd = new SqlCommand(sql, conn);
 
