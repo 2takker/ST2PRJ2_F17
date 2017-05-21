@@ -199,7 +199,7 @@ namespace DB
 
 
                 //Finder CPR, dato og ID for de tilgængelige datasæt, tilknyttet det søgte CPR
-                cmd = new SqlCommand("SELECT * FROM EKGMAALING WHERE borger_cprnr ='" + cpr + "'", conn);
+                cmd = new SqlCommand("SELECT * FROM EKGMAALING WHERE borger_cprnr ='" + cpr + "' ORDER BY dato DESC", conn);
                 conn.Open();
                 rdr = cmd.ExecuteReader();
 

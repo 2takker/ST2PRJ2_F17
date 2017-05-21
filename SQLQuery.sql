@@ -124,3 +124,5 @@
 --SELECT * FROM db_owner.EKGMAALING
 --SELECT * FROM db_owner.PatientData
 
+--SELECT * FROM EKGMAALING WHERE borger_cprnr = '1212124008' 
+

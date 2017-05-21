@@ -50,7 +50,8 @@ namespace DB
                     "OR sfp_ansvrmedarbjnr LIKE @searchString " +
                     "OR sfp_maaltagermedarbjnr LIKE @searchString " +
                     "OR borger_fornavn LIKE @searchString " +
-                    "OR borger_efternavn LIKE @searchString";
+                    "OR borger_efternavn LIKE @searchString " +
+                    "ORDER BY dato DESC";
 
                 cmd = new SqlCommand(sql, conn);
 

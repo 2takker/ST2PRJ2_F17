@@ -58,6 +58,7 @@
             // CPRTextBox
             // 
             this.CPRTextBox.Location = new System.Drawing.Point(26, 48);
+            this.CPRTextBox.MaxLength = 10;
             this.CPRTextBox.Name = "CPRTextBox";
             this.CPRTextBox.Size = new System.Drawing.Size(100, 20);
             this.CPRTextBox.TabIndex = 3;
@@ -70,9 +71,11 @@
             this.valgAfDatasætListBox.Name = "valgAfDatasætListBox";
             this.valgAfDatasætListBox.Size = new System.Drawing.Size(183, 147);
             this.valgAfDatasætListBox.TabIndex = 6;
+            this.valgAfDatasætListBox.SelectedIndexChanged += new System.EventHandler(this.valgAfDatasætListBox_SelectedIndexChanged);
             // 
             // uploadKnap
             // 
+            this.uploadKnap.Enabled = false;
             this.uploadKnap.Location = new System.Drawing.Point(215, 229);
             this.uploadKnap.Name = "uploadKnap";
             this.uploadKnap.Size = new System.Drawing.Size(75, 23);

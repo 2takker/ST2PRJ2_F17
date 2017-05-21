@@ -73,9 +73,11 @@
             this.SøgeresultaterListBox.TabIndex = 3;
             this.SøgeresultaterListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.SøgeresultaterListBox_DrawItem);
             this.SøgeresultaterListBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.SøgeresultaterListBox_MeasureItem);
+            this.SøgeresultaterListBox.SelectedIndexChanged += new System.EventHandler(this.SøgeresultaterListBox_SelectedIndexChanged);
             // 
             // downloadKnap
             // 
+            this.downloadKnap.Enabled = false;
             this.downloadKnap.Location = new System.Drawing.Point(437, 512);
             this.downloadKnap.Name = "downloadKnap";
             this.downloadKnap.Size = new System.Drawing.Size(75, 23);

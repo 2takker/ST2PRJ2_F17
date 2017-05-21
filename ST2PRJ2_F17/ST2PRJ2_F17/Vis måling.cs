@@ -50,7 +50,7 @@ namespace Præsentationslag
       private void gammelkommentar()
       {
          gammelKommentartextBox.Text = "Måltagers kommentar: \r\n" + datasæt_.printMåltagerKommentar()
-                + "\r\nTidligere kommentarer fra ansvarstager(e): \r\n" + datasæt_.printAnsvarstagerKommentar();
+                + "Tidligere kommentarer fra ansvarstager(e): \r\n" + datasæt_.printAnsvarstagerKommentar();
       }
 
         private bool checkForIP()
@@ -159,7 +159,7 @@ namespace Præsentationslag
 
         private void gemKommentarKnap_Click(object sender, EventArgs e)
         {
-            datasæt_.AnsvarstagerKommentar_.Add(kommentarTextBox.Text);
+            datasæt_.AnsvarstagerKommentar_.Add(DateTime.Now + "\r\n" + kommentarTextBox.Text);
             if (GennemseController.gemKommentar(datasæt_) == true)
             {
                kommentarTextBox.Clear();

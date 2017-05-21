@@ -96,9 +96,9 @@ namespace Præsentationslag
 
         private void gemKommentar_Click(object sender, EventArgs e)
         {
-            if (PreviewController.gemKommentar(kommentarTextBox.Text) == true)
+            if (PreviewController.gemKommentar(DateTime.Now + "\r\n" + kommentarTextBox.Text) == true)
             {
-                kommListe_.Add(kommentarTextBox.Text);
+                kommListe_.Add(DateTime.Now + "\r\n" + kommentarTextBox.Text);
                 gammelKommentartextBox.Text = gemteKommentarer();
                 kommentarTextBox.Clear();
             }

@@ -32,11 +32,11 @@ namespace Præsentationslag
         {
             string søgeord;
             søgeord = SøgeTextBox.Text;
-
+            SøgeresultaterListBox.Items.Clear();
 
             datasætListe = DownloadController.visSøgning(søgeord);
 
-            if (datasætListe.Count != 0)
+            if (datasætListe != null && datasætListe.Count != 0)
             {
                 foreach (DTO_Datasæt ds in datasætListe)
                 {
@@ -47,18 +47,23 @@ namespace Præsentationslag
             {
                 MessageBox.Show("Der findes ingen datasæt til pågældende søgeord");
             }
+
+            downloadKnap.Enabled = false;
         }
 
 
         private void downloadKnap_Click(object sender, EventArgs e)
         {
-            if (DownloadController.indlæsValgtDatasæt(SøgeresultaterListBox.SelectedIndex))
+            if (SøgeresultaterListBox.SelectedIndex >= 0)
             {
-                MessageBox.Show("Datasæt downloaded");                
-            }
-            else
-            {
-                MessageBox.Show("Datasæt blev ikke downloaded");
+                if (DownloadController.indlæsValgtDatasæt(SøgeresultaterListBox.SelectedIndex))
+                {
+                    MessageBox.Show("Datasæt downloaded");
+                }
+                else
+                {
+                    MessageBox.Show("Datasæt blev ikke downloaded");
+                }
             }
         }
 
@@ -88,13 +93,23 @@ namespace Præsentationslag
 
         private void SøgeresultaterListBox_MeasureItem(object sender, MeasureItemEventArgs e)
         {
-            e.ItemHeight = 60;
+            int h = SøgeresultaterListBox.Items[e.Index].ToString().Split('\n').Length;
+            e.ItemHeight = h*13;
         }
 
         private void SøgeresultaterListBox_DrawItem(object sender, DrawItemEventArgs e)
         {
-            e.DrawBackground();
-            e.Graphics.DrawString(SøgeresultaterListBox.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+            if (e.Index >= 0)
+            {
+                e.DrawBackground();
+                e.Graphics.DrawString(SøgeresultaterListBox.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+            }
+            
+        }
+
+        private void SøgeresultaterListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            downloadKnap.Enabled = true;
         }
     }
 }
