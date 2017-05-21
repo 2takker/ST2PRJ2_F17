@@ -14,12 +14,12 @@ namespace Præsentationslag
     {
         log_ind loginvindue_;
 
-        public string brugerID_ { get; set; }
+        public string BrugerID_ { get; set; }
 
         public Hjemmeskærm()
         {
             InitializeComponent();
-            låsHjemmeskærm(true);  
+            låsHjemmeskærm(true);
 
             loginvindue_ = new log_ind(this);
             loginvindue_.åbenLoginVindue();
@@ -29,39 +29,39 @@ namespace Præsentationslag
         public void låsHjemmeskærm(bool lås)
         {
             Enabled = !lås;
-         if (!lås)
-         {
-            LoggetIndSomtextBox.Text = brugerID_;
-         }
-      }
+            if (!lås)
+            {
+                LoggetIndSomtextBox.Text = BrugerID_;
+            }
+        }
 
         private void opretNyPatientKnap_Click(object sender, EventArgs e)
         {
-            opret_ny_patient opretnypatient = new opret_ny_patient();
-            opretnypatient.åbenOpretNyPatientVindue();
+            opret_ny_patient opretnypatient = new opret_ny_patient(this, null);
+            opretnypatient.åbenOpretNyPatientVindue(null);
         }
 
         private void previewKnap_Click(object sender, EventArgs e)
         {
-            preview previewVindue = new preview(brugerID_);
+            preview previewVindue = new preview(BrugerID_, this);
             previewVindue.åbenPreviewVindue();
         }
 
         private void GennemseDataKnap_Click(object sender, EventArgs e)
         {
-            gennemse_data gennemseData = new gennemse_data();
+            gennemse_data gennemseData = new gennemse_data(BrugerID_, this);
             gennemseData.åbenGennemseDataVindue();
         }
 
         private void UploadKnap_Click(object sender, EventArgs e)
         {
-            upload_til_offentlig_database upload = new upload_til_offentlig_database();
+            upload_til_offentlig_database upload = new upload_til_offentlig_database(this);
             upload.åbenUploadVindue();
         }
 
         private void downloadKnap_Click(object sender, EventArgs e)
         {
-            Download_fra_offentlig_database download = new Download_fra_offentlig_database();
+            Download_fra_offentlig_database download = new Download_fra_offentlig_database(this);
             download.åbenDownloadVindue();
         }
 
@@ -70,7 +70,7 @@ namespace Præsentationslag
             låsHjemmeskærm(true);
             LoggetIndSomtextBox.Clear();
             loginvindue_.åbenLoginVindue();
-         
         }
-    }
+
+   }
 }

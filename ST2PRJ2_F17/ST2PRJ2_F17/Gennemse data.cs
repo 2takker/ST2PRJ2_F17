@@ -17,35 +17,35 @@ namespace Præsentationslag
     {
         private Gennemse_data_controller GennemseController;
         private List<DTO_Datasæt> datasætListe;
+        private Hjemmeskærm frm_;
 
-        public gennemse_data()
+        public gennemse_data(string brugerId, Hjemmeskærm frm)
         {
             InitializeComponent();
-            GennemseController = new Gennemse_data_controller();
-            
+
+            frm_ = frm;
+
+            GennemseController = new Gennemse_data_controller(brugerId);
+
         }
 
         private void indlæsCPRKnap_Click(object sender, EventArgs e)
         {
-            
-            string cpr = CPRTextBox.Text;
 
-            if (GennemseController.validerCPR(cpr) == false)
+            string cpr = CPRTextBox.Text;
+            datasætListBox.Items.Clear();
+
+            if (GennemseController.validerCPR(cpr) == false && cpr != "1234567890")
             {
                 MessageBox.Show("CPR - nummeret er ugyldigt");
                 CPRTextBox.Clear();
-                
             }
-
-            if (GennemseController.indlæsCPR(cpr) == true)
+            else if (GennemseController.indlæsCPR(cpr) == true)
             {
-
-                if (GennemseController.visPatientData(cpr) == null)
+                if (cpr == "1234567890")
                 {
-                    datasætListBox.Text = "Der findes ingen datasæt til pågældende patient";
+                    MessageBox.Show("Advarsel: Dette er CPR-nummer er gældende for alle anonyme patienter");
                 }
-                else
-                {
                     datasætListe = GennemseController.visPatientData(cpr);
 
                     fornavnTextBox.Text = datasætListe[0].Pd_.Fornavn_;
@@ -54,10 +54,22 @@ namespace Præsentationslag
                     foreach (DTO_Datasæt ds in datasætListe)
                     {
                         datasætListBox.Items.Add(Convert.ToString(ds.Dato_));
-                    }
-                }
+                    }                
+            }
+            else
+            {
+                CPRTextBox.Clear();
+                fornavnTextBox.Clear();
+                efternavnTextBox.Clear();
+                MessageBox.Show("Der findes ingen datasæt til pågældende patient");                
             }
             
+
+            
+
+            
+
+
         }
 
         private void analyserDataKnap_Click(object sender, EventArgs e)
@@ -72,17 +84,25 @@ namespace Præsentationslag
 
         public void åbenGennemseDataVindue()
         {
+            frm_.låsHjemmeskærm(true);
             Show();
+            CPRTextBox.Focus();
         }
 
         public void lukGennemseDataVindue()
         {
+            frm_.låsHjemmeskærm(false);
             Close();
         }
 
         private void datasætListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             analyserDataKnap.Enabled = true;
+        }
+
+        private void gennemse_data_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm_.låsHjemmeskærm(false);
         }
     }
 }

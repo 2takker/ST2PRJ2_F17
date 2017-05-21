@@ -83,3 +83,4 @@ C:\Users\cilla\OneDrive\Documentos\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\ob
 C:\Users\cilla\OneDrive\Documentos\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\Præsentationslag.upload_til_offentlig_database.resources
 C:\Users\cilla\OneDrive\Documentos\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\Præsentationslag.vis_måling.resources
 C:\Users\cilla\OneDrive\Documentos\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\ST2PRJ2_F17.csproj.GenerateResource.Cache
+C:\Users\Bjarke Hansen\Documents\GitHub\ST2PRJ2_F17\ST2PRJ2_F17\ST2PRJ2_F17\obj\Debug\Progress.progressForm.resources

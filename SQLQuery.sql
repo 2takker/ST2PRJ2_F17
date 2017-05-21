@@ -107,7 +107,22 @@
 
 --SELECT * FROM dbo.EKGDATA --Offentlig DB
 
-SELECT * FROM db_owner.EKGMAALING
+--SELECT * FROM db_owner.EKGMAALING
 
-SELECT * FROM db_owner.EKGDATA
+--SELECT * FROM db_owner.EKGDATA
+
+--UPDATE patientdata SET Fornavn = 'N', Efternavn = 'N' WHERE CPR = '1234567890'
+
+--SELECT * FROM patientdata
+
+
+--DELETE FROM EKGDATA
+--DELETE FROM EKGMAALING
+--DELETE FROM db_owner.PatientData
+
+--SELECT * FROM db_owner.EKGDATA
+--SELECT * FROM db_owner.EKGMAALING
+--SELECT * FROM db_owner.PatientData
+
+--SELECT * FROM EKGMAALING WHERE borger_cprnr = '1212124008' 
 

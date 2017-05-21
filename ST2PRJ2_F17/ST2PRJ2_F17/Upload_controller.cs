@@ -49,16 +49,14 @@ namespace Logik
 
         public bool indlæsValgtDatasæt(int index, bool anonym)
         {
-            try
-            {
-                datasæt_ = lokalDB_.hentDatasæt(datasætListe_[index]);
-                offentligDB_.gemDatasæt(datasæt_, anonym);
 
+            datasæt_ = lokalDB_.hentDatasæt(datasætListe_[index]);
+            if (offentligDB_.gemDatasæt(datasæt_, anonym))
+            {
                 return true;
             }
-            catch(Exception ex)
+            else
             {
-                System.Windows.Forms.MessageBox.Show("" + ex);
                 return false;
             }
         }

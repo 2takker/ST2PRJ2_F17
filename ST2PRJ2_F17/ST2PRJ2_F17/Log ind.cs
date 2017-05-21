@@ -36,6 +36,7 @@ namespace Præsentationslag
         {
             Show();
             loggedIn_ = false;
+            brugernavnTextBox.Focus();
         }
 
         private void lukLoginVindue()
@@ -77,7 +78,7 @@ namespace Præsentationslag
             if (brugerID != null)
             {
                 loggedIn_ = true;
-                frm.brugerID_ = brugerID;
+                frm.BrugerID_ = brugerID;
                 frm.låsHjemmeskærm(false);
                 lukLoginVindue();
             }

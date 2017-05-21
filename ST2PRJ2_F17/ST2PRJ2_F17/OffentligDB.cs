@@ -35,26 +35,28 @@ namespace DB
         //søger efter søgeord i offentlig database
         public List<DTO_Datasæt> søgIOffDB(string søgeord)
         {
-            List<DTO_Datasæt> dsList = new List<DTO_Datasæt>();
-
-            string sql = "DECLARE @searchString NVARCHAR(100) " +
-                "SET @searchString = '%" + søgeord + "%' " +
-                "SELECT * FROM EKGMAELING " +
-                "WHERE sfp_mt_kommentar LIKE @searchString " +
-                "OR sfp_anskommentar LIKE  @searchString " +
-                "OR borger_cprnr LIKE @searchString " +
-                "OR dato LIKE @searchString " +
-                "OR sfp_ans_org LIKE @searchString " +
-                "OR sfp_ansvrmedarbjnr LIKE @searchString " +
-                "OR sfp_maaltagermedarbjnr LIKE @searchString " +
-                "OR borger_fornavn LIKE @searchString " +
-                "OR borger_efternavn LIKE @searchString";
-
-            cmd = new SqlCommand(sql, conn);
-
-            conn.Open();
             try
             {
+                List<DTO_Datasæt> dsList = new List<DTO_Datasæt>();
+
+                string sql = "DECLARE @searchString NVARCHAR(100) " +
+                    "SET @searchString = '%" + søgeord + "%' " +
+                    "SELECT * FROM EKGMAELING " +
+                    "WHERE sfp_mt_kommentar LIKE @searchString " +
+                    "OR sfp_anskommentar LIKE  @searchString " +
+                    "OR borger_cprnr LIKE @searchString " +
+                    "OR dato LIKE @searchString " +
+                    "OR sfp_ans_org LIKE @searchString " +
+                    "OR sfp_ansvrmedarbjnr LIKE @searchString " +
+                    "OR sfp_maaltagermedarbjnr LIKE @searchString " +
+                    "OR borger_fornavn LIKE @searchString " +
+                    "OR borger_efternavn LIKE @searchString " +
+                    "ORDER BY dato DESC";
+
+                cmd = new SqlCommand(sql, conn);
+
+                conn.Open();
+
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -80,35 +82,37 @@ namespace DB
                         ds.AnsvarstagerKommentar_.Add((string)rdr["sfp_anskommentar"]);
                     }
 
-                    if(rdr["sfp_mt_kommentar"] != DBNull.Value)
+                    if (rdr["sfp_mt_kommentar"] != DBNull.Value)
                     {
                         ds.MåltagerKommentar_.Add((string)rdr["sfp_mt_kommentar"]);
                     }
-                   
+
                     ds.Dato_ = Convert.ToDateTime(rdr["dato"]);
                     ds.AnsvarstagerOrg_ = (string)rdr["sfp_ans_org"];
                     ds.AnsvarstagerBrugerId_ = (string)rdr["sfp_ansvrmedarbjnr"];
 
-                    if(rdr["sfp_maaltagermedarbjnr"] != DBNull.Value)
+                    if (rdr["sfp_maaltagermedarbjnr"] != DBNull.Value)
                     {
                         ds.MåltagerBrugerId_ = (string)rdr["sfp_maaltagermedarbjnr"];
                     }
-                    
+
 
                     ds.SøgeResultat_ = omskrivSøgeResultat(rdr, søgeord);
 
                     dsList.Add(ds);
                 }
+
+                conn.Close();
+                return dsList;
             }
             catch (Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex);
+                System.Windows.Forms.MessageBox.Show("" + ex.Message);
                 return null;
             }
 
-            conn.Close();
-            return dsList;
+
         }
 
         //Omskriver fundne værdier til et søgeresultat
@@ -118,25 +122,22 @@ namespace DB
 
             try
             {
+                output += "Borgers CPR-nummer: " + sqlRdr["borger_cprnr"] + "\r\n";
                 output += "Dato for måling: " + sqlRdr["dato"] + "\r\n";
                 output += "Ansvarstagers kommentar: " + sqlRdr["sfp_anskommentar"] + "\r\n";
+
 
                 if (Convert.ToString(sqlRdr["sfp_mt_kommentar"]).Contains(søgOrd))
                 {
                     output += "Måletagers kommentar: " + sqlRdr["sfp_mt_kommentar"] + "\r\n";
                 }
 
-                if (Convert.ToString(sqlRdr["borger_cprnr"]).Contains(søgOrd))
-                {
-                    output += "Borgers CPR-nummer: " + sqlRdr["borger_cprnr"] + "\r\n";
-                }
-
-                if(Convert.ToString(sqlRdr["borger_fornavn"]).Contains(søgOrd))
+                if (Convert.ToString(sqlRdr["borger_fornavn"]).Contains(søgOrd))
                 {
                     output += "Borgers fornavn: " + sqlRdr["borger_fornavn"] + "\r\n";
                 }
 
-                if(Convert.ToString(sqlRdr["borger_efternavn"]).Contains(søgOrd))
+                if (Convert.ToString(sqlRdr["borger_efternavn"]).Contains(søgOrd))
                 {
                     output += "Borgers efternavn: " + sqlRdr["borger_efternavn"] + "\r\n";
                 }
@@ -167,13 +168,14 @@ namespace DB
         //Henter data tilhørende et valgt datasæt
         public DTO_Datasæt downloadDataFraOffDB(DTO_Datasæt ds)
         {
-            string sql = "SELECT * FROM EKGDATA WHERE ekgmaaleid =" + ds.EkgId_;
-
-            cmd = new SqlCommand(sql, conn);
-
-            conn.Open();
             try
             {
+                string sql = "SELECT * FROM EKGDATA WHERE ekgmaaleid =" + ds.EkgId_;
+
+                cmd = new SqlCommand(sql, conn);
+
+                conn.Open();
+
                 rdr = cmd.ExecuteReader();
 
                 if (rdr.Read() && (long)rdr["ekgmaaleid"] == ds.EkgId_)
@@ -192,16 +194,16 @@ namespace DB
                         ds.Data_.Add(BitConverter.ToDouble(bytes, i));
                     }
                 }
+
+                conn.Close();
+                return ds;
             }
             catch (Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex);
+                System.Windows.Forms.MessageBox.Show("" + ex.Message);
                 return null;
-            }
-
-            conn.Close();
-            return ds;
+            }            
         }
 
 
@@ -226,7 +228,7 @@ namespace DB
                     "sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, " +
                     "borger_cprnr)" +
                     "OUTPUT INSERTED.ekgmaaleid " +
-                    "VALUES(CONVERT(DATETIME, '" + ds.Dato_ + "'), " + ds.AntalMålinger_ + ", '"
+                    "VALUES(CONVERT(DATETIME, '" + ds.Dato_.ToString("yyy-MM-dd HH:mm:ss") + "'), " + ds.AntalMålinger_ + ", '"
                     + ds.MåltagerBrugerId_ + "', '" + ds.printMåltagerKommentar() + "', '"
                     + ds.AnsvarstagerBrugerId_ + "', '" + ds.AnsvarstagerOrg_ + "', '"
                     + ds.printIP() + "" + ds.printAnsvarstagerKommentar() + "', '"
@@ -244,7 +246,7 @@ namespace DB
                     "data_format, bin_eller_tekst, maaleformat_type, start_tid, ekgmaaleid) "
                     + "VALUES(@data, " + ds.SampleRateHz_ + ", " + ds.IntervalSek_ + ", '"
                     + ds.DataFormat_ + "', '" + ds.BinEllerTxt_ + "', '" + ds.MåleformatType_ + "', "
-                    + "CONVERT(DATETIME, '" + ds.StartTid_ + "'), " + ekgMåleId + ")";
+                    + "CONVERT(DATETIME, '" + ds.StartTid_.ToString("yyy-MM-dd HH:mm:ss") + "'), " + ekgMåleId + ")";
 
                 cmd = new SqlCommand(sql, conn);
 
@@ -255,15 +257,15 @@ namespace DB
                 cmd.ExecuteScalar();
 
                 conn.Close();
+
+                return true;
             }
             catch (Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex);
+                System.Windows.Forms.MessageBox.Show("" + ex.Message);
                 return false;
-            }
-            
-            return true;
+            }            
         }
     }
 }

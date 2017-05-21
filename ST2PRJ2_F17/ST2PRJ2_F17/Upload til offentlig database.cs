@@ -17,10 +17,14 @@ namespace Præsentationslag
         private Upload_controller UploadController;
         private List<DTO_Datasæt> datasætListe;
         private bool anonym;
+        private Hjemmeskærm frm_;
 
-        public upload_til_offentlig_database()
+        public upload_til_offentlig_database(Hjemmeskærm frm)
         {
             InitializeComponent();
+
+            frm_ = frm;
+
             UploadController = new Upload_controller();
             datasætListe = new List<DTO_Datasæt>();
             anonym = false;
@@ -31,33 +35,50 @@ namespace Præsentationslag
             string cpr;
             cpr = CPRTextBox.Text;
 
+            valgAfDatasætListBox.Items.Clear();
+
             datasætListe = UploadController.visSøgning(cpr);
 
-            if (datasætListe.Count != 0)
+            if (datasætListe != null && datasætListe.Count != 0)
             {
                 foreach (DTO_Datasæt ds in datasætListe)
                 {
-                    valgAfDatasætListBox.Items.Add(ds.Dato_);
+                    valgAfDatasætListBox.Items.Add(Convert.ToString(ds.Dato_));
                 }
             }
             else
             {
-                valgAfDatasætListBox.Text = "Der findes ingen datasæt til pågældende patient";
+                MessageBox.Show("Der findes ingen datasæt til pågældende patient\r\nCPR nummer muligvis ugyldigt");
             }
+
+            uploadKnap.Enabled = false;
         }
 
         private void uploadKnap_Click(object sender, EventArgs e)
         {
-            UploadController.indlæsValgtDatasæt(valgAfDatasætListBox.SelectedIndex, anonym);
+            if (valgAfDatasætListBox.SelectedIndex >= 0)
+            {
+                if (UploadController.indlæsValgtDatasæt(valgAfDatasætListBox.SelectedIndex, anonym))
+                {
+                    MessageBox.Show("Datasæt uploaded");
+                }
+                else
+                {
+                    MessageBox.Show("Datasæt blev ikke uploaded");
+                }
+            }
+
         }
 
         public void åbenUploadVindue()
         {
+            frm_.låsHjemmeskærm(true);
             Show();
         }
 
         public void lukUploadVindue()
         {
+            frm_.låsHjemmeskærm(false);
             Close();
         }
 
@@ -71,6 +92,24 @@ namespace Præsentationslag
             {
                 anonym = false;
             }
+        }
+
+        private void CPRTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                IndlæsCPRKnap.PerformClick();
+            }
+        }
+
+        private void upload_til_offentlig_database_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm_.låsHjemmeskærm(false);
+        }
+
+        private void valgAfDatasætListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uploadKnap.Enabled = true;
         }
     }
 }

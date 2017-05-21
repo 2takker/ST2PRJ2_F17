@@ -19,19 +19,29 @@ namespace Præsentationslag
         private CPR_nummer cprvindue;
         private double x;
         private List<double> dataListe_;
+        private List<string> kommListe_;
+        private Hjemmeskærm frm_;
 
 
-        public preview(string brugerID)
+        public preview(string brugerID, Hjemmeskærm frm)
         {
             InitializeComponent();
+
+            frm_ = frm;
+
             PreviewController = new Preview_controller();
             dataListe_ = new List<double>();
+            kommListe_ = new List<string>();
+
             x = 0;
 
             PreviewController.indlæsBrugerId(brugerID);
 
             tiSekFremKnap.Enabled = false;
             tiSekTilbageKnap.Enabled = false;
+            genKnap.Enabled = false;
+            kasserKnap.Enabled = false;
+            gemKommentar.Enabled = false;
         }
 
         private void genKnap_Click(object sender, EventArgs e)
@@ -76,7 +86,7 @@ namespace Præsentationslag
 
         private void tiSekFremKnap_Click(object sender, EventArgs e)
         {
-            skrivTilGraf(x);            
+            skrivTilGraf(x);
             if (x >= (dataListe_.Count / 500))
             {
                 tiSekFremKnap.Enabled = false;
@@ -86,14 +96,15 @@ namespace Præsentationslag
 
         private void gemKommentar_Click(object sender, EventArgs e)
         {
-            if (PreviewController.gemKommentar(kommentarTextBox.Text) == true)
+            if (PreviewController.gemKommentar(DateTime.Now + "\r\n" + kommentarTextBox.Text) == true)
             {
+                kommListe_.Add(DateTime.Now + "\r\n" + kommentarTextBox.Text);
+                gammelKommentartextBox.Text = gemteKommentarer();
                 kommentarTextBox.Clear();
-                MessageBox.Show("Kommentar gemt");
             }
             else
             {
-                MessageBox.Show("Kommentar ikke gemt");              
+                MessageBox.Show("Kommentar ikke gemt");
             }
 
         }
@@ -119,12 +130,15 @@ namespace Præsentationslag
                             dataListe_ = PreviewController.importerDatafil(myStream);
                             skrivTilGraf(0);
 
-                            if (x >= (dataListe_.Count / 500))
+                            if (x < (dataListe_.Count / 500))
                             {
-                                tiSekFremKnap.Enabled = false;
+                                tiSekFremKnap.Enabled = true;
                             }
-
+                            
                             importerFilKnap.Enabled = false;
+                            genKnap.Enabled = true;
+                            kasserKnap.Enabled = true;
+                            gemKommentar.Enabled = true;
                         }
                     }
                 }
@@ -133,32 +147,62 @@ namespace Præsentationslag
                     MessageBox.Show("Kunne ikke læse filen fra disken: " + ex.Message);
                 }
             }
-            
+            kommentarTextBox.Focus();
+
         }
 
         private void skrivTilGraf(double start)
         {
+            
             x = start;
             previewData.Series["EKG"].Points.Clear();
+            låsknapper(true);
+
 
             for (double i = (x * 500); i < (start + 10) * 500; i++)
             {
                 previewData.Series["EKG"].Points.AddXY(x + 0.002, dataListe_[Convert.ToInt32(i)]);
                 x += 0.002;
                 x = Math.Round(x, 3);
-            }
-            x -= 0.002;
-            x = Math.Round(x, 3);
+            }            
+
+            låsknapper(false);
+            
         }
 
 
         public void åbenPreviewVindue()
         {
+            frm_.låsHjemmeskærm(true);
             Show();
         }
         public void lukPreviewVindue()
         {
+            frm_.låsHjemmeskærm(false);
             Close();
+        }
+
+        private string gemteKommentarer()
+        {
+            string output = "";
+
+            foreach (string e in kommListe_)
+            {
+                output += "" + e + "\r\n\r\n";
+            }
+
+            return output;
+        }
+
+        private void preview_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm_.låsHjemmeskærm(false);
+        }
+
+        private void låsknapper(bool lås)
+        {
+            tiSekFremKnap.Enabled = !lås;
+            tiSekTilbageKnap.Enabled = !lås;
         }
     }
 

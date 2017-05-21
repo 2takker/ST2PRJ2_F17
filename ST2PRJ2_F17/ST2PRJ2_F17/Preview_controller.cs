@@ -24,20 +24,20 @@ namespace Logik
         }
 
         public List<double> importerDatafil(Stream st)
-        {
+        {            
             using (var fs = st)
             using (var reader = new StreamReader(fs))
             {
-              while (!reader.EndOfStream)
+                while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',', '\"');
 
                     //dataListe_.Add(double.Parse((values[2]), System.Globalization.CultureInfo.InvariantCulture)); //Christiane                    
 
-                    dataListe_.Add(double.Parse((values[1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke
+                    dataListe_.Add(double.Parse((values[values.Length-1]), System.Globalization.CultureInfo.InvariantCulture)); //Bjarke 
                 }
-                dtoDatasæt_.Data_ = dataListe_;  
+                dtoDatasæt_.Data_ = dataListe_;
 
                 return dataListe_;
             }
@@ -63,17 +63,19 @@ namespace Logik
             return false;
         }
 
-        public bool indlæsCPR(string cpr)
+        public byte indlæsCPR(string cpr)
         {
             if (lokalDB_.findCPR(cpr) == true)
             {
                 dtoDatasæt_.Pd_ = new DTO_PatientData(cpr);
-                lokalDB_.gemDatasæt(dtoDatasæt_);
-                return true;
+                if (lokalDB_.gemDatasæt(dtoDatasæt_))
+                {
+                    return 0;
+                }
+                else return 1;
+
             }
-
-            else return false;
-
+            else return 2;
         }
 
         public bool gemKommentar(string kommentar)
@@ -92,6 +94,6 @@ namespace Logik
         public void indlæsBrugerId(string brugerID)
         {
             dtoDatasæt_.MåltagerBrugerId_ = brugerID;
-        }
+        }        
     }
 }

@@ -51,7 +51,7 @@ namespace DTO
             {
                 return (Data_.Count / (int)SampleRateHz_);
             }
-            set { }
+            set { intervalSek_ = value; }
         }
 
         public DTO_Datasæt()
@@ -66,11 +66,11 @@ namespace DTO
             //Standard værdier
             Dato_ = DateTime.Now;
             StartTid_ = DateTime.Now.AddDays(-1);
-            BinEllerTxt_ = 'B';
+            BinEllerTxt_ = 'b';
             SampleRateHz_ = 500;
             AnsvarstagerOrg_ = "Gruppe 6";
             IntervalSek_ = 86400;
-            DataFormat_ = "andet";
+            DataFormat_ = "bytearray";
             MåleformatType_ = "double";
             AntalMålinger_ = 1;
             AnsvarstagerBrugerId_ = "NN";
@@ -87,7 +87,10 @@ namespace DTO
 
             foreach (string e in MåltagerKommentar_)
             {
-                output += "" + e + "\r\n";
+                if (e != "")
+                {
+                    output += "" + e + "\r\n\r\n";
+                }
             }
 
             return output;
@@ -97,9 +100,13 @@ namespace DTO
         {
             string output = "";
 
+
             foreach (string e in AnsvarstagerKommentar_)
             {
-                output += "" + e + "\r\n";
+                if (e != "")
+                {
+                    output += "" + e + "\r\n\r\n";
+                }
             }
 
             return output;
@@ -114,7 +121,7 @@ namespace DTO
                 output += "**Autogeneret kommentar**\r\n";
                 for (int i = 0; i < Ip_.Count; i++)
                 {
-                    output += "Interessepunkt " + (i + 1) + " ved: " + (Ip_[0] / 500) + " sekunder\r\n";
+                    output += "Interessepunkt " + (i + 1) + " ved: " + (Ip_[0] / SampleRateHz_) + " sekunder\r\n";
                 }
                 output += "*********************\r\n";
             }
