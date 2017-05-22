@@ -96,5 +96,13 @@ namespace Præsentationslag
                 cprFrm_.Enabled = true;
             }
         }
+
+        private void efternavnTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                gemKnap.PerformClick();
+            }
+        }
     }
 }

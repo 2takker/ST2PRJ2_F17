@@ -42,68 +42,77 @@
             // CPRnummer
             // 
             this.CPRnummer.AutoSize = true;
-            this.CPRnummer.Location = new System.Drawing.Point(30, 21);
+            this.CPRnummer.Location = new System.Drawing.Point(60, 40);
+            this.CPRnummer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CPRnummer.Name = "CPRnummer";
-            this.CPRnummer.Size = new System.Drawing.Size(72, 13);
+            this.CPRnummer.Size = new System.Drawing.Size(145, 25);
             this.CPRnummer.TabIndex = 0;
             this.CPRnummer.Text = "CPR nummer:";
             // 
             // fornavn
             // 
             this.fornavn.AutoSize = true;
-            this.fornavn.Location = new System.Drawing.Point(30, 117);
+            this.fornavn.Location = new System.Drawing.Point(60, 225);
+            this.fornavn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.fornavn.Name = "fornavn";
-            this.fornavn.Size = new System.Drawing.Size(46, 13);
+            this.fornavn.Size = new System.Drawing.Size(91, 25);
             this.fornavn.TabIndex = 1;
             this.fornavn.Text = "Fornavn";
             // 
             // efternavn
             // 
             this.efternavn.AutoSize = true;
-            this.efternavn.Location = new System.Drawing.Point(164, 117);
+            this.efternavn.Location = new System.Drawing.Point(328, 225);
+            this.efternavn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.efternavn.Name = "efternavn";
-            this.efternavn.Size = new System.Drawing.Size(53, 13);
+            this.efternavn.Size = new System.Drawing.Size(104, 25);
             this.efternavn.TabIndex = 2;
             this.efternavn.Text = "Efternavn";
             // 
             // datasætListBox
             // 
             this.datasætListBox.FormattingEnabled = true;
-            this.datasætListBox.Location = new System.Drawing.Point(33, 171);
+            this.datasætListBox.ItemHeight = 25;
+            this.datasætListBox.Location = new System.Drawing.Point(66, 329);
+            this.datasætListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.datasætListBox.Name = "datasætListBox";
-            this.datasætListBox.Size = new System.Drawing.Size(184, 95);
+            this.datasætListBox.Size = new System.Drawing.Size(364, 179);
             this.datasætListBox.TabIndex = 3;
             this.datasætListBox.SelectedIndexChanged += new System.EventHandler(this.datasætListBox_SelectedIndexChanged);
             // 
             // CPRTextBox
             // 
-            this.CPRTextBox.Location = new System.Drawing.Point(33, 37);
+            this.CPRTextBox.Location = new System.Drawing.Point(66, 71);
+            this.CPRTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.CPRTextBox.MaxLength = 10;
             this.CPRTextBox.Name = "CPRTextBox";
-            this.CPRTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CPRTextBox.Size = new System.Drawing.Size(196, 31);
             this.CPRTextBox.TabIndex = 4;
             // 
             // fornavnTextBox
             // 
             this.fornavnTextBox.Enabled = false;
-            this.fornavnTextBox.Location = new System.Drawing.Point(33, 134);
+            this.fornavnTextBox.Location = new System.Drawing.Point(66, 258);
+            this.fornavnTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.fornavnTextBox.Name = "fornavnTextBox";
-            this.fornavnTextBox.Size = new System.Drawing.Size(100, 20);
+            this.fornavnTextBox.Size = new System.Drawing.Size(196, 31);
             this.fornavnTextBox.TabIndex = 5;
             // 
             // efternavnTextBox
             // 
             this.efternavnTextBox.Enabled = false;
-            this.efternavnTextBox.Location = new System.Drawing.Point(167, 134);
+            this.efternavnTextBox.Location = new System.Drawing.Point(334, 258);
+            this.efternavnTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.efternavnTextBox.Name = "efternavnTextBox";
-            this.efternavnTextBox.Size = new System.Drawing.Size(100, 20);
+            this.efternavnTextBox.Size = new System.Drawing.Size(196, 31);
             this.efternavnTextBox.TabIndex = 6;
             // 
             // indlæsCPRKnap
             // 
-            this.indlæsCPRKnap.Location = new System.Drawing.Point(33, 63);
+            this.indlæsCPRKnap.Location = new System.Drawing.Point(66, 121);
+            this.indlæsCPRKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.indlæsCPRKnap.Name = "indlæsCPRKnap";
-            this.indlæsCPRKnap.Size = new System.Drawing.Size(75, 23);
+            this.indlæsCPRKnap.Size = new System.Drawing.Size(150, 44);
             this.indlæsCPRKnap.TabIndex = 7;
             this.indlæsCPRKnap.Text = "Indlæs";
             this.indlæsCPRKnap.UseVisualStyleBackColor = true;
@@ -112,9 +121,10 @@
             // analyserDataKnap
             // 
             this.analyserDataKnap.Enabled = false;
-            this.analyserDataKnap.Location = new System.Drawing.Point(245, 241);
+            this.analyserDataKnap.Location = new System.Drawing.Point(490, 463);
+            this.analyserDataKnap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.analyserDataKnap.Name = "analyserDataKnap";
-            this.analyserDataKnap.Size = new System.Drawing.Size(87, 23);
+            this.analyserDataKnap.Size = new System.Drawing.Size(174, 44);
             this.analyserDataKnap.TabIndex = 8;
             this.analyserDataKnap.Text = "Analyser data";
             this.analyserDataKnap.UseVisualStyleBackColor = true;
@@ -123,9 +133,9 @@
             // gennemse_data
             // 
             this.AcceptButton = this.indlæsCPRKnap;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 277);
+            this.ClientSize = new System.Drawing.Size(678, 535);
             this.Controls.Add(this.analyserDataKnap);
             this.Controls.Add(this.indlæsCPRKnap);
             this.Controls.Add(this.efternavnTextBox);
@@ -136,8 +146,7 @@
             this.Controls.Add(this.fornavn);
             this.Controls.Add(this.CPRnummer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximumSize = new System.Drawing.Size(365, 316);
-            this.MinimumSize = new System.Drawing.Size(365, 316);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "gennemse_data";
             this.Text = "Gennemse data";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.gennemse_data_FormClosing);

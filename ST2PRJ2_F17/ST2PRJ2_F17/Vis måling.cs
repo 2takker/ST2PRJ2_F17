@@ -27,6 +27,8 @@ namespace Præsentationslag
         {
             InitializeComponent();
 
+            Cursor = Cursors.WaitCursor;
+
             this.frm = frm;
             this.GennemseController = GennemseController;
             ipliste = new List<double>();
@@ -42,20 +44,24 @@ namespace Præsentationslag
 
             gammelkommentar();
 
-            dataCountCorr = ((datasæt_.Data_.Count)  - (datasæt_.Data_.Count % datasæt_.SampleRateHz_))/datasæt_.SampleRateHz_;
-            
+            dataCountCorr = ((datasæt_.Data_.Count) - (datasæt_.Data_.Count % datasæt_.SampleRateHz_)) / datasæt_.SampleRateHz_;
+
             skrivTilGraf(0, true);
+
+            Cursor = Cursors.Default;
         }
 
-      private void gammelkommentar()
-      {
-         gammelKommentartextBox.Text = "Måltagers kommentar: \r\n" + datasæt_.printMåltagerKommentar()
-                + "Tidligere kommentarer fra ansvarstager(e): \r\n" + datasæt_.printAnsvarstagerKommentar();
-      }
+        private void gammelkommentar()
+        {
+            Cursor = Cursors.WaitCursor;
+            gammelKommentartextBox.Text = "Måltagers kommentar: \r\n" + datasæt_.printMåltagerKommentar()
+                   + "Tidligere kommentarer fra ansvarstager(e): \r\n" + datasæt_.printAnsvarstagerKommentar();
+            Cursor = Cursors.Default;
+        }
 
         private bool checkForIP()
         {
-            if (datasæt_.Ip_.Count == 0) 
+            if (datasæt_.Ip_.Count == 0)
             {
                 ipFremKnap.Enabled = false;
                 labelNoIP.Visible = true;
@@ -72,25 +78,16 @@ namespace Præsentationslag
 
         private void skrivTilGraf(double start, bool nextIp)
         {
+            Cursor = Cursors.WaitCursor;
 
             if (checkForIP() && nextIp)
             {
                 double preCorrX = (datasæt_.Ip_[count] / datasæt_.SampleRateHz_);
                 double corr = preCorrX % 10;
-                analyseretData.Annotations["IP"].X = preCorrX+1;
+                analyseretData.Annotations["IP"].X = preCorrX + 1;
                 analyseretData.Annotations["IP"].Visible = true;
                 x = preCorrX - corr;
-                start = x;
-
-                if (count == 0)
-                {
-                    ipTilbageKnap.Enabled = false;
-                }
-
-                if (count == datasæt_.Ip_.Count - 1)
-                {
-                    ipFremKnap.Enabled = false;
-                }
+                start = x;                
             }
             else
             {
@@ -99,11 +96,11 @@ namespace Præsentationslag
 
             analyseretData.Series["EKG"].Points.Clear();
 
-            for (double i = (x * datasæt_.SampleRateHz_); 
+            for (double i = (x * datasæt_.SampleRateHz_);
                 i < (start + 10) * datasæt_.SampleRateHz_ && i < datasæt_.Data_.Count; i++)
             {
-                analyseretData.Series["EKG"].Points.AddXY(x + (1/datasæt_.SampleRateHz_), datasæt_.Data_[Convert.ToInt32(i)]);
-                x += (1/datasæt_.SampleRateHz_);
+                analyseretData.Series["EKG"].Points.AddXY(x + (1 / datasæt_.SampleRateHz_), datasæt_.Data_[Convert.ToInt32(i)]);
+                x += (1 / datasæt_.SampleRateHz_);
                 x = Math.Round(x, 4);
             }
 
@@ -117,6 +114,26 @@ namespace Præsentationslag
                 tiSekFremKnap.Enabled = false;
             }
 
+            if (datasæt_.Ip_.Count != 0)
+            {
+                if (count == datasæt_.Ip_.Count - 1)
+                {
+                    ipFremKnap.Enabled = false;                    
+                }
+                //if((x + 10) >= (datasæt_.Ip_[datasæt_.Ip_.Count - 1]) / datasæt_.SampleRateHz_)
+                //{
+                //    ipFremKnap.Enabled = false;
+                //    count = datasæt_.Ip_.Count - 1;
+                //}
+
+                if (count == 0)
+                {
+                    ipTilbageKnap.Enabled = false;
+                }
+            }
+
+
+            Cursor = Cursors.Default;
         }
 
         private void tiSekTilbageKnap_Click(object sender, EventArgs e)
@@ -135,7 +152,7 @@ namespace Præsentationslag
         {
             analyseretData.Annotations["IP"].Visible = false;
             skrivTilGraf(x, false);
-            
+
             tiSekTilbageKnap.Enabled = true;
         }
 
@@ -143,28 +160,30 @@ namespace Præsentationslag
         {
             count--;
             ip = (datasæt_.Ip_[count] / datasæt_.SampleRateHz_);
-            skrivTilGraf(ip,true);
+            skrivTilGraf(ip, true);
 
-            ipFremKnap.Enabled = true;            
+            ipFremKnap.Enabled = true;
         }
 
         private void ipFremKnap_Click(object sender, EventArgs e)
         {
             count++;
             ip = (datasæt_.Ip_[count] / datasæt_.SampleRateHz_);
-            skrivTilGraf(ip,true);
+            skrivTilGraf(ip, true);
 
-            ipTilbageKnap.Enabled = true;            
+            ipTilbageKnap.Enabled = true;
         }
 
         private void gemKommentarKnap_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             datasæt_.AnsvarstagerKommentar_.Add(DateTime.Now + "\r\n" + kommentarTextBox.Text);
             if (GennemseController.gemKommentar(datasæt_) == true)
             {
-               kommentarTextBox.Clear();
-               gammelkommentar();
+                kommentarTextBox.Clear();
+                gammelkommentar();
             }
+            Cursor = Cursors.Default;
         }
 
         public void åbenVisMålingVindue()
@@ -176,17 +195,21 @@ namespace Præsentationslag
             Close();
         }
 
-      private void vis_måling_FormClosing(object sender, FormClosingEventArgs e)
-      {
-         frm.lukGennemseDataVindue();
-      }
+        private void vis_måling_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm.lukGennemseDataVindue();
+        }
 
-      private void GemAnalyseretDataKnap_Click(object sender, EventArgs e)
-      {
-         if (GennemseController.gemAnalyseretData(datasæt_) == true)
-         {
-            MessageBox.Show("Datasæt gemt");
-         }
-      }
-   }
+        private void GemAnalyseretDataKnap_Click(object sender, EventArgs e)
+        {
+            if (GennemseController.gemAnalyseretData(datasæt_) == true)
+            {
+                MessageBox.Show("Datasæt gemt");
+            }
+            else
+            {
+                MessageBox.Show("Datasæt ikke gemt");
+            }
+        }
+    }
 }

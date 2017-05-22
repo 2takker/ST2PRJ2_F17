@@ -153,7 +153,7 @@ namespace Præsentationslag
 
         private void skrivTilGraf(double start)
         {
-            
+            Cursor = Cursors.WaitCursor;   
             x = start;
             previewData.Series["EKG"].Points.Clear();
             låsknapper(true);
@@ -167,6 +167,8 @@ namespace Præsentationslag
             }            
 
             låsknapper(false);
+
+            Cursor = Cursors.Default;
             
         }
 

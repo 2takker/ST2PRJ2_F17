@@ -26,12 +26,10 @@ namespace Præsentationslag
             frm_ = frm;
 
             GennemseController = new Gennemse_data_controller(brugerId);
-
         }
 
         private void indlæsCPRKnap_Click(object sender, EventArgs e)
         {
-
             string cpr = CPRTextBox.Text;
             datasætListBox.Items.Clear();
 
@@ -63,22 +61,24 @@ namespace Præsentationslag
                 efternavnTextBox.Clear();
                 MessageBox.Show("Der findes ingen datasæt til pågældende patient");                
             }
-            
-
-            
-
-            
-
-
         }
 
         private void analyserDataKnap_Click(object sender, EventArgs e)
         {
-            if (GennemseController.analyserValgtDatasæt(datasætListBox.SelectedIndex) == true)
+            
+            if (datasætListBox.SelectedIndex >= 0)
             {
-                vis_måling visMåling = new vis_måling(this, GennemseController);
-                visMåling.åbenVisMålingVindue();
-            }
+                Cursor = Cursors.WaitCursor;
+                if (GennemseController.analyserValgtDatasæt(datasætListBox.SelectedIndex) == true)
+                {
+                    vis_måling visMåling = new vis_måling(this, GennemseController);
+                    visMåling.åbenVisMålingVindue();
+                }
+                else
+                {
+                    Cursor = Cursors.Default;
+                }
+            }            
         }
 
 

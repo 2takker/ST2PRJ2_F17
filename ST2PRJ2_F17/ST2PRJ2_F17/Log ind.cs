@@ -72,6 +72,7 @@ namespace Præsentationslag
 
        private void logInd()
         {
+            Cursor = Cursors.WaitCursor;
             DTO_Sundhedspersonale sp1 = new DTO_Sundhedspersonale(brugernavnTextBox.Text, adgangskodeTextBox.Text);
             string brugerID = loginController.login(sp1);
 
@@ -86,6 +87,7 @@ namespace Præsentationslag
             {
                 ugyldigtLogin();
             }
+            Cursor = Cursors.Default;
         }
 
         private void adgangskodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
