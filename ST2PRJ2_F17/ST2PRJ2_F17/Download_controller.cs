@@ -23,24 +23,27 @@ namespace Logik
         }
 
         public List<DTO_Datasæt> visSøgning(string søgeord)
-        {          
+        {
             return datasætListe_ = offentligDB_.søgIOffDB(søgeord);
         }
 
         public bool indlæsValgtDatasæt(int index)
         {
-            try
-            {
-                datasæt_ = offentligDB_.downloadDataFraOffDB(datasætListe_[index]);
-                lokalDB_.gemDatasæt(datasæt_);
+            datasæt_ = offentligDB_.downloadDataFraOffDB(datasætListe_[index]);
 
+            if(!lokalDB_.findPatient(datasæt_.Pd_))
+            {
+                lokalDB_.tilføjPatient(datasæt_.Pd_);
+            }
+
+            if (lokalDB_.gemDatasæt(datasæt_))
+            {
                 return true;
             }
-            catch
+            else
             {
                 return false;
             }
-            
         }
     }
 }

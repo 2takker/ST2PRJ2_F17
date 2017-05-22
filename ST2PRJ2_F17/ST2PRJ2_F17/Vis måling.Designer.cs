@@ -1,37 +1,37 @@
 ﻿namespace Præsentationslag
 {
-   partial class vis_måling
-   {
-      /// <summary>
-      /// Required designer variable.
-      /// </summary>
-      private System.ComponentModel.IContainer components = null;
+    partial class vis_måling
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-      /// <summary>
-      /// Clean up any resources being used.
-      /// </summary>
-      /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-      protected override void Dispose(bool disposing)
-      {
-         if (disposing && (components != null))
-         {
-            components.Dispose();
-         }
-         base.Dispose(disposing);
-      }
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-      #region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-      /// <summary>
-      /// Required method for Designer support - do not modify
-      /// the contents of this method with the code editor.
-      /// </summary>
-      private void InitializeComponent()
-      {
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation2 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.efternavnTextBox = new System.Windows.Forms.TextBox();
             this.fornavnTextBox = new System.Windows.Forms.TextBox();
             this.CPRTextBox = new System.Windows.Forms.TextBox();
@@ -52,6 +52,8 @@
             this.GemAnalyseretDataKnap = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ipTekstBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.analyseretData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,54 +110,54 @@
             // 
             // analyseretData
             // 
-            lineAnnotation2.AxisXName = "ChartArea1\\rX";
-            lineAnnotation2.Height = -10D;
-            lineAnnotation2.Name = "IP";
-            lineAnnotation2.StartCap = System.Windows.Forms.DataVisualization.Charting.LineAnchorCapStyle.Arrow;
-            lineAnnotation2.ToolTip = "Interessepunkt";
-            lineAnnotation2.Width = 2D;
-            lineAnnotation2.X = 3D;
-            lineAnnotation2.Y = 1.5D;
-            lineAnnotation2.YAxisName = "ChartArea1\\rY";
-            this.analyseretData.Annotations.Add(lineAnnotation2);
+            lineAnnotation1.AxisXName = "ChartArea1\\rX";
+            lineAnnotation1.Height = -10D;
+            lineAnnotation1.Name = "IP";
+            lineAnnotation1.StartCap = System.Windows.Forms.DataVisualization.Charting.LineAnchorCapStyle.Arrow;
+            lineAnnotation1.ToolTip = "Interessepunkt";
+            lineAnnotation1.Width = 2D;
+            lineAnnotation1.X = 3D;
+            lineAnnotation1.Y = 1.5D;
+            lineAnnotation1.YAxisName = "ChartArea1\\rY";
+            this.analyseretData.Annotations.Add(lineAnnotation1);
             this.analyseretData.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.AxisX.MajorGrid.Interval = 0.2D;
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisX.MajorTickMark.Interval = 0.04D;
-            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisX.MinorGrid.Enabled = true;
-            chartArea2.AxisX.MinorGrid.Interval = 0.04D;
-            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisX.Title = "Tid [s]";
-            chartArea2.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
-            chartArea2.AxisY.Interval = 0.5D;
-            chartArea2.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea2.AxisY.MajorGrid.Interval = 0.5D;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea2.AxisY.Maximum = 2D;
-            chartArea2.AxisY.Minimum = -0.5D;
-            chartArea2.AxisY.MinorGrid.Enabled = true;
-            chartArea2.AxisY.MinorGrid.Interval = 0.1D;
-            chartArea2.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated90;
-            chartArea2.AxisY.Title = "EKG [mV]";
-            chartArea2.AxisY.TitleAlignment = System.Drawing.StringAlignment.Near;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 100F;
-            chartArea2.Position.Width = 100F;
-            this.analyseretData.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.analyseretData.Legends.Add(legend2);
+            chartArea1.AxisX.MajorGrid.Interval = 0.2D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX.MajorTickMark.Interval = 0.04D;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.MinorGrid.Interval = 0.04D;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.Title = "Tid [s]";
+            chartArea1.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea1.AxisY.Interval = 0.5D;
+            chartArea1.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisY.MajorGrid.Interval = 0.5D;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea1.AxisY.Maximum = 2D;
+            chartArea1.AxisY.Minimum = -0.5D;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.Interval = 0.1D;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated90;
+            chartArea1.AxisY.Title = "EKG [mV]";
+            chartArea1.AxisY.TitleAlignment = System.Drawing.StringAlignment.Near;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 100F;
+            chartArea1.Position.Width = 100F;
+            this.analyseretData.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.analyseretData.Legends.Add(legend1);
             this.analyseretData.Location = new System.Drawing.Point(15, 51);
             this.analyseretData.Name = "analyseretData";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Color = System.Drawing.Color.Red;
-            series2.Legend = "Legend1";
-            series2.Name = "EKG";
-            this.analyseretData.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Red;
+            series1.Legend = "Legend1";
+            series1.Name = "EKG";
+            this.analyseretData.Series.Add(series1);
             this.analyseretData.Size = new System.Drawing.Size(1200, 150);
             this.analyseretData.TabIndex = 14;
             this.analyseretData.Text = "analyseretData";
@@ -192,11 +194,11 @@
             // springMellemIP
             // 
             this.springMellemIP.AutoSize = true;
-            this.springMellemIP.Location = new System.Drawing.Point(1085, 237);
+            this.springMellemIP.Location = new System.Drawing.Point(1057, 237);
             this.springMellemIP.Name = "springMellemIP";
-            this.springMellemIP.Size = new System.Drawing.Size(86, 13);
+            this.springMellemIP.Size = new System.Drawing.Size(145, 13);
             this.springMellemIP.TabIndex = 20;
-            this.springMellemIP.Text = "Interessepunkter";
+            this.springMellemIP.Text = "Interessepunkter frem/tilbage";
             // 
             // ipFremKnap
             // 
@@ -240,7 +242,7 @@
             // 
             this.labelNoIP.AutoSize = true;
             this.labelNoIP.ForeColor = System.Drawing.Color.Red;
-            this.labelNoIP.Location = new System.Drawing.Point(1057, 250);
+            this.labelNoIP.Location = new System.Drawing.Point(1055, 250);
             this.labelNoIP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNoIP.Name = "labelNoIP";
             this.labelNoIP.Size = new System.Drawing.Size(148, 13);
@@ -286,12 +288,31 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Kommentar";
             // 
+            // ipTekstBox
+            // 
+            this.ipTekstBox.Enabled = false;
+            this.ipTekstBox.Location = new System.Drawing.Point(420, 25);
+            this.ipTekstBox.Name = "ipTekstBox";
+            this.ipTekstBox.Size = new System.Drawing.Size(100, 20);
+            this.ipTekstBox.TabIndex = 28;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(417, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Antal interessepunkter";
+            // 
             // vis_måling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1234, 562);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.ipTekstBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GemAnalyseretDataKnap);
@@ -316,34 +337,35 @@
             this.Name = "vis_måling";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Vis måling";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.vis_måling_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.analyseretData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
-      }
+        }
 
-      #endregion
+        #endregion
 
-      private System.Windows.Forms.TextBox efternavnTextBox;
-      private System.Windows.Forms.TextBox fornavnTextBox;
-      private System.Windows.Forms.TextBox CPRTextBox;
-      private System.Windows.Forms.Label efternavn;
-      private System.Windows.Forms.Label fornavn;
-      private System.Windows.Forms.Label CPRnummer;
-      private System.Windows.Forms.DataVisualization.Charting.Chart analyseretData;
-      private System.Windows.Forms.Label fremogtilbage;
-      private System.Windows.Forms.Button tiSekFremKnap;
-      private System.Windows.Forms.Button tiSekTilbageKnap;
-      private System.Windows.Forms.Label springMellemIP;
-      private System.Windows.Forms.Button ipFremKnap;
-      private System.Windows.Forms.Button ipTilbageKnap;
-      private System.Windows.Forms.TextBox kommentarTextBox;
-      private System.Windows.Forms.Button gemKommentarKnap;
+        private System.Windows.Forms.TextBox efternavnTextBox;
+        private System.Windows.Forms.TextBox fornavnTextBox;
+        private System.Windows.Forms.TextBox CPRTextBox;
+        private System.Windows.Forms.Label efternavn;
+        private System.Windows.Forms.Label fornavn;
+        private System.Windows.Forms.Label CPRnummer;
+        private System.Windows.Forms.DataVisualization.Charting.Chart analyseretData;
+        private System.Windows.Forms.Label fremogtilbage;
+        private System.Windows.Forms.Button tiSekFremKnap;
+        private System.Windows.Forms.Button tiSekTilbageKnap;
+        private System.Windows.Forms.Label springMellemIP;
+        private System.Windows.Forms.Button ipFremKnap;
+        private System.Windows.Forms.Button ipTilbageKnap;
+        private System.Windows.Forms.TextBox kommentarTextBox;
+        private System.Windows.Forms.Button gemKommentarKnap;
         private System.Windows.Forms.Label labelNoIP;
         private System.Windows.Forms.TextBox gammelKommentartextBox;
-      private System.Windows.Forms.Button GemAnalyseretDataKnap;
+        private System.Windows.Forms.Button GemAnalyseretDataKnap;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox ipTekstBox;
+        private System.Windows.Forms.Label label3;
     }
 }

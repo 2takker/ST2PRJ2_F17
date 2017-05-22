@@ -98,7 +98,7 @@ namespace DB
             catch (Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
                 return false;
             }
         }
@@ -146,7 +146,7 @@ namespace DB
             catch (Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
                 return false;
             }
         }
@@ -179,7 +179,7 @@ namespace DB
             catch (Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -225,7 +225,7 @@ namespace DB
 
                 if (rdr.Read())
                 {
-                    if (Convert.ToString(rdr["CPR"]) == ds.Pd_.CPRNummer_)
+                    if (Convert.ToString(rdr["CPR"]) == cpr)
                     {
                         ds.Pd_.Fornavn_ = Convert.ToString(rdr["Fornavn"]);
                         ds.Pd_.Efternavn_ = Convert.ToString(rdr["Efternavn"]);
@@ -234,6 +234,12 @@ namespace DB
                         {
                             e.Pd_.Fornavn_ = ds.Pd_.Fornavn_;
                             e.Pd_.Efternavn_ = ds.Pd_.Efternavn_;
+                        }
+                        
+                        if(dsListe.Count == 0)
+                        {
+                            ds.EkgId_ = 0;
+                            dsListe.Add(ds);
                         }
                     }
                 }
@@ -245,7 +251,7 @@ namespace DB
             catch(Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
                 return null;
             }
         }
@@ -313,7 +319,7 @@ namespace DB
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("" + ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
                 conn.Close();
                 return null;
             }
@@ -337,7 +343,7 @@ namespace DB
             catch (Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
         }
@@ -362,7 +368,7 @@ namespace DB
             catch(Exception ex)
             {
                 conn.Close();
-                System.Windows.Forms.MessageBox.Show("" + ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
     }

@@ -46,6 +46,7 @@
             // CPRTextBox
             // 
             this.CPRTextBox.Location = new System.Drawing.Point(36, 43);
+            this.CPRTextBox.MaxLength = 10;
             this.CPRTextBox.Name = "CPRTextBox";
             this.CPRTextBox.Size = new System.Drawing.Size(100, 20);
             this.CPRTextBox.TabIndex = 2;

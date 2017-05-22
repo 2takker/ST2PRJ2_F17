@@ -61,7 +61,7 @@ namespace Logik
 
         public List<DTO_Datasæt> visPatientData(string cpr)
         {
-            return dtoDatasætList_ = lokalDB_.hentCPRData(cpr);
+            return dtoDatasætList_ = lokalDB_.hentCPRData(cpr);            
         }
 
 

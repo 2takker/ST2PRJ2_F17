@@ -44,28 +44,36 @@ namespace Præsentationslag
                 {
                     MessageBox.Show("Advarsel: Dette er CPR-nummer er gældende for alle anonyme patienter");
                 }
-                    datasætListe = GennemseController.visPatientData(cpr);
+                datasætListe = GennemseController.visPatientData(cpr);
 
-                    fornavnTextBox.Text = datasætListe[0].Pd_.Fornavn_;
-                    efternavnTextBox.Text = datasætListe[0].Pd_.Efternavn_;
+                fornavnTextBox.Text = datasætListe[0].Pd_.Fornavn_;
+                efternavnTextBox.Text = datasætListe[0].Pd_.Efternavn_;
 
+                if(datasætListe[0].EkgId_ != 0)
+                {
                     foreach (DTO_Datasæt ds in datasætListe)
                     {
                         datasætListBox.Items.Add(Convert.ToString(ds.Dato_));
-                    }                
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Der findes ingen data på pågældende patient");
+                }               
+                
             }
             else
             {
                 CPRTextBox.Clear();
                 fornavnTextBox.Clear();
                 efternavnTextBox.Clear();
-                MessageBox.Show("Der findes ingen datasæt til pågældende patient");                
+                MessageBox.Show("Patient findes ikke");
             }
         }
 
         private void analyserDataKnap_Click(object sender, EventArgs e)
         {
-            
+
             if (datasætListBox.SelectedIndex >= 0)
             {
                 Cursor = Cursors.WaitCursor;
@@ -74,11 +82,8 @@ namespace Præsentationslag
                     vis_måling visMåling = new vis_måling(this, GennemseController);
                     visMåling.åbenVisMålingVindue();
                 }
-                else
-                {
-                    Cursor = Cursors.Default;
-                }
-            }            
+                Cursor = Cursors.Default;
+            }
         }
 
 

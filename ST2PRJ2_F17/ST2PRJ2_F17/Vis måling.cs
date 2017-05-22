@@ -47,6 +47,7 @@ namespace Præsentationslag
             dataCountCorr = ((datasæt_.Data_.Count) - (datasæt_.Data_.Count % datasæt_.SampleRateHz_)) / datasæt_.SampleRateHz_;
 
             skrivTilGraf(0, true);
+            ipTekstBox.Text = "" + datasæt_.Ip_.Count;
 
             Cursor = Cursors.Default;
         }
@@ -54,8 +55,9 @@ namespace Præsentationslag
         private void gammelkommentar()
         {
             Cursor = Cursors.WaitCursor;
-            gammelKommentartextBox.Text = "Måltagers kommentar: \r\n" + datasæt_.printMåltagerKommentar()
+            string kommentar = "Måltagers kommentar: \r\n" + datasæt_.printMåltagerKommentar() + "\r\n"
                    + "Tidligere kommentarer fra ansvarstager(e): \r\n" + datasæt_.printAnsvarstagerKommentar();
+            gammelKommentartextBox.Text = kommentar;
             Cursor = Cursors.Default;
         }
 
@@ -195,10 +197,6 @@ namespace Præsentationslag
             Close();
         }
 
-        private void vis_måling_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            frm.lukGennemseDataVindue();
-        }
 
         private void GemAnalyseretDataKnap_Click(object sender, EventArgs e)
         {

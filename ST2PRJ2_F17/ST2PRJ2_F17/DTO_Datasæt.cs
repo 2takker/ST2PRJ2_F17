@@ -87,9 +87,13 @@ namespace DTO
 
             foreach (string e in MåltagerKommentar_)
             {
-                if (e != "")
+                if (e != "" && e != MåltagerKommentar_.Last())
                 {
-                    output += "" + e + "\r\n\r\n";
+                    output += e + "\r\n\r\n";
+                }
+                if (e == MåltagerKommentar_.Last())
+                {
+                    output += e + "\r\n";
                 }
             }
 
@@ -103,9 +107,13 @@ namespace DTO
 
             foreach (string e in AnsvarstagerKommentar_)
             {
-                if (e != "")
+                if (e != "" && e != AnsvarstagerKommentar_.Last())
                 {
-                    output += "" + e + "\r\n\r\n";
+                    output += e + "\r\n\r\n";
+                }
+                if (e == AnsvarstagerKommentar_.Last())
+                {
+                    output += e + "\r\n";
                 }
             }
 
@@ -121,7 +129,7 @@ namespace DTO
                 output += "**Autogeneret kommentar**\r\n";
                 for (int i = 0; i < Ip_.Count; i++)
                 {
-                    output += "Interessepunkt " + (i + 1) + " ved: " + (Ip_[0] / SampleRateHz_) + " sekunder\r\n";
+                    output += "Interessepunkt " + (i + 1) + " ved: " + (Ip_[i] / SampleRateHz_) + " sekunder\r\n";
                 }
                 output += "*********************\r\n";
             }

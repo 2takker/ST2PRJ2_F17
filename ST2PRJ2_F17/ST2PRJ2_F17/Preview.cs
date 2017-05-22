@@ -76,10 +76,7 @@ namespace Præsentationslag
             {
                 x = x - 20;
                 skrivTilGraf(x);
-                if (x <= 10)
-                {
-                    tiSekTilbageKnap.Enabled = false;
-                }
+                
                 tiSekFremKnap.Enabled = true;
             }
         }
@@ -87,10 +84,7 @@ namespace Præsentationslag
         private void tiSekFremKnap_Click(object sender, EventArgs e)
         {
             skrivTilGraf(x);
-            if (x >= (dataListe_.Count / 500))
-            {
-                tiSekFremKnap.Enabled = false;
-            }
+            
             tiSekTilbageKnap.Enabled = true;
         }
 
@@ -168,7 +162,19 @@ namespace Præsentationslag
 
             låsknapper(false);
 
+            if (x <= 10)
+            {
+                tiSekTilbageKnap.Enabled = false;
+            }
+
+            if (x >= (dataListe_.Count / 500) && x != 0)
+            {
+                tiSekFremKnap.Enabled = false;
+            }
+
             Cursor = Cursors.Default;
+
+
             
         }
 
