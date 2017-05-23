@@ -109,5 +109,13 @@ namespace Præsentationslag
         {
             frm_.låsHjemmeskærm(false);
         }
+
+        private void CPRTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

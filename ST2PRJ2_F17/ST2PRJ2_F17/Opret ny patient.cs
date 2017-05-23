@@ -17,12 +17,12 @@ namespace Præsentationslag
         private Opret_ny_patient_controller OpretPatientController;
         private Hjemmeskærm frm_;
         private CPR_nummer cprFrm_;
-      public opret_ny_patient(Hjemmeskærm frm, CPR_nummer cprFrm)
+        public opret_ny_patient(Hjemmeskærm frm, CPR_nummer cprFrm)
         {
             InitializeComponent();
 
             frm_ = frm;
-            cprFrm_ = cprFrm;            
+            cprFrm_ = cprFrm;
 
             OpretPatientController = new Opret_ny_patient_controller();
         }
@@ -60,38 +60,38 @@ namespace Præsentationslag
         }
 
         private void lukOpretNyPatientVindue()
-        {            
+        {
             Close();
         }
 
         public void åbenOpretNyPatientVindue(string cpr)
         {
             CPRTextBox.Focus();
-            if(frm_ != null)
+            if (frm_ != null)
             {
                 frm_.låsHjemmeskærm(true);
             }
-            if(cprFrm_ != null)
+            if (cprFrm_ != null)
             {
                 cprFrm_.Enabled = false;
             }
-            if(cpr != null)
+            if (cpr != null)
             {
                 CPRTextBox.Text = cpr;
                 fornavnTextBox.Focus();
             }
-                        
+
             Show();
         }
 
         private void opret_ny_patient_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(frm_ != null)
+            if (frm_ != null)
             {
                 frm_.låsHjemmeskærm(false);
             }
 
-            if(cprFrm_ != null)
+            if (cprFrm_ != null)
             {
                 cprFrm_.Enabled = true;
             }
@@ -99,9 +99,17 @@ namespace Præsentationslag
 
         private void efternavnTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 gemKnap.PerformClick();
+            }
+        }
+
+        private void CPRTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

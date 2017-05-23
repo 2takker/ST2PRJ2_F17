@@ -269,6 +269,8 @@ namespace DB
 
                 if (rdr.Read())
                 {
+                    ds.MåltagerKommentar_.Clear();
+                    ds.AnsvarstagerKommentar_.Clear();
                     ds.MåltagerKommentar_.Add(Convert.ToString(rdr["sfp_mt_kommentar"]));
                     ds.AnsvarstagerKommentar_.Add(Convert.ToString(rdr["sfp_anskommentar"]));
                 }
@@ -294,13 +296,16 @@ namespace DB
 
                         byte[] bytes = (byte[])rdr["raa_data"];
 
-                        for (int i = 0; i < bytes.Length; i += 8)
+                        if (ds.Data_.Count == 0)
                         {
-                            ds.Data_.Add(BitConverter.ToDouble(bytes, i));
+                            for (int i = 0; i < bytes.Length; i += 8)
+                            {
+                                ds.Data_.Add(BitConverter.ToDouble(bytes, i));
+                            }
                         }
 
-
-                        if (rdr["interessepunkter"] != DBNull.Value)
+                        
+                        if (rdr["interessepunkter"] != DBNull.Value && ds.Ip_.Count == 0)
                         {
                             byte[] bytesIP = (byte[])rdr["interessepunkter"];
 

@@ -122,11 +122,6 @@ namespace Præsentationslag
                 {
                     ipFremKnap.Enabled = false;                    
                 }
-                //if((x + 10) >= (datasæt_.Ip_[datasæt_.Ip_.Count - 1]) / datasæt_.SampleRateHz_)
-                //{
-                //    ipFremKnap.Enabled = false;
-                //    count = datasæt_.Ip_.Count - 1;
-                //}
 
                 if (count == 0)
                 {

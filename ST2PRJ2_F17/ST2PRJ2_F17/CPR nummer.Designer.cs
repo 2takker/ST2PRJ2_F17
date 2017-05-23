@@ -37,26 +37,31 @@
             // CPRnummer
             // 
             this.CPRnummer.AutoSize = true;
-            this.CPRnummer.Location = new System.Drawing.Point(33, 26);
+            this.CPRnummer.Location = new System.Drawing.Point(66, 50);
+            this.CPRnummer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CPRnummer.Name = "CPRnummer";
-            this.CPRnummer.Size = new System.Drawing.Size(69, 13);
+            this.CPRnummer.Size = new System.Drawing.Size(139, 25);
             this.CPRnummer.TabIndex = 1;
             this.CPRnummer.Text = "CPR nummer";
             // 
             // CPRTextBox
             // 
-            this.CPRTextBox.Location = new System.Drawing.Point(36, 43);
+            this.CPRTextBox.Location = new System.Drawing.Point(72, 83);
+            this.CPRTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.CPRTextBox.MaxLength = 10;
             this.CPRTextBox.Name = "CPRTextBox";
-            this.CPRTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CPRTextBox.ShortcutsEnabled = false;
+            this.CPRTextBox.Size = new System.Drawing.Size(196, 31);
             this.CPRTextBox.TabIndex = 2;
             this.CPRTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CPRTextBox_KeyDown);
+            this.CPRTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CPRTextBox_KeyPress);
             // 
             // gemKnap
             // 
-            this.gemKnap.Location = new System.Drawing.Point(36, 97);
+            this.gemKnap.Location = new System.Drawing.Point(72, 187);
+            this.gemKnap.Margin = new System.Windows.Forms.Padding(6);
             this.gemKnap.Name = "gemKnap";
-            this.gemKnap.Size = new System.Drawing.Size(75, 23);
+            this.gemKnap.Size = new System.Drawing.Size(150, 44);
             this.gemKnap.TabIndex = 3;
             this.gemKnap.Text = "Gem";
             this.gemKnap.UseVisualStyleBackColor = true;
@@ -64,9 +69,10 @@
             // 
             // fortrydKnap
             // 
-            this.fortrydKnap.Location = new System.Drawing.Point(136, 97);
+            this.fortrydKnap.Location = new System.Drawing.Point(272, 187);
+            this.fortrydKnap.Margin = new System.Windows.Forms.Padding(6);
             this.fortrydKnap.Name = "fortrydKnap";
-            this.fortrydKnap.Size = new System.Drawing.Size(75, 23);
+            this.fortrydKnap.Size = new System.Drawing.Size(150, 44);
             this.fortrydKnap.TabIndex = 4;
             this.fortrydKnap.Text = "Fortryd";
             this.fortrydKnap.UseVisualStyleBackColor = true;
@@ -74,16 +80,15 @@
             // 
             // CPR_nummer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(229, 126);
+            this.ClientSize = new System.Drawing.Size(471, 257);
             this.Controls.Add(this.fortrydKnap);
             this.Controls.Add(this.gemKnap);
             this.Controls.Add(this.CPRTextBox);
             this.Controls.Add(this.CPRnummer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximumSize = new System.Drawing.Size(245, 165);
-            this.MinimumSize = new System.Drawing.Size(245, 165);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "CPR_nummer";
             this.Text = "CPR nummer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CPR_nummer_FormClosing);

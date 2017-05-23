@@ -120,9 +120,9 @@
 --DELETE FROM EKGMAALING
 --DELETE FROM db_owner.PatientData
 
---SELECT * FROM db_owner.EKGDATA
---SELECT * FROM db_owner.EKGMAALING
---SELECT * FROM db_owner.PatientData
+SELECT * FROM db_owner.EKGDATA
+SELECT * FROM db_owner.EKGMAALING
+SELECT * FROM db_owner.PatientData
 
 --SELECT * FROM EKGMAALING WHERE borger_cprnr = '1212124008' 
 
